@@ -8,6 +8,9 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">941013</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.min_size">1</property>
+        <property name="c3p0.timeout">5000</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
         <!-- DB schema will be updated if needed -->
@@ -19,5 +22,8 @@
         <mapping class="Bean.users.UserEntity" />
         <mapping class="Bean.SchoolAssignment.SchoolAssignment"/>
         <mapping class="Bean.SchoolAssignment.Evaluation"/>
+        <mapping class="Bean.Data.Data"/>
+        <mapping class="Bean.Data.downloadRecord" />
+        <mapping class="Bean.Data.uploadingRecord"/>
     </session-factory>
 </hibernate-configuration>

@@ -4,18 +4,26 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/UserDataBase?characterEncoding=UTF-8</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ForumDataBase?characterEncoding=UTF-8</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">941013</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.min_size">1</property>
+        <property name="c3p0.timeout">5000</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
         <!-- DB schema will be updated if needed -->
         <!-- --><property name="hbm2ddl.auto">update</property>
-        <mapping class="Bean.StudentEntity"/>
-        <mapping class="Bean.TeacherEntity" />
-        <mapping class="Bean.CommentEntity" />
-        <mapping class="Bean.PostEntity" />
-        <mapping class="Bean.UserEntity" />
+        <mapping class="Bean.users.StudentEntity"/>
+        <mapping class="Bean.users.TeacherEntity" />
+        <mapping class="Bean.Post_Comments.CommentEntity" />
+        <mapping class="Bean.Post_Comments.PostEntity" />
+        <mapping class="Bean.users.UserEntity" />
+        <mapping class="Bean.SchoolAssignment.SchoolAssignment"/>
+        <mapping class="Bean.SchoolAssignment.Evaluation"/>
+        <mapping class="Bean.Data.Data"/>
+        <mapping class="Bean.Data.downloadRecord" />
+        <mapping class="Bean.Data.uploadingRecord"/>
     </session-factory>
 </hibernate-configuration>

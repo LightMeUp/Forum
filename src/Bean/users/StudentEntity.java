@@ -15,13 +15,7 @@ public class StudentEntity extends UserEntity {
     private String major;           //专业
     private String clazz;           //班级
 
-
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "teacher_id")
     private TeacherEntity teacherEntity;
-
-
-
     /*学生权限表
     * 下载文件的权限
     * 上传作业的权限
@@ -30,8 +24,30 @@ public class StudentEntity extends UserEntity {
     * */
 
 
+    public String getMajor() {
+        return major;
+    }
 
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
+    public String getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
+    }
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "teacher_id")
+    public TeacherEntity getTeacherEntity() {
+        return teacherEntity;
+    }
+
+    public void setTeacherEntity(TeacherEntity teacherEntity) {
+        this.teacherEntity = teacherEntity;
+    }
 
     @Override
     public boolean equals(Object o) {

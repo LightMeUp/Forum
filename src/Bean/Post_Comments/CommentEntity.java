@@ -16,6 +16,7 @@ public class CommentEntity {
     private String  tag;
     private String content;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
     private UserEntity userEntity;
 
     public Integer getId() {

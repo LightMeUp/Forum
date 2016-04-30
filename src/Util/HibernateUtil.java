@@ -1,5 +1,6 @@
 package Util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.Service;
@@ -26,9 +27,18 @@ public class HibernateUtil {
 
         }
     }
-    public static SessionFactory getInstanceFactory()
+    public static SessionFactory  getInstanceFactory()
     {
         return sessionFactory;
     }
+    public static Session getSession(){
+        Session session = getInstanceFactory().getCurrentSession();
+        if (session.getTransaction().isActive()){
+            return session;
+        }
+        else {
+            return getInstanceFactory().openSession();
+        }
 
+    }
 }

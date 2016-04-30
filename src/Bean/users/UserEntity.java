@@ -1,5 +1,7 @@
 package Bean.users;
 
+import Bean.Data.downloadRecord;
+import Bean.Data.uploadingRecord;
 import Bean.Post_Comments.CommentEntity;
 import Bean.Post_Comments.PostEntity;
 import com.sun.tools.javac.code.Types;
@@ -31,9 +33,8 @@ public class UserEntity {
     // 管理其它用户权限(对用户进行增 删 改 查)
     // 发布管理通知
     // 删除贴和评论  (对评论和帖子进行 增 删 改 查)
-    // 下载,上传资源
-
-
+    // 下载记录
+    // 上传记录
     protected int id;                 //账号
     protected String name;            //姓名
     protected String sex;             //性别
@@ -46,7 +47,9 @@ public class UserEntity {
     protected Date createdDate;    // 创建日期
     protected Date lastLoginDate;  // 最近一次登陆信息
     protected List<CommentEntity> commentEntities;   //评论
-    protected List<PostEntity> postEntities;   // 发布的帖子
+    protected List<PostEntity> posts;   // 发布的帖子
+    protected List<downloadRecord> downloadRecords; // 下载记录
+    protected List<uploadingRecord> uploadingRecords; // 上传记录
     protected List<UserEntity> friends; // 好友
 
 
@@ -137,23 +140,22 @@ public class UserEntity {
         return lastLoginDate;
     }
     @Column(name = "comments")
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     public List<CommentEntity> getCommentEntities() {
         return commentEntities;
     }
-
     public void setCommentEntities(List<CommentEntity> commentEntities) {
         this.commentEntities = commentEntities;
     }
-    @Column(name = "posts")
 
-    @OneToMany(mappedBy = "userEntity")
+    @Column(name = "posts")
+    @OneToMany(mappedBy = "userEntity",fetch = FetchType.LAZY)
     public List<PostEntity> getPostEntities() {
-        return postEntities;
+        return posts;
     }
 
     public void setPostEntities(List<PostEntity> postEntities) {
-        this.postEntities = postEntities;
+        this.posts = postEntities;
     }
 
     public void setLastLoginDate(Date lastLoginDate) {
@@ -207,5 +209,23 @@ public class UserEntity {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY)
+    public List<downloadRecord> getDownloadRecords() {
+        return downloadRecords;
+    }
+
+    public void setDownloadRecords(List<downloadRecord> downloadRecords) {
+        this.downloadRecords = downloadRecords;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY)
+    public List<uploadingRecord> getUploadingRecords() {
+        return uploadingRecords;
+    }
+
+    public void setUploadingRecords(List<uploadingRecord> uploadingRecords) {
+        this.uploadingRecords = uploadingRecords;
     }
 }

@@ -1,9 +1,8 @@
 package JTest;
 
-import BaseDao.BaseDao;
-import BaseDao.PostDao;
 import Bean.Post_Comments.PostEntity;
 import Bean.users.StudentEntity;
+import Dao.BaseDao;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
@@ -19,35 +18,7 @@ public class TestUnit {
 
     }
 
-    @Test
-    public void TestAdd()
-    {
 
-        // 测试创建新用户
-        try {
-            StudentEntity userEntity = new StudentEntity();
-            userEntity.setId(22130001);
-            userEntity.setPassword("221300001");
-            userEntity.setAddress("福建省福州市闽侯县上街镇福州大学博学院B区");
-
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-            Date date = simpleDateFormat.parse("2016-3-31");
-
-            userEntity.setBirthDate( new java.sql.Date(date.getTime()));
-            userEntity.setCellPhone("12345678901");
-
-            Date loginDate = new Date();
-            userEntity.setLastLoginDate( new java.sql.Date(loginDate.getTime()));
-            userEntity.setSex("男");
-            studentEntityBaseDao.addEntity(userEntity);
-
-
-            System.out.printf("completed");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
 
     @Test
@@ -56,7 +27,7 @@ public class TestUnit {
     {
         List<StudentEntity> studentEntities;
         try {
-            studentEntities = studentEntityBaseDao.list("select * from student");
+            studentEntities = studentEntityBaseDao.findEntities("select * from student");
             if (studentEntities == null || studentEntities.size() < 1){
                 System.out.println("no user");
             }
@@ -72,21 +43,48 @@ public class TestUnit {
 
 
     //测试发帖数据库的插入
+//    @Test
+//    public void testPost()
+//    {
+//        PostDao PostDao = new PostDao();
+//        PostEntity postEntity = new PostEntity();
+//        postEntity.setContent("zheshiyigeceshishuju");
+//        postEntity.setTheme("test");
+//        StudentEntity studentEntity = (StudentEntity) studentEntityBaseDao.find(StudentEntity.class,221300000);
+//        studentEntity.getPostEntities().add(postEntity);
+//        System.out.printf("%s",studentEntity.getName());
+//
+//    }
+
+    // 删除测试
     @Test
-    public void testPost()
-    {
-        PostDao PostDao = new PostDao();
-        PostEntity postEntity = new PostEntity();
-        postEntity.setContent("zheshiyigeceshishuju");
-        postEntity.setTheme("test");
-        StudentEntity studentEntity = studentEntityBaseDao.find(StudentEntity.class,221300000);
-        studentEntity.getPostEntities().add(postEntity);
-        System.out.printf("%s",studentEntity.getName());
-
-
-        PostDao.addEntity(postEntity,studentEntity);
+    public void testDelete(){
 
     }
+
+    //修改测试
+    @Test
+    public void testUpdate(){
+
+    }
+
+    @Test
+    public void testRandomId()
+    {
+        for (int i= 0; i<10;i++) {
+            System.out.println(Util.Utils.getTouristId());
+        }
+
+    }
+    @Test
+    public void getRows()
+    {
+        BaseDao<StudentEntity> baseDao = new BaseDao<StudentEntity>();
+        java.math.BigInteger number = baseDao.getRows("student");
+        System.out.println(number);
+
+    }
+
 
 
 }
