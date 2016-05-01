@@ -1,6 +1,6 @@
 package Bean.Data;
 
-import Bean.users.UserEntity;
+import Bean.users.User;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -21,7 +21,7 @@ public class Data {
     // 保存文件名
     private String FileName;
     // 上传用户
-    private UserEntity userEntity;
+    private User user;
     //上传日期
     private Date uploadingDate;
     // 有效时间
@@ -32,26 +32,27 @@ public class Data {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
+
     @Column(name = "filename")
     public String getFileName() {
         return FileName;
     }
-
     public void setFileName(String fileName) {
         FileName = fileName;
     }
-    @ManyToOne
-    public UserEntity getUserEntity() {
-        return userEntity;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    public User getUserEntity() {
+        return user;
+    }
+    public void setUserEntity(User user) {
+        this.user= user;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
     @Column(name = "uploadingdate")
     public Date getUploadingDate() {
         return uploadingDate;
@@ -59,11 +60,11 @@ public class Data {
     public void setUploadingDate(Date uploadingDate) {
         this.uploadingDate = uploadingDate;
     }
+
     @Column(name = "validatedate")
     public Date getValidateDate() {
         return validateDate;
     }
-
     public void setValidateDate(Date validateDate) {
         this.validateDate = validateDate;
     }

@@ -1,8 +1,8 @@
 package Dao;
 
 import Bean.SchoolAssignment.SchoolAssignment;
-import Bean.users.StudentEntity;
-import Bean.users.TeacherEntity;
+import Bean.users.Student;
+import Bean.users.Teacher;
 import Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,11 +16,11 @@ import java.util.List;
  */
 public class TeacherDao  extends BaseDao{
 
-    public List<StudentEntity> getStudentsByTeacherId(Serializable id){
+    public List<Student> getStudentsByTeacherId(Serializable id){
 
         Session session = HibernateUtil.getSession();
-        TeacherEntity teacherEntity =(TeacherEntity)session.get(TeacherEntity.class,id);
-        List<StudentEntity> students = teacherEntity.getStudentEntities();
+        Teacher teacherEntity =(Teacher)session.get(Teacher.class,id);
+        List<Student> students = teacherEntity.getStudents();
         System.out.println(students);
         if (students == null){
             return null;
@@ -28,13 +28,6 @@ public class TeacherDao  extends BaseDao{
         else {
             return students;
         }
-    }
-    public List<SchoolAssignment> getSchoolAssignmentsByTeacherId(Serializable id){
-
-        Session session = HibernateUtil.getSession();
-        TeacherEntity teacher =(TeacherEntity)session.get(TeacherEntity.class,id);
-
-        List<SchoolAssignment> schoolAssignments = teacher.gets
     }
 
 }

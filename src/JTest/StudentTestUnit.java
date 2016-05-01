@@ -1,8 +1,9 @@
 package JTest;
 
-import Bean.users.StudentEntity;
-import Bean.users.TeacherEntity;
+import Bean.users.Student;
+import Bean.users.Teacher;
 import Dao.BaseDao;
+import Dao.StudentDao;
 import Dao.TeacherDao;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -17,25 +18,25 @@ public class StudentTestUnit {
     @Test
     public void TestAdd()
     {
-        BaseDao<StudentEntity> studentDao = new BaseDao<>();
+        StudentDao studentDao = new StudentDao();
         // 测试创建新用户
         try {
-            StudentEntity studentEntity = new StudentEntity();
-            studentEntity.setId(22130001);
-            studentEntity.setPassword("221300001");
-            studentEntity.setAddress("福建省福州市闽侯县上街镇福州大学博学院B区");
+            Student student = new Student();
+            student.setId(22130001);
+            student.setPassword("221300001");
+            student.setAddress("福建省福州市闽侯县上街镇福州大学博学院B区");
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date date = simpleDateFormat.parse("2016-3-31");
 
-            studentEntity.setBirthDate( new java.sql.Date(date.getTime()));
-            studentEntity.setCellPhone("12345678901");
+            student.setBirthDate( new java.sql.Date(date.getTime()));
+            student.setCellPhone("12345678901");
 
             Date loginDate = new Date();
-            studentEntity.setLastLoginDate( new java.sql.Date(loginDate.getTime()));
-            studentEntity.setSex("男");
-            studentDao.addEntity(studentEntity);
+            student.setLastLoginDate( new java.sql.Date(loginDate.getTime()));
+            student.setSex("男");
+            studentDao.addEntity(student);
             System.out.printf("completed");
         }catch (Exception e){
             e.printStackTrace();
@@ -44,8 +45,8 @@ public class StudentTestUnit {
 
     @Test
     public void TestDelete(){
-        BaseDao<StudentEntity> studentDao = new BaseDao<>();
-        StudentEntity studentEntity = studentDao.findEntity(StudentEntity.class,22130001);
+        StudentDao studentDao = new StudentDao();
+        Student studentEntity = (Student) studentDao.findEntity(Student.class,22130001);
         if (studentEntity  == null){
             System.out.print("Student is not exits");
         }
@@ -56,15 +57,15 @@ public class StudentTestUnit {
     }
     @Test
     public void TestUpdate(){
-       BaseDao<StudentEntity> studentDao  = new BaseDao<>();
-        StudentEntity studentEntity = studentDao.findEntity(StudentEntity.class, 22130001);
+        StudentDao studentDao = new StudentDao();
+        Student studentEntity = (Student) studentDao.findEntity(Student.class, 22130001);
         if (studentEntity == null){
             System.out.println("student not exits,update failed");
         }
         else {
             /* 使用对象的set方法重新修改信息*/
-            TeacherEntity teacher = (TeacherEntity) new TeacherDao().findEntity(TeacherEntity.class,22010001);
-            studentEntity.setTeacherEntity(teacher);
+            Teacher teacher = (Teacher) new TeacherDao().findEntity(Teacher.class,22010001);
+            studentEntity.setTeacher(teacher);
             studentDao.updateEntity(studentEntity);
             System.out.println("new student information updated");
         }
@@ -72,8 +73,8 @@ public class StudentTestUnit {
     @Test
     public void TestFind()
     {
-        BaseDao<StudentEntity> studentDao = new BaseDao<>();
-        StudentEntity student = studentDao.findEntity(StudentEntity.class, 22130001);
+        StudentDao studentDao = new StudentDao();
+        Student student = (Student) studentDao.findEntity(Student.class, 22130001);
         if (student == null){
             System.out.println("student not exits");
         }

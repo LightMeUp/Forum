@@ -1,7 +1,7 @@
 package Bean.SchoolAssignment;
 
-import Bean.users.StudentEntity;
-import Bean.users.TeacherEntity;
+import Bean.users.Student;
+import Bean.users.Teacher;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -11,12 +11,12 @@ import java.sql.Date;
  * Created by Feng on 4/14/16.
  */
 @Entity
-@Table(name = "evaluation")
+@Table(name = "evaluation",schema = "ForumDatabase")
 public class Evaluation {
 
     private int id;
     private SchoolAssignment schoolAssignment;
-    private StudentEntity studentEntity;
+    private Student student;
     private Date createdDate;
     private float score;
     private String Evaluate;
@@ -26,26 +26,28 @@ public class Evaluation {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "assignment_id")
+
     public SchoolAssignment getSchoolAssignment() {
         return schoolAssignment;
     }
-
     public void setSchoolAssignment(SchoolAssignment schoolAssignment) {
         this.schoolAssignment = schoolAssignment;
     }
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
-    public StudentEntity getStudentEntity() {
-        return studentEntity;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "student_id")
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentEntity(StudentEntity studentEntity) {
-        this.studentEntity = studentEntity;
+    public void setStudent(Student student) {
+        this.student= student;
     }
 
     public Date getCreatedDate() {

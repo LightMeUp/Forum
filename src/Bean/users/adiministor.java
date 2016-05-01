@@ -8,6 +8,6 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("admin")
-public class adiministor extends UserEntity {
+public class adiministor extends User {
 
 }

@@ -14,16 +14,16 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
         <!-- DB schema will be updated if needed -->
-        <!-- --><property name="hbm2ddl.auto">update</property>
-        <mapping class="Bean.users.StudentEntity"/>
-        <mapping class="Bean.users.TeacherEntity" />
-        <mapping class="Bean.Post_Comments.CommentEntity" />
-        <mapping class="Bean.Post_Comments.PostEntity" />
-        <mapping class="Bean.users.UserEntity" />
+        <!-- --><property name="hbm2ddl.auto">create</property>
+        <mapping class="Bean.users.Student"/>
+        <mapping class="Bean.users.Teacher" />
+        <mapping class="Bean.Post_Comments.Comment" />
+        <mapping class="Bean.Post_Comments.Post" />
+        <mapping class="Bean.users.User" />
         <mapping class="Bean.SchoolAssignment.SchoolAssignment"/>
         <mapping class="Bean.SchoolAssignment.Evaluation"/>
         <mapping class="Bean.Data.Data"/>
         <mapping class="Bean.Data.downloadRecord" />
-        <mapping class="Bean.Data.uploadingRecord"/>
+        <mapping class="Bean.Data.uploadRecord"/>
     </session-factory>
 </hibernate-configuration>

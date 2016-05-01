@@ -1,7 +1,7 @@
 package JTest;
 
-import Bean.users.StudentEntity;
-import Bean.users.TeacherEntity;
+import Bean.users.Student;
+import Bean.users.Teacher;
 import Dao.BaseDao;
 import Dao.TeacherDao;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class TeacherTestUnit  {
     @Test
     public void TestAddTeacher(){
         TeacherDao teacherDao = new TeacherDao();
-        TeacherEntity teacher = new TeacherEntity();
+        Teacher teacher = new Teacher();
         teacher.setId(22010001);
         teacher.setName("单红");
         teacher.setSex("男");
@@ -32,26 +32,34 @@ public class TeacherTestUnit  {
     @Test
     public void TestUpdate(){
         TeacherDao teacherDao = new TeacherDao();
-        TeacherEntity teacher =(TeacherEntity) teacherDao.findEntity(TeacherEntity.class,22010001);
-        BaseDao<StudentEntity> studentDao = new BaseDao<>();
-        StudentEntity studentEntity =studentDao.findEntity(StudentEntity.class,22130001);
-        List<StudentEntity> students = new ArrayList<>();
-        students.add(studentEntity);
-        teacher.setStudentEntities(students);
+        Teacher teacher =(Teacher) teacherDao.findEntity(Teacher.class,22010001);
+        //BaseDao<StudentEntity> studentDao = new BaseDao<>();
+//        StudentEntity studentEntity =studentDao.findEntity(StudentEntity.class,22130001);
+//        List<StudentEntity> students = new ArrayList<>();
+//        students.add(studentEntity);
+//        teacher.setStudentEntities(students);
+        teacher.setPassword("123456");
         teacherDao.updateEntity(teacher);
 
     }
     @Test
     public void TestFind(){
         TeacherDao teacherDao = new TeacherDao();
-       List<StudentEntity> students = teacherDao.getStudentsByTeacherName("danhong");
+       List<Student> students = teacherDao.getStudentsByTeacherId(22010001);
         System.out.println(students);
     }
     @Test
     public void TestFindStudents(){
         TeacherDao teacherDao = new TeacherDao();
-        List<StudentEntity> list = teacherDao.getStudentsByTeacherName("单红");
+        List<Student> list = teacherDao.getStudentsByTeacherId("单红");
         System.out.println("students:"+list);
 
     }
+    @Test
+    public void TestFindTeacher(){
+        TeacherDao teacherDao = new TeacherDao();
+        Teacher teacherEntity = (Teacher) teacherDao.findEntity(Teacher.class,22010001);
+        System.out.println("count:"+teacherEntity.getId() +"passowrd:"+teacherEntity.getPassword());
+    }
+
 }

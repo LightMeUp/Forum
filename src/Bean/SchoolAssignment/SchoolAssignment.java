@@ -1,7 +1,7 @@
 package Bean.SchoolAssignment;
 
-import Bean.users.StudentEntity;
-import Bean.users.TeacherEntity;
+import Bean.users.Student;
+import Bean.users.Teacher;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
@@ -27,13 +27,10 @@ public class SchoolAssignment {
     * 作业评价(Evaluation, 一对一 )*/
 
     // 作业编号
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int id;
     // 发布教师
-    @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private TeacherEntity teacher;
+    private Teacher teacher;
     // 发布日期
     private Date publishDate;
     //截止日期
@@ -42,11 +39,10 @@ public class SchoolAssignment {
     private String content;
     //  作业提交数量
     private int assignmentNumbers;
-
-    @OneToMany
     private List<Evaluation> evaluations;
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -55,11 +51,13 @@ public class SchoolAssignment {
         this.id = id;
     }
 
-    public TeacherEntity getTeacher() {
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(TeacherEntity teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
@@ -95,6 +93,7 @@ public class SchoolAssignment {
         this.assignmentNumbers = assignmentNumbers;
     }
 
+    @OneToMany(mappedBy = "schoolAssignment")
     public List<Evaluation> getEvaluations() {
         return evaluations;
     }

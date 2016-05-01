@@ -1,6 +1,6 @@
 package Bean.Data;
 
-import Bean.users.UserEntity;
+import Bean.users.User;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -16,9 +16,11 @@ public class downloadRecord {
     // 资料
     private Data data;
     // 下载用户
-    private  UserEntity userEntity;
+    private  User user;
     // 下载日期
     private Date downloadDate;
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,12 +41,13 @@ public class downloadRecord {
     }
 
     @ManyToOne
-    public UserEntity getUserEntity() {
-        return userEntity;
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setUser(User userEntity) {
+        this.user = user;
     }
 
     public Date getDownloadDate() {
