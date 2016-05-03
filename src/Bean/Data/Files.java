@@ -14,10 +14,12 @@ import java.sql.Date;
 *  优点3. 用户上传一张图片需要对图片进行多种处理,使用数据库不易操作*/
 
 @Entity
-@Table(name = "data",schema = "ForumDataBase")
-public class Data {
+@Table(name = "Files",schema = "ForumDataBase")
+public class Files {
     // 上传资料编号
     private int id;
+    //文件真实名称
+    private String realName;
     // 保存文件名
     private String FileName;
     // 上传用户
@@ -67,5 +69,14 @@ public class Data {
     }
     public void setValidateDate(Date validateDate) {
         this.validateDate = validateDate;
+    }
+
+    @Column(name = "realname")
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }

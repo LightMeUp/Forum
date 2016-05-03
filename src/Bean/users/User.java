@@ -1,12 +1,10 @@
 package Bean.users;
 
-import Bean.Data.Data;
+import Bean.Data.Files;
 import Bean.Data.downloadRecord;
 import Bean.Data.uploadRecord;
 import Bean.Post_Comments.Comment;
 import Bean.Post_Comments.Post;
-import com.sun.tools.javac.code.Types;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -39,9 +37,9 @@ public class User {
     protected int id;                 //账号
     protected String name;            //姓名
     protected String sex;             //性别
-    protected String colleage;        //学院
     protected String password;        //密码
     protected Date birthDate;         //出生日期
+    protected String QQnumber;         // QQ联系
     protected String cellPhone;       //电话
     protected String email;           //邮箱
     protected String address;      // 地址
@@ -52,7 +50,7 @@ public class User {
     protected List<downloadRecord> downloadRecords; // 下载记录
     protected List<uploadRecord> uploadRecords; // 上传记录
     protected List<User> friends; // 好友
-    protected List<Data> datas;
+    protected List<Files> files;
     //权限管理
     protected int downloadAuthority = 1;    //  学生老师都有下载的权限
     protected int uploadAuthority   = 1;    // 学生老师都有上传的权限.根据不同的内容进行选择
@@ -83,12 +81,12 @@ public class User {
         this.sex = sex;
     }
 
-    @Column(name = "colleage")
-    public String getColleage() {
-        return colleage;
+    public String getQQnumber() {
+        return QQnumber;
     }
-    public void setColleage(String colleage) {
-        this.colleage = colleage;
+
+    public void setQQnumber(String QQnumber) {
+        this.QQnumber = QQnumber;
     }
 
     @Column(name = "password")
@@ -222,10 +220,6 @@ public class User {
     }
 
     @OneToMany(fetch = FetchType.LAZY)
-    public List<Data> getDatas() {
-        return datas;
-    }
-    public void setDatas(List<Data> datas) {
-        this.datas = datas;
-    }
+    public List<Files> getFiles() {return files;}
+    public void setFiles(List<Files> files) {this.files = files;}
 }

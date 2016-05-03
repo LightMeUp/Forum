@@ -13,10 +13,9 @@ import java.sql.Date;
 public class uploadRecord {
 
     private int id;
-
     private User user;
     private Date uploadDate;
-
+    private Files file;
     public Date getUploadDate() {
         return uploadDate;
     }
@@ -33,10 +32,13 @@ public class uploadRecord {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    public User getUser() {
-        return user;
-    }
+    public User getUser() {return user;}
     public void setUser(User user) {
         this.user = user;
     }
+
+    @OneToOne(mappedBy = "files")
+    public Files getFile() {return file;}
+
+    public void setFile(Files file) {this.file = file;}
 }

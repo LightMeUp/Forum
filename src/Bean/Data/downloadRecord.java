@@ -14,7 +14,7 @@ public class downloadRecord {
     // 下载记录编号
     private int id;
     // 资料
-    private Data data;
+    private Files file;
     // 下载用户
     private  User user;
     // 下载日期
@@ -32,12 +32,12 @@ public class downloadRecord {
         this.id = id;
     }
     @ManyToOne
-    public Data getData() {
-        return data;
+    public Files getData() {
+        return file;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setData(Files file) {
+        this.file = file;
     }
 
     @ManyToOne
@@ -46,7 +46,7 @@ public class downloadRecord {
         return user;
     }
 
-    public void setUser(User userEntity) {
+    public void setUser(User user) {
         this.user = user;
     }
 

@@ -1,13 +1,12 @@
 package Dao;
 
+import Bean.Post_Comments.Post;
+import Bean.users.Teacher;
 import Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.io.Serializable;
 import java.util.List;
-
 /**
  * Created by Feng on 4/27/16.
  */

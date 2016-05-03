@@ -22,7 +22,7 @@
         <mapping class="Bean.users.User" />
         <mapping class="Bean.SchoolAssignment.SchoolAssignment"/>
         <mapping class="Bean.SchoolAssignment.Evaluation"/>
-        <mapping class="Bean.Data.Data"/>
+        <mapping class="Bean.Data.Files"/>
         <mapping class="Bean.Data.downloadRecord" />
         <mapping class="Bean.Data.uploadRecord"/>
     </session-factory>
