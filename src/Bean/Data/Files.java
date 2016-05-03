@@ -28,6 +28,7 @@ public class Files {
     private Date uploadingDate;
     // 有效时间
     private Date validateDate;
+    private uploadRecord uploadrecord;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,15 +45,6 @@ public class Files {
     }
     public void setFileName(String fileName) {
         FileName = fileName;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    public User getUserEntity() {
-        return user;
-    }
-    public void setUserEntity(User user) {
-        this.user= user;
     }
 
     @Column(name = "uploadingdate")
@@ -78,5 +70,22 @@ public class Files {
 
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+
+    @OneToOne
+    public uploadRecord getUploadrecord() {
+        return uploadrecord;
+    }
+
+    public void setUploadrecord(uploadRecord uploadrecord) {
+        this.uploadrecord = uploadrecord;
+    }
+    @ManyToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

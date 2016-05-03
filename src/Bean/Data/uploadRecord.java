@@ -37,7 +37,7 @@ public class uploadRecord {
         this.user = user;
     }
 
-    @OneToOne(mappedBy = "files")
+    @OneToOne
     public Files getFile() {return file;}
 
     public void setFile(Files file) {this.file = file;}

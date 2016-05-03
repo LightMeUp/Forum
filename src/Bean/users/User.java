@@ -81,6 +81,7 @@ public class User {
         this.sex = sex;
     }
 
+    @Column(name = "QQnumber")
     public String getQQnumber() {
         return QQnumber;
     }
@@ -219,7 +220,7 @@ public class User {
         this.posts = posts;
     }
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     public List<Files> getFiles() {return files;}
     public void setFiles(List<Files> files) {this.files = files;}
 }
