@@ -23,16 +23,11 @@
         #right_login{
             margin-top: 150px;
             margin-left: 50%;
-            margin-right: 23%;
+            margin-right: 25%;
         }
         #login{
             background-color: aqua;
             width: 250px;
-            height:30px;
-        }
-        #regist{
-            background-color: aqua;
-            width:250px;
             height:30px;
         }
     </style>
@@ -55,11 +50,8 @@
                     <td colspan="3"><input type="submit" value="登    陆"  id ="login" align="center"></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><input type="submit" value="注     册" id="regist" align="center"></td>
-                </tr>
-                <tr>
                     <td><input type="radio" name="userType" value="teacher" >Teacher</td>
-                    <td><input type="radio" name="userType" value="student" />Student</td>
+                    <td><input type="radio" name="userType" value="student"  checked/>Student</td>
                     <td><input type="radio" name="userType" value="tourist" />Tourist</td>
                 </tr>
                 <tr><td colspan="3">游客登陆请点击<a href="/index.jsp">此处>></a></td></tr>

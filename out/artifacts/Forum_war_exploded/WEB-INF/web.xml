@@ -11,4 +11,24 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Controller/Login.servlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Controller.logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/Controller/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadFiles</servlet-name>
+        <servlet-class>Controller.UploadFiles</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadFiles</servlet-name>
+        <url-pattern>/Controller/UploadFiles</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- filter  -->
 </web-app>
