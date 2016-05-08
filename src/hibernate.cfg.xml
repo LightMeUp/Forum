@@ -17,13 +17,14 @@
         <!-- --><property name="hbm2ddl.auto">update</property>
         <mapping class="com.SE3Forum.fzu.Bean.users.Student"/>
         <mapping class="com.SE3Forum.fzu.Bean.users.Teacher" />
-        <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.Comment" />
         <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.Post" />
+        <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.Topic" />
         <mapping class="com.SE3Forum.fzu.Bean.users.User" />
         <mapping class="com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment"/>
         <mapping class="com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation"/>
         <mapping class="com.SE3Forum.fzu.Bean.Data.Files"/>
         <mapping class="com.SE3Forum.fzu.Bean.Data.downloadRecord" />
         <mapping class="com.SE3Forum.fzu.Bean.Data.uploadRecord"/>
+        <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.image"/>
     </session-factory>
 </hibernate-configuration>

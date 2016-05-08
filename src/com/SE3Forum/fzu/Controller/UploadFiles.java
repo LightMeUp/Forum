@@ -21,7 +21,6 @@ import java.util.UUID;
 @WebServlet(name = "UploadFiles")
 public class UploadFiles extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletInputStream inputStream = request.getInputStream();
         DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
         int ThreadHoldSize  =1024*1024;
         fileItemFactory.setSizeThreshold(ThreadHoldSize);

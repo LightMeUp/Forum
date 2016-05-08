@@ -20,8 +20,6 @@ public class downloadRecord {
     // 下载日期
     private Date downloadDate;
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {

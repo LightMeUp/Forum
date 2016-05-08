@@ -3,8 +3,9 @@ package com.SE3Forum.fzu.Bean.users;
 import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.Data.downloadRecord;
 import com.SE3Forum.fzu.Bean.Data.uploadRecord;
-import com.SE3Forum.fzu.Bean.Post_Comments.Comment;
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
+import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -39,11 +40,12 @@ public class User {
     protected Date birthDate;         //出生日期
     protected String qqnumber;         // QQ联系
     protected String cellPhone;       //电话
-    protected String email;           //邮箱
+    protected String email;             //邮箱
+    protected String  origin;           //籍贯
     protected String address;      // 地址
     protected Date lastLoginDate;  // 最近一次登陆信息
-    protected List<Comment> comments;   //评论
-    protected List<Post> posts;   // 发布的帖子
+    protected List<Post> posts;   //评论
+    protected List<Topic> topics;   // 发布的帖子
     protected List<downloadRecord> downloadRecords; // 下载记录
     protected List<uploadRecord> uploadRecords; // 上传记录
     protected List<User> friends; // 好友
@@ -132,15 +134,6 @@ public class User {
         this.lastLoginDate = lastLoginDate;
     }
 
-    @Column(name = "comments")
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
-    public List<Comment> getComments() {
-        return comments;
-    }
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
 
     @OneToMany(fetch = FetchType.LAZY)
     public List<User> getFriends() {
@@ -182,8 +175,17 @@ public class User {
     public String getSecurityToken() {
         return SecurityToken;
     }
-
     public void setSecurityToken(String securityToken) {
         SecurityToken = securityToken;
     }
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
+    }
+
 }

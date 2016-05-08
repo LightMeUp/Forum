@@ -4,69 +4,70 @@ import com.SE3Forum.fzu.Bean.users.User;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Feng on 3/30/16.
  */
-
-    /*
-    * 用户发帖
-    * 帖子ID
-    * 帖子类型
-    * 帖子内容
-    * 帖子评论   一篇帖子可有多个评论*/
 @Entity
 @Table(name = "post",schema = "ForumDataBase")
 public class Post {
 
-    private int id;
-    private String Theme;
-    private String Content;
+    private Integer id;
+    private String  tag;
+    private String content;
     private User user;
-    private List<Comment>commenties;
+    private Topic topic;
+    private Set<image>images;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getTheme() {
-        return Theme;
+    public String getTag() {
+        return tag;
     }
 
-    public void setTheme(String theme) {
-        Theme = theme;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
-    public User getUser() {
-        return user;
+    public User getUser() {return user;}
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setUser(User userEntity) {
-        this.user = userEntity;
+    @ManyToOne(fetch =  FetchType.EAGER)
+    public Topic getTopic() {
+        return topic;
     }
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "post")
-    public List<Comment> getCommenties() {
-        return commenties;
+    public void setTopic(Topic post) {
+        this.topic = post;
     }
 
-    public void setCommenties(List<Comment> commenties) {
-        this.commenties = commenties;
+    @OneToMany
+    public Set<image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<image> images) {
+        this.images = images;
     }
 }

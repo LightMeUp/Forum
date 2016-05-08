@@ -1,4 +1,5 @@
 package com.SE3Forum.fzu.Dao;
+import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -44,16 +45,15 @@ public class BaseDao<T>  implements  IBaseDao{
     public Object findEntity(Class clazz, Serializable id) {
         Session session = HibernateUtil.getSession();
         T object =(T)session.get(clazz, id);
-        session.close();
         return object;
     }
 
     // query all entities
     @Override
-    public List<T> findEntities(String sql){
+    public List<T> findEntities(String table){
         Session session = HibernateUtil.getSession();
-        Query query = session.createSQLQuery(sql);
-        session.close();
+        String sql = "SELECT * FROM " +table;
+         Query query =session.createSQLQuery(sql);
         return query.list();
     }
     @Override
@@ -62,5 +62,6 @@ public class BaseDao<T>  implements  IBaseDao{
         Query query = session.createSQLQuery("SELECT count(*) FROM  "+tableName);
         return (java.math.BigInteger) query.list().get(0);
     }
+
 
 }

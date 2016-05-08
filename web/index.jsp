@@ -8,11 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   session = request.getSession();
-  String count = (String) session.getAttribute("cout");
-  String password = (String)session.getAttribute("password");
-  if (count == null)
+  String count = (String) session.getAttribute("count");
+  String securityToken = (String) session.getAttribute("securityToken");
+  if (count != null && )
   {
-     response.sendRedirect(request.getContextPath()+"/login/login.jsp");
+    %>
+  <jsp:include page="@myprofile.jsp" />
+<%
+    else
   }
 %>
 <html>

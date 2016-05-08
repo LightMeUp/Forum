@@ -14,12 +14,6 @@ public class Student extends User {
 
     private Teacher teacher;
     private List<Evaluation> evaluations;
-    /*学生权限表
-    * 下载文件的权限
-    * 上传作业的权限
-    * 发帖 评论
-    * 管理权限   包括管理学生,老师信息,删帖,禁言.
-    * */
 
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)

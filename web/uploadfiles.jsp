@@ -13,6 +13,9 @@
 <body>
     <fieldset>
         <legend>file upload</legend>
+        <form  action="/Controller/UploadFiles.se3" method="post">
+
+        </form>
     </fieldset>
 </body>
 </html>

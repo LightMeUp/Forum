@@ -12,7 +12,7 @@
   String password = (String)session.getAttribute("password");
   if (count == null)
   {
-     response.sendRedirect(request.getContextPath()+"/login/login.jsp");
+     response.sendRedirect(request.getContextPath()+"/login.do");
   }
 %>
 <html>
