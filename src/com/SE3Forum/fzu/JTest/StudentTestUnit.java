@@ -34,7 +34,7 @@ public class StudentTestUnit {
             Date loginDate = new Date();
             student.setLastLoginDate( new java.sql.Date(loginDate.getTime()));
             student.setSex("男");
-            studentDao.addEntity(student);
+            studentDao.add(student);
             System.out.printf("completed");
         }catch (Exception e){
             e.printStackTrace();
@@ -44,27 +44,27 @@ public class StudentTestUnit {
     @Test
     public void TestDelete(){
         StudentDao studentDao = new StudentDao();
-        Student studentEntity = (Student) studentDao.findEntity(Student.class,22130001);
+        Student studentEntity = (Student) studentDao.find(Student.class,22130001);
         if (studentEntity  == null){
             System.out.print("Student is not exits");
         }
         else {
-            studentDao.deleteEntity(studentEntity);
+            studentDao.delete(studentEntity);
             System.out.println("student delete from student table");
         }
     }
     @Test
     public void TestUpdate(){
         StudentDao studentDao = new StudentDao();
-        Student studentEntity = (Student) studentDao.findEntity(Student.class, 22130001);
+        Student studentEntity = (Student) studentDao.find(Student.class, 22130001);
         if (studentEntity == null){
             System.out.println("student not exits,update failed");
         }
         else {
             /* 使用对象的set方法重新修改信息*/
-            Teacher teacher = (Teacher) new TeacherDao().findEntity(Teacher.class,22010001);
+            Teacher teacher = (Teacher) new TeacherDao().find(Teacher.class,22010001);
             studentEntity.setTeacher(teacher);
-            studentDao.updateEntity(studentEntity);
+            studentDao.update(studentEntity);
             System.out.println("new student information updated");
         }
     }
@@ -72,7 +72,7 @@ public class StudentTestUnit {
     public void TestFind()
     {
         StudentDao studentDao = new StudentDao();
-        Student student = (Student) studentDao.findEntity(Student.class, 221300101);
+        Student student = (Student) studentDao.find(Student.class, 221300101);
         if (student == null){
             System.out.println("student not exits");
         }

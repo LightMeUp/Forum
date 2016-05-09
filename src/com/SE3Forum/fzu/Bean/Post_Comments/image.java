@@ -7,7 +7,11 @@ import javax.persistence.Table;
 /**
  * Created by Feng on 5/8/16.
  */
-/* 用户发帖,发主题时包含图片,学习资料中包含图片*/
+/* 用户发帖,发主题时包含图片,学习资料中包含图片
+*  图片上传属于文件传输的一种,这里的图片指的是用户在发帖或者发布主题中添加的图片
+*  此时的图片信息会被加载到topic 对象或者post 对象中,所以不再记录上传用户信息
+*  此外用户个人信息中的图片与此处属于相同的原因
+*  图片中会用到一种图片裁剪处理,这个在这里暂时不处理,后面页面做好后我会使用阿里云的图片裁剪来做*/
 @Entity
 @Table(name="image",schema = "ForumDatabase")
 public class image {

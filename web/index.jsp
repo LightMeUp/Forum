@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.SE3Forum.fzu.Util.Utils" %>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="java.util.Locale" %><%--
   Created by IntelliJ IDEA.
   User: Feng
   Date: 4/8/16
@@ -7,16 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-  session = request.getSession();
-  String count = (String) session.getAttribute("count");
-  String securityToken = (String) session.getAttribute("securityToken");
-  if (count != null && )
-  {
-    %>
-  <jsp:include page="@myprofile.jsp" />
-<%
-    else
-  }
+
 %>
 <html>
   <head>

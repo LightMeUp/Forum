@@ -19,11 +19,24 @@ import java.util.List;
 public class Topic {
 
     private int id;
+
+    // 主题的标题
     private String Theme;
+
+    //主题文字内容
     private String Content;
+
+    //发帖用户
     private User user;
+
+    // 主题中发布的帖子
     private List<Post>posts;
+
+    // 主题的图片内容, 可以没有
     private List<image> images;
+
+    // 主题是否置顶   用 0 1 表示   0 表示不置顶 1表示置顶
+    private int OnTop;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

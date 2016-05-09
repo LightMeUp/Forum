@@ -19,12 +19,6 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/Controller/logout</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>uploadFiles</servlet-name>
-        <servlet-class>com.SE3Forum.fzu.Controller.UploadFiles</servlet-class>
-    </servlet>
-
     <!-- test -->
     <servlet>
         <servlet-name>list</servlet-name>
@@ -43,18 +37,18 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>uploadFiles</servlet-name>
-        <url-pattern>/Controller/UploadFiles</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
-
-
-
     <!-- filter  -->
+    <filter>
+        <filter-name>indexFilter</filter-name>
+        <filter-class>com.SE3Forum.fzu.Controller.Filter.indexFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>indexFilter</filter-name>
+        <url-pattern></url-pattern>
+    </filter-mapping>
 </web-app>

@@ -12,10 +12,19 @@ import java.sql.Date;
 @Table(name = "uploadingRecord",schema = "ForumDataBase")
 public class uploadRecord {
 
+    //上传记录编号
     private int id;
+
+    // 文件上传用户
     private User user;
+
+    // 上传日期
     private Date uploadDate;
+
+    // 上传文件信息
     private Files file;
+
+    // 上传日期
     public Date getUploadDate() {
         return uploadDate;
     }
@@ -24,6 +33,7 @@ public class uploadRecord {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -37,7 +47,7 @@ public class uploadRecord {
         this.user = user;
     }
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     public Files getFile() {return file;}
 
     public void setFile(Files file) {this.file = file;}

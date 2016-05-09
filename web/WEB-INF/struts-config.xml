@@ -6,15 +6,16 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="loginFormBean" type="com.SE3Forum.fzu.Struct.FormBeans.loginFormBean" />
+        <form-bean name="uploadFileForm" type="com.SE3Forum.fzu.Struct.FormBeans.UploadForm" />
     </form-beans>
     <global-exceptions />
     <global-forwards />
     <action-mappings>
-        <action path="/login" forward="/index.jsp"></action>
-        <action attribute="loginForm" input="/" name="loginFormBean" path="/hello"
-                type="com.SE3Forum.fzu.Struct.Actions.loginAction">
+        <action path="/upload" forward="/uploadFile.jsp"></action>
+        <action attribute="loginForm" input="/index.jsp" name="uploadFileForm" path="/uploadAction"
+                type="com.SE3Forum.fzu.Struct.Actions.uploadFileAction">
             <forward name="success" path="index.jsp"/>
                 </action>
     </action-mappings>
+
 </struts-config>

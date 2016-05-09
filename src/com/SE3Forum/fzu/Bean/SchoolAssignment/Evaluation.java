@@ -8,15 +8,31 @@ import java.sql.Date;
 /**
  * Created by Feng on 4/14/16.
  */
+/*
+* 作业评价表
+* */
+
+
 @Entity
 @Table(name = "evaluation",schema = "ForumDatabase")
 public class Evaluation {
 
+    // 编号
     private int id;
+
+    // 属于的作业
     private SchoolAssignment schoolAssignment;
+
+    // 提交作业的学生
     private Student student;
+
+    //学生作业提交时间
     private Date createdDate;
+
+    // 作业得分
     private float score;
+
+    // 教师评语
     private String Evaluate;
 
     @Id

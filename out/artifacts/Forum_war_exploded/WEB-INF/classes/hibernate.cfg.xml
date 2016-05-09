@@ -25,6 +25,6 @@
         <mapping class="com.SE3Forum.fzu.Bean.Data.Files"/>
         <mapping class="com.SE3Forum.fzu.Bean.Data.downloadRecord" />
         <mapping class="com.SE3Forum.fzu.Bean.Data.uploadRecord"/>
-        <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.Tag" />
+        <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.image"/>
     </session-factory>
 </hibernate-configuration>

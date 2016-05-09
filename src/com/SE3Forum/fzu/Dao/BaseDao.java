@@ -9,9 +9,13 @@ import java.util.List;
  * Created by Feng on 4/27/16.
  */
 public class BaseDao<T>  implements  IBaseDao{
+    /*
+    * BaseDao  实现基本的CURD 操作
+    * 1. 获取表的行数 getRows
+    * 2. 获取表中全部数据 listAll*/
 
     @Override
-    public boolean addEntity(Object object) {
+    public boolean add(Object object) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
         int effetRow = (int)session.save(object);
@@ -24,7 +28,7 @@ public class BaseDao<T>  implements  IBaseDao{
         }
     }
     @Override
-    public void deleteEntity(Object object) {
+    public void delete(Object object) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
         session.delete(object);
@@ -33,7 +37,7 @@ public class BaseDao<T>  implements  IBaseDao{
     }
 
     @Override
-    public void updateEntity(Object object) {
+    public void update(Object object) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
         session.update(object);
@@ -42,7 +46,7 @@ public class BaseDao<T>  implements  IBaseDao{
     }
 
     @Override
-    public Object findEntity(Class clazz, Serializable id) {
+    public Object find(Class clazz, Serializable id) {
         Session session = HibernateUtil.getSession();
         T object =(T)session.get(clazz, id);
         return object;
@@ -50,7 +54,7 @@ public class BaseDao<T>  implements  IBaseDao{
 
     // query all entities
     @Override
-    public List<T> findEntities(String table){
+    public List<T> listAll(String table){
         Session session = HibernateUtil.getSession();
         String sql = "SELECT * FROM " +table;
          Query query =session.createSQLQuery(sql);

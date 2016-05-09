@@ -12,14 +12,14 @@ import java.util.List;
 public interface IBaseDao<T> {
 
     // 添加数据
-    public boolean addEntity(T object);
+    public boolean add(T object);
     // delete Row
-    public void deleteEntity(T object);
+    public void delete(T object);
 
     // update row
-    public void updateEntity(T object);
-    public T findEntity(Class<T>clazz, Serializable id);
+    public void update(T object);
+    public T find(Class<T>clazz, Serializable id);
     // query all entities
-    public List<T> findEntities(String sql);
+    public List<T> listAll(String sql);
     public java.math.BigInteger getRows(String tableName);
 }

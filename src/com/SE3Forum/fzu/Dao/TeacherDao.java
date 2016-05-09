@@ -18,7 +18,7 @@ public class TeacherDao  extends BaseDao{
     // 查找教师下的全部学生
     public List<Student> getStudentsByTeacherId(Serializable id){
 
-        Teacher teacher = (Teacher) findEntity(Teacher.class,id);
+        Teacher teacher = (Teacher) find(Teacher.class,id);
         List<Student> students = teacher.getStudents();
         System.out.println(students);
         if (students == null){
@@ -29,7 +29,7 @@ public class TeacherDao  extends BaseDao{
     // 查看教师发布的全部作业
      public List<SchoolAssignment> getSchoolAssignments(Serializable id){
 
-         Teacher teacher = (Teacher) findEntity(Teacher.class,id);
+         Teacher teacher = (Teacher) find(Teacher.class,id);
          if (teacher ==null)return null;
          else return  teacher.getSchoolAssignments();
      }

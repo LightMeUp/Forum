@@ -13,11 +13,20 @@ import java.util.Set;
 @Table(name = "post",schema = "ForumDataBase")
 public class Post {
 
+    // 帖子编号
     private Integer id;
     private String  tag;
+
+    // 帖子内容
     private String content;
+
+    //发帖用户
     private User user;
+
+    // 发帖所属于的主题
     private Topic topic;
+
+    // 发帖中包含的图片(可空)
     private Set<image>images;
 
     @Id
