@@ -29,7 +29,6 @@ public class Login extends javax.servlet.http.HttpServlet {
         // 是否保存登陆信息,持久登陆
         String loginType = request.getParameter("loginOption");
         System.out.println("count:"+count+"password:"+pwd +"userType"+userType+"loginOption:"+loginType);
-        HttpSession session = request.getSession();
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {

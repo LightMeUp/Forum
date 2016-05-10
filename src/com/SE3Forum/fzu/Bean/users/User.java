@@ -188,4 +188,11 @@ public class User {
         this.topics = topics;
     }
 
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
 }

@@ -1,5 +1,6 @@
 package com.SE3Forum.fzu.Service;
 
+import com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation;
 import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Dao.StudentDao;
 import com.SE3Forum.fzu.Util.Utils;
@@ -88,5 +89,17 @@ public class StudentService {
         return studentDao.listAll("student");
     }
 
+    // 查看全部作业成绩
+    public List<Evaluation> listAllEvaluations(Serializable id){
+        Student student =(Student) studentDao.find(Student.class,id);
+        if (student ==null){
+            return null;
+        }
+        else{
+            return student.getEvaluations();
+        }
+    }
+
+    //
     
 }

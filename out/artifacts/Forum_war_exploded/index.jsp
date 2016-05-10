@@ -9,20 +9,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String address = request.getLocalAddr();
-    int port = request.getRemotePort();
-    String userAgent = request.getHeader("user-agent");
-    String country = request.getLocale().getCountry();
 %>
 <html>
   <head>
     <title>软件工程论坛</title>
   </head>
+
   <body>
-    <h1>软件工程论坛</h1>
-  <h5>IP地址:<%=address %></h5>
-  <h5>端口:<%=port %></h5>
-  <h5>客户端信息:<%=userAgent %></h5>
-    <h5>客户端信息:<%=country%></h5>
+    <jsp:include page="login.jsp" />
+      <a href="/controller/showinfor?id=221300201">查看学生信息</a>
+    <jsp:include page="uploadFile.jsp"/>
   </body>
 </html>

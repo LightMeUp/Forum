@@ -21,12 +21,12 @@
     </servlet-mapping>
     <!-- test -->
     <servlet>
-        <servlet-name>list</servlet-name>
-        <servlet-class>com.SE3Forum.fzu.Controller.ListServlet</servlet-class>
+        <servlet-name>showInfor</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.showPersonalInfor</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>list</servlet-name>
-        <url-pattern>/Controller/listStudents</url-pattern>
+        <servlet-name>showInfor</servlet-name>
+        <url-pattern>/controller/showinfor</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>action</servlet-name>
@@ -42,8 +42,4 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
-
-
-
-    <!-- filter  -->
 </web-app>

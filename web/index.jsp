@@ -9,12 +9,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-
 %>
 <html>
   <head>
     <title>软件工程论坛</title>
   </head>
+
   <body>
+    <jsp:include page="login.jsp" />
+      <a href="/controller/showinfor?id=221300201">查看学生信息</a>
+    <jsp:include page="uploadFile.jsp"/>
   </body>
 </html>
