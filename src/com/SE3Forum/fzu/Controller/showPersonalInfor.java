@@ -34,7 +34,7 @@ public class showPersonalInfor extends HttpServlet {
         else {
             System.out.println("学生");
             StudentService studentService  =new StudentService();
-            Student student=  studentService.getStudent(Integer.parseInt(str2[1]));
+            Student student=  studentService.findService(Student.class,Integer.parseInt(str2[1]));
             request.setAttribute("student",student);
             request.getRequestDispatcher("/personalInfor.jsp").forward(request,response);
         }
