@@ -21,10 +21,7 @@ public class uploadRecord {
     // 上传日期
     private Date uploadDate;
 
-    // 上传文件信息
-    private Files file;
 
-    // 上传日期
     public Date getUploadDate() {
         return uploadDate;
     }
@@ -47,8 +44,4 @@ public class uploadRecord {
         this.user = user;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    public Files getFile() {return file;}
-
-    public void setFile(Files file) {this.file = file;}
 }

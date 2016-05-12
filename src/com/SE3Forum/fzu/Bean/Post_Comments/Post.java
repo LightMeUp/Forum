@@ -29,6 +29,11 @@ public class Post {
     // 发帖中包含的图片(可空)
     private Set<image>images;
 
+    private String  createDate;
+    private List<Post> posts;
+
+    private int Ontop;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
@@ -71,12 +76,36 @@ public class Post {
         this.topic = post;
     }
 
-    @OneToMany
+    @OneToMany()
     public Set<image> getImages() {
         return images;
     }
 
     public void setImages(Set<image> images) {
         this.images = images;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+    @OneToMany
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public int getOntop() {
+        return Ontop;
+    }
+
+    public void setOntop(int ontop) {
+        Ontop = ontop;
     }
 }

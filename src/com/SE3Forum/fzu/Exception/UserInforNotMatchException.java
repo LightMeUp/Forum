@@ -1,5 +1,7 @@
 package com.SE3Forum.fzu.Exception;
 
+import javax.xml.ws.WebServiceProvider;
+
 /**
  * Created by Feng on 4/30/16.
  */

@@ -23,7 +23,8 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="7c05cbde-283a-4694-a0a2-e947e5bbf07d" />
+          <unit-entry name="hibernate.cfg.xml" value="4059d96a-110f-4caf-a6e5-ae96e076f7b1" />
+          <unit-entry name="sessionFactory" value="dataSource" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -60,5 +61,6 @@
     </orderEntry>
     <orderEntry type="library" name="commons-codec-1.10" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.35-bin" level="application" />
+    <orderEntry type="library" name="fastjson-1.1.37" level="project" />
   </component>
 </module>

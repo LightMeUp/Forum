@@ -1,7 +1,6 @@
 package com.SE3Forum.fzu.Bean.users;
-
-import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.Data.downloadRecord;
+import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.Data.uploadRecord;
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
@@ -36,6 +35,7 @@ public class User {
     protected int id;                 //账号
     protected String name;            //姓名
     protected String sex;             //性别
+    protected String headimage;          // 头像
     protected String password;        //密码
     protected Date birthDate;         //出生日期
     protected String qqnumber;         // QQ联系
@@ -43,13 +43,13 @@ public class User {
     protected String email;             //邮箱
     protected String  origin;           //籍贯
     protected String address;      // 地址
-    protected Date lastLoginDate;  // 最近一次登陆信息
+    protected String lastLoginDate;  // 最近一次登陆信息
     protected List<Post> posts;   //评论
     protected List<Topic> topics;   // 发布的帖子
     protected List<downloadRecord> downloadRecords; // 下载记录
     protected List<uploadRecord> uploadRecords; // 上传记录
     protected List<User> friends; // 好友
-    protected List<Files> files;
+    protected List<uploadFile> files;
     protected String SecurityToken;
     //权限管理
 
@@ -127,10 +127,10 @@ public class User {
     }
 
     @Column(name = "lastlogindate")
-    public Date getLastLoginDate() {
+    public String getLastLoginDate() {
         return lastLoginDate;
     }
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 
@@ -144,7 +144,6 @@ public class User {
     }
 
 
-    @Column(name = "downloadRecords")
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     public List<downloadRecord> getDownloadRecords() {
         return downloadRecords;
@@ -153,7 +152,6 @@ public class User {
         this.downloadRecords = downloadRecords;
     }
 
-    @Column(name = "uploadRecords")
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     public List<uploadRecord> getUploadRecords() {
         return uploadRecords;
@@ -169,8 +167,8 @@ public class User {
     }
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
-    public List<Files> getFiles() {return files;}
-    public void setFiles(List<Files> files) {this.files = files;}
+    public List<uploadFile> getFiles() {return files;}
+    public void setFiles(List<uploadFile> files) {this.files = files;}
 
     public String getSecurityToken() {
         return SecurityToken;
@@ -194,5 +192,14 @@ public class User {
 
     public void setOrigin(String origin) {
         this.origin = origin;
+    }
+
+    @Column(name = "headimage")
+    public String getHeadimage() {
+        return headimage;
+    }
+
+    public void setHeadimage(String headimage) {
+        this.headimage = headimage;
     }
 }

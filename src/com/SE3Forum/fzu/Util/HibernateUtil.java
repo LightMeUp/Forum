@@ -1,6 +1,7 @@
 package com.SE3Forum.fzu.Util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -10,13 +11,14 @@ import org.hibernate.service.ServiceRegistryBuilder;
  */
 public class HibernateUtil {
     private static  SessionFactory sessionFactory ;
+    private static Session session;
     static {
         try{
             Configuration configuration = new Configuration();
             configuration.configure();
             ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).buildServiceRegistry();
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            sessionFactory  = configuration.buildSessionFactory(serviceRegistry);
 
         }
         catch (Exception e){
@@ -29,13 +31,18 @@ public class HibernateUtil {
         return sessionFactory;
     }
     public static Session getSession(){
-        Session session = getInstanceFactory().getCurrentSession();
-        if (session.getTransaction().isActive()){
-            return session;
-        }
-        else {
-            return getInstanceFactory().openSession();
-        }
 
+                session= getInstanceFactory().openSession();
+        return session;
+    }
+    public static  void closeSession(){
+        if (session != null){
+            if (session.isOpen()){
+                session.close();
+            }
+        }
+    }
+    public static Transaction getTransaction(){
+        return session.getTransaction();
     }
 }

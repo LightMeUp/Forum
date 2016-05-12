@@ -1,9 +1,6 @@
 package com.SE3Forum.fzu.Service;
 
-import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment;
-import com.SE3Forum.fzu.Bean.users.Teacher;
-
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -32,7 +29,7 @@ public interface ISchoolAsignment  {
 
 
     // search by name
-    Files findSchoolAssignmentByName(String name);
+    SchoolAssignment findSchoolAssignmentByName(String name);
     //内部先实例化一个SearchOption的对象
 
     // search by upload date
@@ -42,7 +39,7 @@ public interface ISchoolAsignment  {
 
 
     // 上面的查找方法里面只要调用这个方法就可以,传入一个SearchOption的枚举类型
-    List<Files>findFileWithOption(String Option,SearchOption searchOption );
+    List<SchoolAssignment>findFileWithOption(String Option,SearchOption searchOption );
     /*
         局部变量建议一定要实例话
         List<Teacher> teaches = new Arraylist<>();

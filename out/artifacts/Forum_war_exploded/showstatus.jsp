@@ -1,4 +1,6 @@
-<%@ page import="com.SE3Forum.fzu.Struct.FormBeans.loginFormBean" %><%--
+<%@ page import="com.SE3Forum.fzu.Struct.FormBeans.loginFormBean" %>
+<%@ page import="com.SE3Forum.fzu.Util.Utils" %>
+<%@ page import="com.SE3Forum.fzu.Util.IpUtils" %><%--
   Created by IntelliJ IDEA.
   User: Feng
   Date: 5/10/16
@@ -10,20 +12,34 @@
 <head>
     <%
         loginFormBean loginFormBean =(loginFormBean) request.getAttribute("user");
+        if (loginFormBean == null){
+            loginFormBean =  new loginFormBean();
+            loginFormBean.setId(Utils.getRandomUUID().toString());
+        }
+       String Ipinfor= IpUtils.getIpInfo(request.getRemoteAddr());
+            Ipinfor =Ipinfor.equals("未分配或者内网IP ")?"福州大学":Ipinfor;
 
     %>
+    <style type="text/css">
+        body{
+            font-size: x-small;
+            width:100%;
+            height:100%;
+        }
+
+    </style>
     <title>登录信息页面</title>
 </head>
-    <p>登录帐号:<%= loginFormBean.getId()%></p>
-    <p>用户姓名:<%= loginFormBean.getUserType()%></p>
-    <p>IP:<%= request.getRemoteAddr()%></p>
-    <p>Port:<%= request.getRemotePort()%></p>
-    <p>Host:<%= request.getRemoteHost()%></p>
-    <p>User:<%= request.getRemoteUser()%></p>
-    <p>Server: <%= request.getServerName()%></p>
-    <p>ServerPort: <%= request.getServerPort()%></p>
-    <p>Other: <%= request.getHeader("user-agent")%></p>
-    <p>Lanuage: <%= request.getLocale().getDisplayLanguage()%></p>
+    <fieldset>
+        <legend>登录信息</legend>
+        <p>用户姓名:<%= loginFormBean.getUser()==null?"游客":loginFormBean.getUser().getName()%></p>
+        <p>IP地址:<%= request.getRemoteAddr()%></p>
+        <p>登录地点:<%= Ipinfor%></p>
+        <p>服务器地址: <%= request.getServerName()%></p>
+        <p>服务器端口: <%= request.getServerPort()%></p>
+        <p>语言: <%= request.getLocale().getDisplayLanguage()%></p>
+        <p>登录时间:<%= Utils.getCurrentDate()%></p>
+    </fieldset>
 <body>
 
 </body>

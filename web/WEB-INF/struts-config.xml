@@ -22,7 +22,7 @@
         <action path="/login" forward="/login.jsp" />
         <action attribute="loginForm" input="/index.jsp" name="loginForm" path="/loginAction"
                 type="com.SE3Forum.fzu.Struct.Actions.loginAction" >
-            <forward name="success" path="/showstatus.jsp"/>
+            <forward name="success" path="/index.jsp"/>
         </action>
     </action-mappings>
 </struts-config>

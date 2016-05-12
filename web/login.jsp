@@ -1,4 +1,4 @@
-<%--
+ <%--
   Created by IntelliJ IDEA.
   User: Feng
   Date: 5/10/16
@@ -9,26 +9,53 @@
 <html>
 <head>
     <title>测试登录界面</title>
+    <script>
+    </script>
+    <style type="text/css">
+        #login{
+            font-size: small;
+            margin-right: 5px;
+            margin-top: 5px;
+            width:100%;
+            padding-top: 10px;
+        }
+        #submit{
+            width:250px;
+            border-radius: 10px;
+            border-color: red;
+            align-content: center;
+        }
+        .image{
+            max-width: 80px;
+            max-height:80px;
+            width: 80px
+
+        }
+        #form{
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
-    <form action="/loginAction.do" method="post">
-        <table>
-            <tr>
+    <form action="/loginAction.do" method="post" id="form">
+        <fieldset>
+            <legend>登    录</legend>
+        <table id="login" >
+            <tr >
+                <td rowspan="2"><img src="/images/header_poto.jpg" class="image"></td>
                 <td>帐号</td>
-                <td><input type="text" name="id"></td>
+                <td><input type="text" name="id" style="width: auto" ></td>
+
             </tr>
             <tr>
                 <td>密码</td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" name="password" style="width: auto"></td>
             </tr>
-            <tr>
-                <td><input type="radio" value="student" checked name="usertype">学生</td>
-                <td><input type="radio" value="teacher"  name="usertype">教师</td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="登录"></td>
+            <tr >
+                <td colspan="3"><input type="submit" value="登    录" id="submit" align="center" ></td>
             </tr>
          </table>
+        </fieldset>
     </form>
 
 </body>

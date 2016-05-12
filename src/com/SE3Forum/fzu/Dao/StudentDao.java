@@ -19,7 +19,11 @@ public class StudentDao extends BaseDao {
         Student student = (Student) find(Student.class, id);
         if (student == null)
             return null;
-        else return student.getTeacher();
+        else {
+            Teacher teacher = student.getTeacher();
+            HibernateUtil.getSession().close();
+            return teacher;
+        }
     }
 
     // 查看好友列表

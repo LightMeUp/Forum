@@ -14,11 +14,11 @@ public class downloadRecord {
     // 下载记录编号
     private int id;
     // 资料
-    private Files file;
+    private uploadFile file;
     // 下载用户
     private  User user;
     // 下载日期
-    private Date downloadDate;
+    private String downloadDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,11 @@ public class downloadRecord {
         this.id = id;
     }
     @ManyToOne
-    public Files getData() {
+    public uploadFile getData() {
         return file;
     }
 
-    public void setData(Files file) {
+    public void setData(uploadFile  file) {
         this.file = file;
     }
 
@@ -48,11 +48,11 @@ public class downloadRecord {
         this.user = user;
     }
 
-    public Date getDownloadDate() {
+    public String getDownloadDate() {
         return downloadDate;
     }
 
-    public void setDownloadDate(Date downloadDate) {
+    public void setDownloadDate(String downloadDate) {
         this.downloadDate = downloadDate;
     }
 }

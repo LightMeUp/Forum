@@ -27,7 +27,7 @@ public class Evaluation {
     private Student student;
 
     //学生作业提交时间
-    private Date createdDate;
+    private String  submitDate;
 
     // 作业得分
     private float score;
@@ -64,12 +64,12 @@ public class Evaluation {
         this.student= student;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public String getCreatedDate() {
+        return submitDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedDate(String createdDate) {
+        this.submitDate = createdDate;
     }
 
     public float getScore() {

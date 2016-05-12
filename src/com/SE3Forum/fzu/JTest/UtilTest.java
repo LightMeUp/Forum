@@ -30,5 +30,9 @@ public class UtilTest  {
         String UploadImagePath =Utils.getFileUploadFolder();
         System.out.println("图片上传路径: "+UploadImagePath);
     }
+    @Test
+    public void TestgetCurrentTime(){
+       System.out.println("当前时间"+Utils.getCurrentDate());
+    }
 
 }

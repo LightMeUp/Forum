@@ -4,7 +4,8 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/ForumDataBase?characterEncoding=UTF-8</property>
+       <property name="connection.url">jdbc:mysql://localhost:3306/ForumDataBase?characterEncoding=UTF-8</property>
+     <!--<property name="connection.url">jdbc:mysql://192.168.191.1:3306/forumdatabase?characterEncoding=UTF-8</property>-->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">941013</property>
@@ -22,7 +23,7 @@
         <mapping class="com.SE3Forum.fzu.Bean.users.User" />
         <mapping class="com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment"/>
         <mapping class="com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation"/>
-        <mapping class="com.SE3Forum.fzu.Bean.Data.Files"/>
+        <mapping class="com.SE3Forum.fzu.Bean.Data.uploadFile"/>
         <mapping class="com.SE3Forum.fzu.Bean.Data.downloadRecord" />
         <mapping class="com.SE3Forum.fzu.Bean.Data.uploadRecord"/>
         <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.image"/>

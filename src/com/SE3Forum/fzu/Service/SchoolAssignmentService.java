@@ -1,8 +1,6 @@
 package com.SE3Forum.fzu.Service;
 
-import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment;
-
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -42,7 +40,7 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     }
 
     @Override
-    public Files findSchoolAssignmentByName(String name) {
+    public SchoolAssignment findSchoolAssignmentByName(String name) {
         return null;
     }
 
@@ -57,7 +55,7 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     }
 
     @Override
-    public List<Files> findFileWithOption(String Option, SearchOption searchOption) {
+    public List<SchoolAssignment> findFileWithOption(String Option, SearchOption searchOption) {
         return null;
     }
 }

@@ -38,6 +38,10 @@ public class Topic {
     // 主题是否置顶   用 0 1 表示   0 表示不置顶 1表示置顶
     private int OnTop;
 
+    // 创建日期
+    private String createDate;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
@@ -90,5 +94,21 @@ public class Topic {
 
     public void setImages(List<image> images) {
         this.images = images;
+    }
+
+    public int getOnTop() {
+        return OnTop;
+    }
+
+    public void setOnTop(int onTop) {
+        OnTop = onTop;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 }

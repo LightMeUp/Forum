@@ -1,11 +1,7 @@
 package com.SE3Forum.fzu.Service;
 
-import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
-import com.SE3Forum.fzu.Bean.users.Teacher;
-
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 /**

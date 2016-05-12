@@ -1,5 +1,6 @@
 package com.SE3Forum.fzu.Struct.FormBeans;
 
+import com.SE3Forum.fzu.Bean.users.User;
 import org.apache.struts.action.ActionForm;
 
 /**
@@ -8,8 +9,6 @@ import org.apache.struts.action.ActionForm;
 public class loginFormBean  extends ActionForm {
     private String id;
     private String password;
-    private String userType;
-    private String LoginType;
 
     public String getId() {
         return id;
@@ -17,11 +16,15 @@ public class loginFormBean  extends ActionForm {
 
     public void setId(String id) {
         this.id = id;
-        if ("2201".indexOf(id) >1){
-            userType = "teacher";
-        }else{
-            userType = "student";
-        }
+    }
+    public User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getPassword() {
@@ -32,19 +35,4 @@ public class loginFormBean  extends ActionForm {
         this.password = password;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getLoginType() {
-        return LoginType;
-    }
-
-    public void setLoginType(String loginType) {
-        LoginType = loginType;
-    }
 }

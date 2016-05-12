@@ -1,9 +1,12 @@
 package com.SE3Forum.fzu.JTest;
 
+import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
 import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Bean.users.Teacher;
 import com.SE3Forum.fzu.Dao.StudentDao;
 import com.SE3Forum.fzu.Dao.TeacherDao;
+import com.SE3Forum.fzu.Dao.TopicDao;
+import com.SE3Forum.fzu.Util.Utils;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
@@ -21,18 +24,14 @@ public class StudentTestUnit {
         try {
             Student student = new Student();
             student.setId(22130001);
-            student.setPassword("221300001");
+            student.setPassword("123456");
             student.setAddress("福建省福州市闽侯县上街镇福州大学博学院B区");
-
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
             Date date = simpleDateFormat.parse("2016-3-31");
-
             student.setBirthDate( new java.sql.Date(date.getTime()));
             student.setCellPhone("12345678901");
-
             Date loginDate = new Date();
-            student.setLastLoginDate( new java.sql.Date(loginDate.getTime()));
+            student.setLastLoginDate(Utils.getCurrentDate());
             student.setSex("男");
             studentDao.add(student);
             System.out.printf("completed");
@@ -87,5 +86,14 @@ public class StudentTestUnit {
         StudentDao studentDao = new StudentDao();
         java.math.BigInteger n = studentDao.getRows("student");
         System.out.println(n);
+    }
+
+    @Test
+    public void testaddTopic(){
+        TopicDao topicDao = new TopicDao();
+        Topic topic = new Topic();
+        topic.setContent("hello world");
+        topic.setTheme("hello world");
+        topicDao.add(topic);
     }
 }

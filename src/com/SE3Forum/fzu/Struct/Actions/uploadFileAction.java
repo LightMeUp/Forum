@@ -1,6 +1,6 @@
 package com.SE3Forum.fzu.Struct.Actions;
 
-import com.SE3Forum.fzu.Bean.Data.Files;
+import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Dao.FilesDao;
 import com.SE3Forum.fzu.Struct.FormBeans.UploadForm;
@@ -17,8 +17,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -88,36 +86,33 @@ public class uploadFileAction extends Action {
         FormFile file = uploadForm.getFile();
 
         //创建一个com.SE3Forum.fzu.Data.Files 对象
-        Files uploadFile = new Files();
+        uploadFile uploadfile = new uploadFile();
 
         System.out.println("file name "+ file.getFileName());
         // 设置Files对象 FileName
-        uploadFile.setFileName(file.getFileName());
+        uploadfile.setName(file.getFileName());
 
         // 生成一个uuid 用户本地文件保存,保证文件不会被同名覆盖
-        file.setFileName(Utils.getRandomUUID().toString());
+        //file.setFileName(Utils.getRandomUUID().toString());
         System.out.println("set filename to uuid "+file.getFileName());
-        uploadFile.setUuid(file.getFileName());
+        uploadfile.setUuid(Utils.getRandomUUID());
 
         // 设置上传文件的用户
-        uploadFile.setUser(user);
+        uploadfile.setUser(user);
 
         // 设置上传时间
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String uploadingDate= dateFormat.format(new java.util.Date());
 
-        try {
             //设置数据上传时间
-            uploadFile.setUploadingDate(new Date(dateFormat.parse(uploadingDate).getTime()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        uploadfile.setUploadDate(Utils.getCurrentDate().toString());
+
         // 设置过期时间
-        uploadFile.setValidateDate(new Date(uploadForm.getEvaluateDate().getTime()));
+        uploadfile.setValidateDate(uploadForm.getEvaluateDate().toString());
 
         FilesDao filesDao = new FilesDao();
         // 文件保存至数据库
-        filesDao.add(uploadFile);
+        filesDao.add(uploadfile);
 
 
         //设置文件上传记录

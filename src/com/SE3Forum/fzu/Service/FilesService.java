@@ -1,10 +1,9 @@
 package com.SE3Forum.fzu.Service;
 
-import com.SE3Forum.fzu.Bean.Data.Files;
+import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.users.Teacher;
 import com.SE3Forum.fzu.Dao.FilesDao;
 
-import java.io.File;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -19,7 +18,7 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public Boolean addService(Files file) {
+    public Boolean addService(uploadFile file) {
         return null;
     }
 
@@ -29,12 +28,12 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public Boolean updateServcie(Files file) {
+    public Boolean updateServcie(uploadFile file) {
         return null;
     }
 
     @Override
-    public Files findService(Class clazz, Serializable id) {
+    public uploadFile findService(Class clazz, Serializable id) {
         return null;
     }
 
@@ -49,27 +48,27 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public List<Files> listAllFiles(Serializable id) {
+    public List<uploadFile> listAllFiles(Serializable id) {
         return null;
     }
 
     @Override
-    public Files findFileByName(String name) {
+    public uploadFile findFileByName(String name) {
         return null;
     }
 
     @Override
-    public List<Files> findFileByuploadDate(Date uploadDate) {
+    public List<uploadFile> findFileByuploadDate(Date uploadDate) {
         return null;
     }
 
     @Override
-    public List<Files> findFilesByValidateDate(Date validateDate) {
+    public List<uploadFile> findFilesByValidateDate(Date validateDate) {
         return null;
     }
 
     @Override
-    public List<Files> findFileWithOption(String Option, SearchOption searchOption) {
+    public List<uploadFile> findFileWithOption(String Option, SearchOption searchOption) {
         return null;
     }
 }

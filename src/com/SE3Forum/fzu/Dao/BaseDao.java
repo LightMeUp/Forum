@@ -3,6 +3,8 @@ import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import java.io.Serializable;
 import java.util.List;
 /**
@@ -40,9 +42,8 @@ public class BaseDao<T>  implements  IBaseDao{
     public void update(Object object) {
         Session session = HibernateUtil.getSession();
         session.getTransaction().begin();
-        session.update(object);
+        session.merge(object);
         session.getTransaction().commit();
-        session.close();
     }
 
     @Override
