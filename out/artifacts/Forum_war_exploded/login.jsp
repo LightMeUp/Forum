@@ -34,12 +34,14 @@
         #form{
             margin-right: 5px;
         }
+        #submit{
+           align-items: center;
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
     <form action="/loginAction.do" method="post" id="form">
-        <fieldset>
-            <legend>登    录</legend>
         <table id="login" >
             <tr >
                 <td rowspan="2"><img src="/images/header_poto.jpg" class="image"></td>
@@ -52,10 +54,9 @@
                 <td><input type="password" name="password" style="width: auto"></td>
             </tr>
             <tr >
-                <td colspan="3"><input type="submit" value="登    录" id="submit" align="center" ></td>
+                <td colspan="3"><input type="submit" value="登    录" id="submit"  ></td>
             </tr>
          </table>
-        </fieldset>
     </form>
 
 </body>

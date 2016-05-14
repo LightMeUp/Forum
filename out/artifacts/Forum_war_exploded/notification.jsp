@@ -25,11 +25,15 @@
         .date{
             float: right;
         }
+        #notibody{
+            border:thin;
+            border-color: azure;
+        }
+
     </style>
 </head>
-<body >
-    <fieldset>
-        <legend id="legend">消息通知</legend>
+<body id="notibody">
+        <legend id="legend"><a href="allNotifies.jsp">消息通知</a></legend>
         <table>
             <tr>
                 <td><a href="http://www.fzu.edu.cn/">福州大学首页</a> </td>
@@ -55,7 +59,5 @@
             <td class="date"  colspan="2">2016-5-1</td>
         </tr>
         </table>
-    </fieldset>
-
 </body>
 </html>

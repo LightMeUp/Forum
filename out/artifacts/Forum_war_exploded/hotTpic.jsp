@@ -13,10 +13,13 @@
         #legend{
             font-size: x-large;
         }
+        #fieldset{
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <fieldset >
+    <fieldset id="fieldset">
         <legend id="legend">热门帖子</legend>
         <table>
             <tr>

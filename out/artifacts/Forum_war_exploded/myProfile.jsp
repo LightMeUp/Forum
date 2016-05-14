@@ -27,7 +27,7 @@
     <title>登录完成,显示个人信息</title>
 </head>
 <body>
-<table border="1" id="login">
+<table  id="login">
     <tr >
         <td rowspan="3">
             <img src="<%=url%>" width="80" height="80"></td>

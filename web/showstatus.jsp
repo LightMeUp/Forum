@@ -26,11 +26,14 @@
             width:100%;
             height:100%;
         }
+        #fieldset{
+            border: none;
+        }
 
     </style>
     <title>登录信息页面</title>
 </head>
-    <fieldset>
+    <fieldset id="fieldset">
         <legend>登录信息</legend>
         <p>用户姓名:<%= loginFormBean.getUser()==null?"游客":loginFormBean.getUser().getName()%></p>
         <p>IP地址:<%= request.getRemoteAddr()%></p>

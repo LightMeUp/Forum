@@ -10,16 +10,13 @@
 <head>
     <title></title>
     <style type="text/css">
-        body{
-            background-color: aquamarine;
-        }
     </style>
 </head>
 <body>
     <table align="center">
         <tr>
             <td>软件工程论坛|</td>
-            <td><a href="http://www.fzu.edu.cn"福州大学</a></td>
+            <td><a href="http://www.fzu.edu.cn">福州大学</a></td>
             <td>|©2016-2017</td>
             <td>|联系我们</td>
         </tr>
