@@ -1,4 +1,4 @@
-package com.SE3Forum.fzu.Util;
+﻿package com.SE3Forum.fzu.Util;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -52,7 +52,7 @@ public class Utils {
             return UserType.TeacherType;
         }
         else {
-            System.out.println("未知用户");
+            System.out.println("未注册用户");
             return UserType.UnknownType;
         }
     }
