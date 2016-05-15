@@ -21,27 +21,59 @@ public class TeacherService   implements  ITeacherService{
 
     @Override
     public Boolean addService(Teacher teacher) {
-        return null;
+
+        try {
+            teacherDao.add(teacher);
+            return true;
+        }catch (Exception e){
+            return  false;
+        }
     }
 
     @Override
     public Boolean deleteService(Serializable id) {
-        return null;
+
+        Teacher teacher= (Teacher) teacherDao.find(Teacher.class,id);
+        if (teacher==null){
+            return  false;
+        }
+        else {
+            try {
+                teacherDao.delete(teacher);
+                return  true;
+            }catch (Exception e){
+                return  false;
+            }
+        }
     }
 
     @Override
     public Boolean updateServcie(Teacher teacher) {
-        return null;
+        try {
+            Teacher teach= (Teacher) teacherDao.find(Teacher.class,teacher.getId());
+            teach.setName(teacher.getName());
+            teach.setSex(teacher.getSex());
+            teach.setAddress(teacher.getAddress());
+            teach.setBirthDate(teacher.getBirthDate());
+            teach.setCellPhone(teacher.getCellPhone());
+            teach.setEmail(teacher.getEmail());
+            teach.setQqnumber(teacher.getQqnumber());
+            teacherDao.update(teach);
+            return true;
+        }catch (Exception e){
+            System.out.println("E:Service:updateTeacherService:"+e);
+            return false;
+        }
     }
 
     @Override
     public Teacher findService(Class clazz, Serializable id) {
-        return null;
+        return (Teacher)teacherDao.find(Teacher.class,id);
     }
 
     @Override
     public List<Teacher> listAllService(String tableName) {
-        return null;
+        return teacherDao.listAll(tableName);
     }
 
     @Override

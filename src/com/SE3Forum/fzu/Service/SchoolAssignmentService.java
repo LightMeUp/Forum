@@ -1,6 +1,9 @@
 package com.SE3Forum.fzu.Service;
 
+import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment;
+import com.SE3Forum.fzu.Dao.SchoolAssignmentDao;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -9,29 +12,64 @@ import java.util.List;
  * Created by Feng on 5/11/16.
  */
 public class SchoolAssignmentService implements ISchoolAsignment {
+    private SchoolAssignmentDao schoolAssignmentDao;
+    public SchoolAssignmentService(){schoolAssignmentDao=new SchoolAssignmentDao();}
+
     @Override
     public Boolean addService(SchoolAssignment assignment) {
-        return null;
+       try {
+           schoolAssignmentDao.add(assignment);
+           return true;
+       }catch (Exception e){
+           return false;
+       }
     }
 
     @Override
     public Boolean deleteService(Serializable id) {
-        return null;
+        SchoolAssignment schoolAssignment = (SchoolAssignment) schoolAssignmentDao.find(SchoolAssignment.class,id);
+
+        if ( schoolAssignment == null)
+        {
+            return false;
+        }
+        else {
+            try{
+                schoolAssignmentDao.delete(schoolAssignment);
+                return true;
+            }catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+        }
     }
 
     @Override
     public Boolean updateServcie(SchoolAssignment assignment) {
-        return null;
+        try {
+            SchoolAssignment schoolAssignment = (SchoolAssignment) schoolAssignmentDao.find(SchoolAssignment.class,assignment.getId());
+            schoolAssignment.setContent(assignment.getContent());
+            schoolAssignment.setAssignmentNumbers(assignment.getAssignmentNumbers());
+            schoolAssignment.setDeadLine(assignment.getDeadLine());
+            schoolAssignment.setEvaluations(assignment.getEvaluations());
+            schoolAssignment.setPublishDate(assignment.getPublishDate());
+            schoolAssignment.setTeacher(assignment.getTeacher());
+            schoolAssignmentDao.update(schoolAssignment);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
     @Override
     public SchoolAssignment findService(Class clazz, Serializable id) {
-        return null;
+        return (SchoolAssignment) schoolAssignmentDao.find(SchoolAssignment.class,id);
     }
 
     @Override
     public List<SchoolAssignment> listAllService(String tableName) {
-        return null;
+        return schoolAssignmentDao.listAll(tableName) ;
     }
 
     @Override
@@ -40,7 +78,7 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     }
 
     @Override
-    public SchoolAssignment findSchoolAssignmentByName(String name) {
+    public Files findSchoolAssignmentByName(String name) {
         return null;
     }
 
@@ -55,7 +93,7 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     }
 
     @Override
-    public List<SchoolAssignment> findFileWithOption(String Option, SearchOption searchOption) {
+    public List<Files> findFileWithOption(String Option, SearchOption searchOption) {
         return null;
     }
 }

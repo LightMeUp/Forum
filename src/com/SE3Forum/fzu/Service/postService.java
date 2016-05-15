@@ -1,6 +1,7 @@
 package com.SE3Forum.fzu.Service;
 
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
+import com.SE3Forum.fzu.Dao.PostDao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,31 +10,60 @@ import java.util.List;
  * Created by Feng on 5/9/16.
  */
 public class postService implements IpostService {
-
-
+    private  PostDao postDao;
+    public postService(){postDao=new PostDao();}
     @Override
     public Boolean addService(Post post) {
-        return null;
+        try {
+             postDao.add(post);
+            return  true;
+        }catch (Exception e){
+            return  false;
+        }
+
     }
 
     @Override
     public Boolean deleteService(Serializable id) {
-        return null;
+
+        Post post= (Post) postDao.find(Post.class,id);
+       if (post==null) return  false;
+        else {
+           try {
+               postDao.delete(post);
+               return  true;
+           }catch (Exception e){
+               return  false;
+           }
+
+        }
     }
 
     @Override
     public Boolean updateServcie(Post post) {
-        return null;
+        try {
+            Post p= (Post) postDao.find(Post.class,post.getId());
+            p.setContent(post.getContent());
+            p.setImages(post.getImages());
+            p.setTag(post.getTag());
+            p.setTopic(post.getTopic());
+            p.setUser(post.getUser());
+            postDao.update(p);
+            return true;
+        }catch (Exception e){
+            return  false;
+        }
+
     }
 
     @Override
     public Post findService(Class clazz, Serializable id) {
-        return null;
+        return (Post) postDao.find(Post.class,id);
     }
 
     @Override
     public List<Post> listAllService(String tableName) {
-        return null;
+        return postDao.listAll(tableName);
     }
 
     @Override
@@ -47,7 +77,6 @@ public class postService implements IpostService {
     }
 
     @Override
-    public List<Post> findPostWithOption(String Option, SearchOption searchOption) {
-        return null;
+    public List<Post> findPostWithOption(String Option, SearchOption searchOption) {return null;
     }
 }
