@@ -18,7 +18,6 @@ public class StudentService  implements  IStudentService{
     1. 单一条件查找
     * 查找包括 学号查找 姓名查找 性别查找 籍贯查找 出生日期查找,邮箱查找,电话查找,QQ号码查找
     *           */
-
     // 初始化Dao 层对象
     public StudentService()
     {
