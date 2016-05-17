@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:struct="http://www.w3.org/1999/html" xmlns:html="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8">
     <title>板块</title>
@@ -40,17 +41,38 @@
         #fieldset{
         }
     </style>
+    <script >
+        function clickStudy() {
+            window.location.href = "/Topics/posts.jsp"
+        }
+        function  clickFreeZone()
+        {
+            window.location.href ="/FreeZone/all.jsp"
+        }
+        function  clickFileDownload()
+        {
+            window.location.href ="/UDFiles/all.jsp"
+        }
+        function  clickDiscuss()
+        {
+            window.location.href ="/discuss/all.jsp"
+        }
+        function  clickOther()
+        {
+            window.location.href="/Others/all.jsp"
+        }
+    </script>
 </head>
 <body>
     <fieldset id="fieldset">
         <legend id="legend">板块天地</legend>
         <tr>
             <td></td>
-            <td><input id ="study" class="plat" name="study" type="button" value="学习天地"  /></td>
-            <td><input id ="freeZone" class="plat" name="irrigation" type="button" value="灌水区" /></td>
-            <td><input id="download" class="plat" name="downloadFile" type="button" value="资料下载" /></td>
-            <td><input id="subject" class="plat" name="chat" type="button" value="主题讨论"/></td>
-            <td><input id="other" class="plat" name="other" type="button" value="其它"/></td>
+            <td><button id ="study" class="plat" name="study" type="button"  onclick="clickStudy()">学习天地</button></td>
+            <td><button id ="freeZone" class="plat" name="irrigation" type="button" onclick="clickFreeZone()">灌水区</button></td>
+            <td><button id="download" class="plat" name="downloadFile" type="button" onclick="clickFileDownload()" >资料下载</button></td>
+            <td><button id="subject" class="plat" name="chat" type="button" onclick="clickDiscuss()" >主题讨论</button></td>
+            <td><button id="other" class="plat" name="other" type="button" onclick="clickOther()" >其它</button></td>
         </tr>
     </fieldset>
 

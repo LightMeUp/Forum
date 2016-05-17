@@ -9,42 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    User user ;
-    String id ="";
-    String usertype="";
-    String securityToken ="";
-    boolean tf =false;
-    Cookie []cookies = request.getCookies();
-    if(cookies!=null && cookies.length >1) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("id") && cookie.getValue() != null) {
-                id = cookie.getValue();
-                System.out.println("id:" + id);
-            } else if (cookie.getName().equals("securitytoken") && cookie.getValue() != null) {
-                securityToken = cookie.getValue();
-                System.out.println("sercurity:" + securityToken);
-            }
-        }
 
-    if (usertype.equals("studentType")){
-        StudentService studentService = new StudentService();
-        user = studentService.findService(Student.class,id);
-        if(user !=null){
-            if (user.getSecurityToken().equals(securityToken))
-                tf = true;
-            else {
-                tf = false;
-            }
-        }
-        else tf =false;
-    }
-    }
-    else {
-        tf =false;
-    }
-
-%>
 <html>
 <head>
     <title>软件工程论坛</title>
@@ -61,35 +26,19 @@
             height: 130%;
             margin-top: 30px;
         }
-
         .center_left{
-            float: left;
-            width: 25%;
+            width: 20%;
             height: 100%;
-            margin-left: 5%;
-            border: double;
-            border-color:darkgrey;
-        }
-        .center_left_top{
-            height: auto;
-            width: 100%;
-        }
-        .center_left_center{
-            height: auto;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .center_left_buttom{
-            margin-top: 20px;
+            margin-left: 10%;
 
+            float: left;
         }
         .center_center{
             float: left;
             width: 50%;
             height: 100%;
-            margin-left: 15px;
+            margin-left: 35px;
             border: double;
-            border-width: 0.5px;
             border-color: darkgray;
         }
         .center_center_top{
@@ -98,7 +47,6 @@
             border:thin;
             border-width: 0.5px;
             border-color: darkgray;
-            margin-top: 30px;
         }
         .center_center_center{
             height: auto;
@@ -125,9 +73,7 @@
             width: 100%;
             height: 5%;
             margin-top: 50px;
-        }
-        #fieldset{
-            border: none;
+            margin-left: 40%;
         }
 
         * { padding:0; margin:0;}       /*设置所有对像的内边距为0*/
@@ -188,43 +134,11 @@
     <li><a href="#"><img src="images/ss.jpg" width="200px" height="100px" alt=""/></a></li>
     <li><a href="#"><img src="images/kid.jpg" width="200px" height="100px" alt=""/></a></li>
     <li><a href="#"><img src="images/rabbit.jpg" width="200px" height="100px" alt=""/></a></li>    </ul> </div>
-
-
-
-
 <div class="center">
     <div class="center_left">
-        <div class="center_left_top">
-            <% if (tf == true){
-                %>
-            <jsp:include page="login.jsp"/>
-            <%  }else {
-            %>
-                <jsp:include page="login.jsp"/>
-            <%
-                }
-            %>
-        </div>
-        <div class="center_left_center">
-            <jsp:include page="showstatus.jsp"/>
-        </div>
-        <div class="center_left_buttom">
-                <legend>快速链接</legend>
-                <table>
-                    <tr><td><a href="http://jwch.fzu.edu.cn">福州大学教务处入口>></a> </td></tr>
-                    <tr><td><a href="http://yiban.fzu.edu.cn">福大易班入口>></a> </td></tr>
-                    <tr><td><a href="http://www.lib.fzu.edu.cn">福州大学图书馆入口>></a> </td></tr>
-                    <tr><td><a href="http://www.lib.fzu.edu.cn">福州大学图书馆入口>></a> </td></tr>
-                    <tr><td><a href="http://www.csdn.net">CSDN.Net 全球最大中文IT社区>></a> </td></tr>
-                    <tr><td><a href="http://stackoverflow.com/">StackOverFlow 网站入口>></a> </td></tr>
-                    <tr><td><a href="https://github.com/">GitHub网站入口>></a> </td></tr>
-                    <tr><td><a href="http://www.cocoachina.com">CocoaChina 让移动开发更简单>></a> </td></tr>
-                    <tr><td><a href="http://www.imooc.com">慕课网,你的指间有改变世界的力量>></a> </td></tr>
-                    <tr><td><a href="http://cmcs.fzu.edu.cn">福州大学数学与计算机科学/软件学院>></a> </td></tr>
-
-                </table>
-        </div>
-
+        <fieldset>
+        <jsp:include page="index_left.jsp"/>
+        </fieldset>
     </div>
     <div class="center_center">
         <div class="center_center_top">

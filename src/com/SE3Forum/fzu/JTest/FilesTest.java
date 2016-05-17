@@ -3,13 +3,9 @@ package com.SE3Forum.fzu.JTest;
 import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Dao.BaseDao;
-import com.SE3Forum.fzu.Dao.FilesDao;
 import com.SE3Forum.fzu.Service.StudentService;
 import com.SE3Forum.fzu.Util.Utils;
-import com.sun.xml.internal.rngom.parse.host.Base;
 import org.junit.Test;
-
-import java.util.UUID;
 
 /**
  * Created by Feng on 5/11/16.

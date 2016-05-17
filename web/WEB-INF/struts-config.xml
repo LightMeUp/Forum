@@ -8,6 +8,7 @@
     <form-beans>
         <form-bean name="uploadFileForm" type="com.SE3Forum.fzu.Struct.FormBeans.UploadForm" />
         <form-bean name="loginForm" type="com.SE3Forum.fzu.Struct.FormBeans.loginFormBean" />
+        <form-bean name="postForm" type="com.SE3Forum.fzu.Struct.FormBeans.postForm" />
     </form-beans>
     <global-exceptions />
     <global-forwards />
@@ -24,5 +25,9 @@
                 type="com.SE3Forum.fzu.Struct.Actions.loginAction" >
             <forward name="success" path="/index.jsp"/>
         </action>
+        
+        <action path="/post" forward="/Topics/posts.jsp" />
+        <action attribute="postForm" input="/Topics/posts.jsp" name="postForm" path="/postAction"
+                type="com.SE3Forum.fzu.Struct.Actions.postAction"/>
     </action-mappings>
 </struts-config>

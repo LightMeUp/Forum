@@ -1,9 +1,6 @@
 package com.SE3Forum.fzu.Service;
-
-import com.SE3Forum.fzu.Bean.Data.Files;
 import com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment;
 import com.SE3Forum.fzu.Dao.SchoolAssignmentDao;
-
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -25,6 +22,10 @@ public class SchoolAssignmentService implements ISchoolAsignment {
        }
     }
 
+
+    //删除用户信息
+    // 先进行查找,查看用户是否存在如果不存在返回false
+    //
     @Override
     public Boolean deleteService(Serializable id) {
         SchoolAssignment schoolAssignment = (SchoolAssignment) schoolAssignmentDao.find(SchoolAssignment.class,id);
@@ -78,7 +79,7 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     }
 
     @Override
-    public Files findSchoolAssignmentByName(String name) {
+    public SchoolAssignment findSchoolAssignmentByName(String name) {
         return null;
     }
 
@@ -93,7 +94,7 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     }
 
     @Override
-    public List<Files> findFileWithOption(String Option, SearchOption searchOption) {
+    public List<SchoolAssignment> findAssignmentWithOption(String Option, SearchOption searchOption) {
         return null;
     }
 }

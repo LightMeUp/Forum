@@ -18,7 +18,7 @@ public interface IpostService {
     Boolean updateServcie(Post post);
 
     // 查询单个数据
-    Post findService(Class  clazz,Serializable id);
+    Post findService(Serializable id);
 
     // 查看全部数据
     List<Post> listAllService(String tableName);

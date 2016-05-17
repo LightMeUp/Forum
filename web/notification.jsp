@@ -26,13 +26,14 @@
             float: right;
         }
         #notibody{
-            border:thin;
-            border-color: azure;
+            border-color: lightgray;
+            border-width: thin;
         }
 
     </style>
 </head>
 <body id="notibody">
+    <fieldset>
         <legend id="legend"><a href="allNotifies.jsp">消息通知</a></legend>
         <table>
             <tr>
@@ -59,5 +60,6 @@
             <td class="date"  colspan="2">2016-5-1</td>
         </tr>
         </table>
+    </fieldset>
 </body>
 </html>

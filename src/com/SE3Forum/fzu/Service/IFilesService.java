@@ -20,17 +20,13 @@ public interface IFilesService {
     Boolean updateServcie(uploadFile file);
 
     // 查询单个数据
-    uploadFile findService(Class  clazz,Serializable id);
+    uploadFile findService(Serializable id);
 
     // 查看全部数据
     List<Teacher> listAllService(String tableName);
 
     // 获取行数
     int  getRowsService(String tableName);
-
-    // 查看全部
-    List<uploadFile> listAllFiles(Serializable id);
-
 
     // search by filename
     uploadFile findFileByName(String name);

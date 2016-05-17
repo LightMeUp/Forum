@@ -4,14 +4,12 @@ import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Bean.users.Teacher;
 import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Dao.BaseDao;
-import com.SE3Forum.fzu.Dao.StudentDao;
 import com.SE3Forum.fzu.Dao.TeacherDao;
 import com.SE3Forum.fzu.Service.StudentService;
 import com.SE3Forum.fzu.Struct.FormBeans.loginFormBean;
 import com.SE3Forum.fzu.Util.HibernateUtil;
 import com.SE3Forum.fzu.Util.UserType;
 import com.SE3Forum.fzu.Util.Utils;
-import org.apache.commons.codec.net.URLCodec;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -23,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.Date;
 
 /**
  * Created by Feng on 5/5/16.
@@ -110,13 +107,9 @@ public class loginAction extends Action {
 
         response.addCookie(idCookie);
         response.addCookie(nameCookie);
-
         response.addCookie(usertypeCookie);
-
         response.addCookie(lastloginCookie);
-
         response.addCookie(imageCookie);
-
         response.addCookie(securityCookie);
 
 

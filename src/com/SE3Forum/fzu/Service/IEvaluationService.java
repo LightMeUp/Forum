@@ -19,13 +19,13 @@ public interface IEvaluationService {
     Boolean updateServcie(Evaluation evaluation);
 
     // 查询单个数据
-    Evaluation findService(Class  clazz, Serializable id);
+    Evaluation findService(Serializable id);
 
     // 查看全部数据
-    List<Evaluation> listAllService(String tableName);
+    List<Evaluation> listAllService();
 
     // 获取行数
-    int  getRowsService(String tableName);
+    int  getRowsService();
 
 
 

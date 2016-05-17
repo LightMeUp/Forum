@@ -10,12 +10,22 @@ import java.util.List;
 /**
  * Created by Feng on 5/9/16.
  */
+/*
+* 作业评分
+* 作业评分在用户提交作业时生成
+* 教师对表进行修改*/
+
+
 public class EvaluationService implements IEvaluationService {
     private EvaluationDao evaluationDao;
     public EvaluationService(){evaluationDao=new EvaluationDao();}
+
+    /* 添加新的作业评分表,学生提交作业时生成*/
     @Override
     public Boolean addService(Evaluation evaluation) {
         try {
+            /*学生如果多次提交作业*/
+
             evaluationDao.add(evaluation);
             return true;
         }catch (Exception e){
@@ -55,17 +65,18 @@ public class EvaluationService implements IEvaluationService {
     }
 
     @Override
-    public Evaluation findService(Class clazz, Serializable id) {
+    public Evaluation findService( Serializable id) {
         return (Evaluation) evaluationDao.find(Evaluation.class,id);
     }
 
     @Override
-    public List<Evaluation> listAllService(String tableName) {
-        return evaluationDao.listAll(tableName);
+    public List<Evaluation> listAllService() {
+        return evaluationDao.listAll("evaluation");
     }
 
     @Override
-    public int getRowsService(String tableName) {
+    public int getRowsService() {
+        evaluationDao.getRows("evaluation");
         return 0;
     }
 

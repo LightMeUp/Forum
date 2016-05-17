@@ -41,6 +41,9 @@ public class Topic {
     // 创建日期
     private String createDate;
 
+    // 最后一次修改时间
+    private String lastUpdateDate;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

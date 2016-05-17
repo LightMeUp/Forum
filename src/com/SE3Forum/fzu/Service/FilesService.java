@@ -1,6 +1,6 @@
 package com.SE3Forum.fzu.Service;
 
-import com.SE3Forum.fzu.Bean.Data.Files;
+import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.users.Teacher;
 import com.SE3Forum.fzu.Dao.FilesDao;
 
@@ -19,7 +19,7 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public Boolean addService(Files file) {
+    public Boolean addService(uploadFile file) {
         try {
             filesDao.add(file);
             return  true;
@@ -30,7 +30,7 @@ public class FilesService implements IFilesService {
 
     @Override
     public Boolean deleteService(Serializable id) {
-        Files f=(Files)filesDao.find(Files.class,id);
+        uploadFile f=(uploadFile) filesDao.find(uploadFile.class,id);
         if (f==null){
             return false;
         }else {
@@ -44,12 +44,12 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public Boolean updateServcie(Files file) {
+    public Boolean updateServcie(uploadFile file) {
         try {
-            Files f= (Files) filesDao.find(Files.class,file.getId());
-            f.setDesc(file.getDesc());
-            f.setFileName(file.getFileName());
-            f.setUploadingDate(file.getUploadingDate());
+            uploadFile f= (uploadFile) filesDao.find(uploadFile.class,file.getId());
+            f.setDescription(file.getDescription());
+            f.setName(file.getName());
+            f.setUploadDate(file.getUploadDate());
             f.setUser(file.getUser());
             f.setUuid(file.getUuid());
             f.setValidateDate(file.getValidateDate());
@@ -62,8 +62,8 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public Files findService(Class clazz, Serializable id) {
-        return (Files) filesDao.find(Files.class,id);
+    public uploadFile findService(Serializable id) {
+        return (uploadFile) filesDao.find(uploadFile.class,id);
     }
 
     @Override
@@ -77,27 +77,22 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public List<Files> listAllFiles(Serializable id) {
+    public uploadFile findFileByName(String name) {
         return null;
     }
 
     @Override
-    public Files findFileByName(String name) {
+    public List<uploadFile> findFileByuploadDate(Date uploadDate) {
         return null;
     }
 
     @Override
-    public List<Files> findFileByuploadDate(Date uploadDate) {
+    public List<uploadFile> findFilesByValidateDate(Date validateDate) {
         return null;
     }
 
     @Override
-    public List<Files> findFilesByValidateDate(Date validateDate) {
-        return null;
-    }
-
-    @Override
-    public List<Files> findFileWithOption(String Option, SearchOption searchOption) {
+    public List<uploadFile> findFileWithOption(String Option, SearchOption searchOption) {
         return null;
     }
 }

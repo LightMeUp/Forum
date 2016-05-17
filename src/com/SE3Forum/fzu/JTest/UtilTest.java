@@ -23,7 +23,7 @@ public class UtilTest  {
     }
     @Test
     public void TestGetFilePath(){
-        String UploadFilePath =Utils.getFileUploadFolder();
+        String UploadFilePath = Utils.getFileUploadFolder();
         System.out.println("文件上传路径: "+UploadFilePath);
     }
     public void TestGetImagePath(){

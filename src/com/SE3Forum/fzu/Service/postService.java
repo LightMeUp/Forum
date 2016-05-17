@@ -23,6 +23,8 @@ public class postService implements IpostService {
 
     }
 
+
+
     @Override
     public Boolean deleteService(Serializable id) {
 
@@ -57,7 +59,7 @@ public class postService implements IpostService {
     }
 
     @Override
-    public Post findService(Class clazz, Serializable id) {
+    public Post findService( Serializable id) {
         return (Post) postDao.find(Post.class,id);
     }
 
@@ -77,6 +79,11 @@ public class postService implements IpostService {
     }
 
     @Override
-    public List<Post> findPostWithOption(String Option, SearchOption searchOption) {return null;
+    public List<Post> findPostWithOption(String Option, SearchOption searchOption)
+    {
+        return null;
     }
+
+
+
 }
