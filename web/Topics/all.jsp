@@ -1,22 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
   User: Feng
-  Date: 5/17/16
-  Time: 2:39 PM
+  Date: 5/18/16
+  Time: 8:35 AM
   To change this template use File | Settings | File Templates.
 --%>
-
-
-/*其它类别显示所有的 帖子信息*/
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>所有发帖</title>
     <style type="text/css">
-        .content_table{
-            width: 100%;
-        }
+                .content_table{
+                    width: 100%;
+                }
         .image_row{
             width: 10%;
         }
@@ -29,8 +26,8 @@
     </style>
 </head>
 <body>
-<% for(int i=0;i<5;i++) {%>
-<fieldset>
+<% for(int i=0;i<15;i++) {%>
+    <fieldset>
     <table class="content_table">
         <tr>
             <td rowspan="3" class="image_row"><img src="/images/header_poto.jpg" width="80px" height="80px"></td>
@@ -51,7 +48,7 @@
         <tr><td>作者</td></tr>
         <tr></tr>
     </table>
-</fieldset>
+    </fieldset>
 <%}%>
 <fieldset>
     <table>
@@ -74,4 +71,3 @@
 </fieldset>
 </body>
 </html>
-

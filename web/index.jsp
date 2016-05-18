@@ -29,15 +29,14 @@
         .center_left{
             width: 20%;
             height: 100%;
-            margin-left: 10%;
-
+            margin-left: 5%;
             float: left;
         }
         .center_center{
             float: left;
             width: 50%;
             height: 100%;
-            margin-left: 35px;
+            margin-left: 50px;
             border: double;
             border-color: darkgray;
         }

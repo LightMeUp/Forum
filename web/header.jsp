@@ -68,7 +68,7 @@
         <tr>
             <td>
             </td>
-            <td ><a href="http://www.baidu.com" target="center_iframe" >帐号设置</a></td>
+            <td ><a href="${base}/personal/personal.jsp" target="center_iframe" >帐号设置</a></td>
             <td><a href="myMessage.jsp"> 我的消息</a></td>
             <td><a href="forumSetting"> 论坛设置</a></td>
             <td><a href="helpCenter.jsp">帮助中心</a></td>
