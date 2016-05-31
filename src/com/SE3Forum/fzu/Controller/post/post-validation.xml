@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+        <validators>
+    <field name="theme">
+        <field-validator type="requiredstring">
+            <message>请输入帖子主题</message>
+        </field-validator>
+    </field>
+    <field name="content">
+        <field-validator type="requiredstring">
+            <message>please enter the post content</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">15</param>
+            <message>not enough character need more than 15 words</message>
+        </field-validator>
+    </field>
+</validators>

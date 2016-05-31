@@ -20,7 +20,7 @@ public interface IStudentService {
     Boolean updateServcie(Student student);
 
     // 查询单个数据
-    Student findService(Class  clazz,Serializable id);
+    Student findService(Class clazz, Serializable id);
 
     // 查看全部数据
     List<Student> listAllService(String tableName);

@@ -2,6 +2,7 @@ package com.SE3Forum.fzu.Service;
 
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
+import com.SE3Forum.fzu.Util.platForumType;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,7 +21,7 @@ public interface ITopicService {
     Boolean updateServcie(Topic topic);
 
     // 查询单个数据
-    Post findService(Class  clazz,Serializable id);
+    Post findService(Class clazz, Serializable id);
 
     // 查看全部数据
     List<Topic> listAllService(String tableName);
@@ -33,9 +34,9 @@ public interface ITopicService {
     Topic findTopoicByName(String name);
     //内部先实例化一个SearchOption的对象
 
-
+    List<Topic> findTopicWithplatOption(platForumType type);
     // 上面的查找方法里面只要调用这个方法就可以,传入一个SearchOption的枚举类型
-    List<Topic>findTopicWithOption(String Option,SearchOption searchOption );
+    List<Topic>findTopicWithOption(String Option, SearchOption searchOption);
     /*
         局部变量建议一定要实例话
         List<Teacher> teaches = new Arraylist<>();

@@ -3,6 +3,7 @@ package com.SE3Forum.fzu.Bean.Data;
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.image;
 import com.SE3Forum.fzu.Bean.users.User;
+import com.SE3Forum.fzu.Bean.users.UserCount;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -28,10 +29,10 @@ public class uploadFile {
     private String name;
 
     //文件唯一辨别码
-    private UUID uuid;
+    private String uuid;
 
     //发帖用户
-    private User user;
+    private UserCount user;
 
     private String description;
 
@@ -60,11 +61,11 @@ public class uploadFile {
         this.name = name;
     }
     @Column(unique =  true)
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
@@ -92,11 +93,11 @@ public class uploadFile {
         this.validateDate = validateDate;
     }
     @ManyToOne
-    public User getUser() {
+    public UserCount getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserCount user) {
         this.user = user;
     }
 }

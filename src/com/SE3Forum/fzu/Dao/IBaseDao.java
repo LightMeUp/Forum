@@ -1,5 +1,6 @@
 package com.SE3Forum.fzu.Dao;
 
+import com.SE3Forum.fzu.Service.SearchOption;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -18,7 +19,7 @@ public interface IBaseDao<T> {
 
     // update row
     public void update(T object);
-    public T find(Class<T>clazz, Serializable id);
+    public T find(Class<T> clazz, Serializable id);
     // query all entities
     public List<T> listAll(String sql);
     public java.math.BigInteger getRows(String tableName);

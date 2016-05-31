@@ -19,7 +19,7 @@ public interface ISchoolAsignment  {
     Boolean updateServcie(SchoolAssignment assignment);
 
     // 查询单个数据
-    SchoolAssignment findService(Class  clazz,Serializable id);
+    SchoolAssignment findService(Class clazz, Serializable id);
 
     // 查看全部数据
     List<SchoolAssignment> listAllService(String tableName);
@@ -39,7 +39,7 @@ public interface ISchoolAsignment  {
 
 
     // 上面的查找方法里面只要调用这个方法就可以,传入一个SearchOption的枚举类型
-    List<SchoolAssignment>findAssignmentWithOption(String Option,SearchOption searchOption );
+    List<SchoolAssignment>findAssignmentWithOption(String Option, SearchOption searchOption);
     /*
         局部变量建议一定要实例话
         List<Teacher> teaches = new Arraylist<>();

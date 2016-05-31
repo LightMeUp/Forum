@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="LoginPackage" extends="struts-default">
+        <global-results>
+            <result name="login">/login.jsp</result>
+            <result name="index">/index.jsp</result>
+        </global-results>
+
+
+        <!--退出登录,用户点击退出,直接回到主页-->
+        <action name="logout" class="com.SE3Forum.fzu.Controller.logout.logout">
+            <result name="success">/index.jsp</result>
+            <result name="error">/errorMessage.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        <action name="post" class="com.SE3Forum.fzu.Controller.post.post">
+            <result name="success">/index.jsp</result>
+            <result name="error">/errorMessage.jsp</result>
+            <result name="input">/post.jsp</result>
+        </action>
+
+        <!-- 登录 登录错误时跳回到登录页面 这块可以自己决定要一个页面还是两个页面,登录成功后回到主页-->
+        <action name="loginAction" class="com.SE3Forum.fzu.Controller.login.LoginAction">
+            <result name="success">/index.jsp</result>
+            <result name="error">/login.jsp</result>
+            <result name="input">/index.jsp</result>
+
+        </action>
+        <!--文件上传,用户发贴时回上传文件和图片,上传作业,教师发布作业-->
+        <action name="uploadFiles" class="com.SE3Forum.fzu.Controller.uploadFile.uploadFileAction">
+            <result name="success">/index.jsp</result>
+            <result name="error">/errorMessage.jsp</result>
+    </action>
+
+        <!-- 修改用户个人信息-->
+        <action name="updateUserCount" class="com.SE3Forum.fzu.Controller.updateUserinfor.UpdateUserCount">
+            <result name ="input">/updateCountInfor.jsp</result>
+            <result name = "success"> /showCountInfor.jsp</result>
+            <result name="error">/errorMessage.jsp</result>
+        </action>
+        
+        <action name="uploadImage" class="com.SE3Forum.fzu.Controller.uploadImage.uploadImage">
+            <result name="success">/index.jsp</result>
+            <result name="error">/errorMessage.jsp</result>
+        </action>
+        
+    </package>
+    <constant name="struts.multipart.saveDir" value="/tmp"/>
+
+
+    
+
+
+
+</struts>

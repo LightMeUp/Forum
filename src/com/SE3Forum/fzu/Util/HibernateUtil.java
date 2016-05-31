@@ -32,7 +32,7 @@ public class HibernateUtil {
     }
     public static Session getSession(){
 
-                session= getInstanceFactory().openSession();
+        session= getInstanceFactory().openSession();
         return session;
     }
     public static  void closeSession(){

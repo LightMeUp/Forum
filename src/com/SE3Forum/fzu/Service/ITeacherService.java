@@ -23,7 +23,7 @@ public interface ITeacherService {
     Boolean updateServcie(Teacher teacher);
 
     // 查询单个教师数据
-    Teacher findService(Class  clazz,Serializable id);
+    Teacher findService(Class clazz, Serializable id);
 
     // 查看全部教师数据
     List<Teacher> listAllService(String tableName);
@@ -47,7 +47,7 @@ public interface ITeacherService {
     List<SchoolAssignment> listAllAssignment(Serializable id);
 
     // 获取单个作业信息
-    SchoolAssignment listSchoolAssignment(Serializable teacherid ,Serializable assignmentid);
+    SchoolAssignment listSchoolAssignment(Serializable teacherid, Serializable assignmentid);
 
 
     // 姓名查找  SearchOption
@@ -69,7 +69,7 @@ public interface ITeacherService {
 
 
     // 上面的查找方法里面只要调用这个方法就可以,传入一个SearchOption的枚举类型
-    List<Teacher>findTeacherWithOption(String Option,SearchOption searchOption );
+    List<Teacher>findTeacherWithOption(String Option, SearchOption searchOption);
     /*
         局部变量建议一定要实例话
         List<Teacher> teaches = new Arraylist<>();

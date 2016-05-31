@@ -34,7 +34,7 @@ public interface IEvaluationService {
 
 
     // 上面的查找方法里面只要调用这个方法就可以,传入一个SearchOption的枚举类型
-    List<Evaluation>findFileWithOption(String Option,SearchOption searchOption );
+    List<Evaluation>findFileWithOption(String Option, SearchOption searchOption);
     /*
         局部变量建议一定要实例话
         List<Teacher> teaches = new Arraylist<>();

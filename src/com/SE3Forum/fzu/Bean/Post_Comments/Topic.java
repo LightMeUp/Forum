@@ -1,6 +1,9 @@
 package com.SE3Forum.fzu.Bean.Post_Comments;
 
+import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.users.User;
+import com.SE3Forum.fzu.Bean.users.UserCount;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,7 +30,10 @@ public class Topic {
     private String Content;
 
     //发帖用户
-    private User user;
+    private UserCount user;
+
+    // 帖子类型
+    private String type;
 
     // 主题中发布的帖子
     private List<Post>posts;
@@ -43,6 +49,9 @@ public class Topic {
 
     // 最后一次修改时间
     private String lastUpdateDate;
+
+    // files
+    private List<uploadFile> files;
 
 
     @Id
@@ -73,11 +82,11 @@ public class Topic {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    public User getUser() {
+    public UserCount getUser() {
         return user;
     }
 
-    public void setUser(User userEntity) {
+    public void setUser(UserCount userEntity) {
         this.user = userEntity;
     }
 
@@ -113,5 +122,30 @@ public class Topic {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    public String getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(String lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    @OneToMany
+    public List<uploadFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<uploadFile> files) {
+        this.files = files;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

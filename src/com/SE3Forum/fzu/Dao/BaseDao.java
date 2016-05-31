@@ -1,16 +1,18 @@
 package com.SE3Forum.fzu.Dao;
 import com.SE3Forum.fzu.Bean.users.Student;
+import com.SE3Forum.fzu.Service.SearchOption;
 import com.SE3Forum.fzu.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.io.Serializable;
 import java.util.List;
 /**
  * Created by Feng on 4/27/16.
  */
-public class BaseDao<T>  implements  IBaseDao{
+public class BaseDao<T> extends HibernateDaoSupport implements  IBaseDao {
     /*
     * BaseDao  实现基本的CURD 操作
     * 1. 获取表的行数 getRows
@@ -45,13 +47,12 @@ public class BaseDao<T>  implements  IBaseDao{
         session.merge(object);
         session.getTransaction().commit();
     }
-
     @Override
-    public Object find(Class clazz, Serializable id) {
+    public Object find(Class clazz,Serializable id){
         Session session = HibernateUtil.getSession();
-        T object =(T)session.get(clazz, id);
-        return object;
+        return session.get(clazz,id);
     }
+
 
     // query all entities
     @Override

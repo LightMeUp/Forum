@@ -25,6 +25,8 @@ public enum SearchOption {
     // 性别查询
     sexOption,
 
+    OriginOption,
+
     // 发布日期查询
      publishDateOption,
 

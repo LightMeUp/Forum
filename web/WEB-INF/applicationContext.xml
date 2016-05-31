@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+        <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+            <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+            <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ForumDataBase?characterEncoding=UTF-8">
+            </property>
+            <property name="user" value="root"></property>
+            <property name="password" value="941013"></property>
+            <!-- 指定连接数据库连接池的最大连接数 -->
+            <property name="maxPoolSize" value="20" />
+            <!-- 指定连接数据库连接池的最小连接数 -->
+            <property name="minPoolSize" value="1" />
+            <!-- 指定连接数据库连接池的初始化连接数 -->
+            <property name="initialPoolSize" value="1" />
+            <!-- 指定连接数据库连接池的连接的最大空闲时间 -->
+            <property name="maxIdleTime" value="5000" />
+            <property name="maxStatements" value="0" />
+            <!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+            <property name="idleConnectionTestPeriod" value="60" />
+            <!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+            <property name="acquireRetryAttempts" value="30" />
+            <!--获取连接失败将会引起所有等待连接池来获取连接的线程抛出异常。但是数据源仍有效 保留，并在下次调用getConnection()的时候继续尝试获取连接。如果设为true，那么在尝试
+                获取连接失败后该数据源将申明已断开并永久关闭。Default: false -->
+            <property name="breakAfterAcquireFailure" value="false" />
+            <!--因性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的 时候都将校验其有效性。建议使用idleConnectionTestPeriod或automaticTestTable
+                等方法来提升连接测试的性能。Default: false -->
+            <property name="testConnectionOnCheckout" value="false" />
+
+        </bean>
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <property name="dataSource">
+        <ref bean="dataSource" />
+    </property>
+    <property name="hibernateProperties">
+        <props>
+            <prop key="hibernate.dialect">
+                org.hibernate.dialect.MySQL5Dialect
+            </prop>
+            <prop key="hibernate.max_fetch_depth">2</prop>
+            <prop key="hibernate.show_sql">true</prop>
+            <prop key="hibernate.format_sql">false</prop>
+            <prop key="hibernate.hbm2ddl.auto">update</prop>
+        </props>
+    </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.SE3Forum.fzu.Bean.users.Student</value>
+                <value>"com.SE3Forum.fzu.Bean.users.Teacher" </value>
+                <value>com.SE3Forum.fzu.Bean.Post_Comments.Post</value>
+                <value>com.SE3Forum.fzu.Bean.Post_Comments.Topic</value>
+                <value>com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment</value>
+                <value> com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation</value>
+                <value> com.SE3Forum.fzu.Bean.Data.uploadFile</value>
+                <value> com.SE3Forum.fzu.Bean.Data.downloadRecord</value>
+                <value> com.SE3Forum.fzu.Bean.Data.uploadRecord</value>
+                <value> com.SE3Forum.fzu.Bean.Post_Comments.image</value>
+                <value> com.SE3Forum.fzu.Bean.users.UserCount</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="UserCountDao" class="com.SE3Forum.fzu.Dao.UserCountDao" >
+        <property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+    <bean id="PostDao" class="com.SE3Forum.fzu.Dao.PostDao" >
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="TopicDao" class="com.SE3Forum.fzu.Dao.TopicDao" >
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+         >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+            </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="*" timeout="120" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut="execution(* edu.fzu.openfund.service.*.*(..))" />
+    </aop:config>
+
+
+</beans>

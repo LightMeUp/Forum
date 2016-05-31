@@ -3,6 +3,7 @@ package com.SE3Forum.fzu.Service;
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
 import com.SE3Forum.fzu.Dao.TopicDao;
+import com.SE3Forum.fzu.Util.platForumType;
 
 import java.io.Serializable;
 import java.util.List;
@@ -76,6 +77,11 @@ public class TopicService  implements ITopicService{
     @Override
     public Topic findTopoicByName(String name) {
         return null;
+    }
+
+    @Override
+    public List<Topic> findTopicWithplatOption(platForumType type) {
+        return topicDao.findTopicswithplatOption(type);
     }
 
     @Override
