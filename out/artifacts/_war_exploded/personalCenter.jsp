@@ -75,7 +75,7 @@
     <!-- Main content -->
     <!-- JS -->
     <script src="/personalCenter/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
-    <script src="/personalCenter/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
     <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
 

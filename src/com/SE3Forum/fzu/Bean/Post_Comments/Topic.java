@@ -1,11 +1,9 @@
 package com.SE3Forum.fzu.Bean.Post_Comments;
-
-import com.SE3Forum.fzu.Bean.Data.uploadFile;
-import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
-
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Feng on 3/30/16.
@@ -36,22 +34,17 @@ public class Topic {
     private String type;
 
     // 主题中发布的帖子
-    private List<Post>posts;
-
-    // 主题的图片内容, 可以没有
-    private List<image> images;
+    private Set<Post> posts;
 
     // 主题是否置顶   用 0 1 表示   0 表示不置顶 1表示置顶
     private int OnTop;
 
     // 创建日期
-    private String createDate;
+    private Date createDate;
 
     // 最后一次修改时间
     private String lastUpdateDate;
 
-    // files
-    private List<uploadFile> files;
 
 
     @Id
@@ -90,23 +83,15 @@ public class Topic {
         this.user = userEntity;
     }
 
-    @OneToMany
-    public List<Post> getPosts() {
+    @OneToMany(mappedBy = "topic")
+    public Set<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(Set<Post> posts) {
         this.posts = posts;
     }
 
-    @OneToMany
-    public List<image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<image> images) {
-        this.images = images;
-    }
 
     public int getOnTop() {
         return OnTop;
@@ -116,11 +101,11 @@ public class Topic {
         OnTop = onTop;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -130,15 +115,6 @@ public class Topic {
 
     public void setLastUpdateDate(String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
-    }
-
-    @OneToMany
-    public List<uploadFile> getFiles() {
-        return files;
-    }
-
-    public void setFiles(List<uploadFile> files) {
-        this.files = files;
     }
 
     public String getType() {

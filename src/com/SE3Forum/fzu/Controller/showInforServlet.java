@@ -1,7 +1,9 @@
 package com.SE3Forum.fzu.Controller;
 
 import com.SE3Forum.fzu.Bean.users.Student;
+import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
+import com.SE3Forum.fzu.Dao.UserDao;
 import com.SE3Forum.fzu.Service.UserCountService;
 import com.SE3Forum.fzu.Util.UserType;
 import com.SE3Forum.fzu.Util.Utils;
@@ -24,22 +26,33 @@ public class showInforServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-
-
-        UserType userType =Utils.getUsertype(id);
-        if (userType == UserType.studentType){
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
                 UserCountService Service = new UserCountService();
                UserCount userCount =  Service.findService(Integer.parseInt(id));
             if (userCount == null){
-                System.out.println("帐号不存在或者已经退出");
+                System.out.println("帐号不存在");
             }
             else{
-                request.setAttribute("user",userCount);
-                request.getRequestDispatcher(request.getContextPath()+"/showCountInfor.jsp").forward(request,response);
+                UserCount sessionUser = (UserCount) request.getSession().getAttribute("user");
+                if (!Utils.isLoginBySession(request.getSession())){
+                    request.setAttribute("isWatch","false");
+                }else {
 
+                    if (!id.equals(sessionUser.getId())) {
+                        User watch = (User) new UserDao().find(User.class, Integer.parseInt(id));
+                        User user = (User) new UserDao().find(User.class, Integer.parseInt("" + sessionUser.getId()));
+
+                        request.setAttribute("isWatch", Utils.isWatched(watch, user));
+                    }
+                }
+                request.setAttribute("userCount", userCount);
+                User user = (User) new UserDao().find(User.class, userCount.getId());
+                request.setAttribute("user", user);
+                request.setAttribute("friends",new UserDao().getFriends(user.getId()));
+                request.setAttribute("topics",new UserDao().getTopics(user.getId()));
+                request.getRequestDispatcher(request.getContextPath() + "/showCountInfor.jsp").forward(request, response);
             }
 
         }
-
-    }
 }

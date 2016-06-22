@@ -34,5 +34,11 @@ public class UtilTest  {
     public void TestgetCurrentTime(){
        System.out.println("当前时间"+Utils.getCurrentDate());
     }
+    @Test
+    public void testSubString (){
+        String str =Utils.getFileString("<p>我就不信不成功</p><p><img src=\"http://localhost:8080/ueditor/dialogs/attachment/fileTypeImages/icon_doc.gif\"/><a href=\"/软件工程论坛//ueditor/jsp/upload/image/20160617/1466164504518033767.doc\" title=\"221300201_蔡宏锋_第5次.doc\">221300201_蔡宏锋_第5次.doc</a></p><p><br/></p>");
+        System.out.println(str);
 
+    }
 }
+

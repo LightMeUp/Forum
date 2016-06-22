@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * Created by Feng on 5/23/16.
@@ -27,53 +28,17 @@ public class isLogin implements Filter {
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)resp;
         System.out.println(" filter:islogin 检查用户是否登录");
-        isLogin(request,response);
-        chain.doFilter(request, response);
+        if(!Utils.isLoginBySession(request.getSession())){
+            Writer out = response.getWriter();
+            out.write("<script>alert('还未登录,操作取消,请先登录');window.location='/login.jsp'</script>");
+        }
+        else {
+            chain.doFilter(request, response);
+        }
     }
 
     public void init(FilterConfig config) throws ServletException {
 
-    }
-    public  void isLogin(HttpServletRequest request, HttpServletResponse response){
-        Cookie[]cookies =request.getCookies();
-        HttpSession session=request.getSession();
-        UserCount userCount=new UserCount();
-        if (cookies == null ||cookies.length <2)
-        {
-            System.out.println("cookie 不存在,用户未登录");
-            request.setAttribute("loginState","NO");
-            // 获取Session
-             session = request.getSession();
-            // 记录登录状态,即游客登录模式
-            session.setAttribute("loginState","NO");
-            return ;
-        }
-        System.out.println("Cookie exists");
-        String id="";
-        String securityToken="";
-        for (Cookie cookie: cookies){
-            if (cookie.getName().equals("count")) {
-                id = cookie.getValue();
-                 userCount =  new UserCountService().findService(Integer.parseInt(id));
-                securityToken = userCount.getSecurityToken();
-            }
-            if (cookie.getName().equals("sercurityToken"))
-            {
-                System.out.println("已经登录用户安全码:"+securityToken);
-                if (cookie.getValue().equals(securityToken))
-                {
-                    System.out.println("用户已经登录");
-                    session = request.getSession();
-                    userCount.setLastLoginDate(Utils.getCurrentDate());
-                    new UserCountService().updateServcie(userCount);
-                    session.setAttribute("userCount",userCount);
-                }
-                else {
-                    session.setAttribute("loginState","NO");
-                }
-
-            }
-        }
     }
 
 }

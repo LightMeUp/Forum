@@ -5,9 +5,9 @@
   Time: 7:14 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <!-- FlatFy Theme - Andrea Galanti /-->
-<!doctype html>
+<html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -19,46 +19,49 @@
     <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
     <meta name="author" content="">
 
-    <title>Flatfy – Free Flat and Responsive HTML5 Template</title>
+    <title>欢迎访问软件工程论坛</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Google Web Font -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
     <!-- Custom CSS-->
-    <link href="css/general.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
 
     <!-- Owl-Carousel -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.theme.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="css/magnific-popup.css">
 
-    <script src="js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
-    <script src="js/PIE_IE9.js"></script>
-    <script src="js/PIE_IE678.js"></script>
+    <script src="/js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
+    <script src="/js/PIE_IE9.js"></script>
+    <script src="/js/PIE_IE678.js"></script>
 
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
+    <script src="/js/html5shiv.js"></script>
     <![endif]-->
+    <script>
+        function  showStudy(){
+            window.location.href="/study/all.jsp";
+        }
+    </script>
 
 </head>
 
 <body id="home">
-
 <!-- Preloader -->
 <div id="preloader">
     <div id="status"></div>
 </div>
-
 <!-- FullScreen -->
 <div class="intro-header">
     <div class="col-xs-12 text-center abcen1">
@@ -66,7 +69,7 @@
         <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">用心分享快乐，用双手创造奇迹</h3>
         <h3>----软件工程第三组</h3>
         <ul class="list-inline intro-social-buttons">
-            <li><a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Twitter</span></a>
+            <li><a href="https://www.weibo.com" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Follow Us</span></a>
             </li>
             </li>
         </ul>
@@ -95,7 +98,7 @@
 
             <div class="col-sm-4 wow fadeInDown text-center">
                 <img class="rotate" src="img/icon/tweet.svg" alt="Generic placeholder image">
-                <h3>学习天地</h3>
+                <h3><a href="/plat/Study"> 学习天地</a></h3>
                 <p class="lead">对世界上的一切学问与知识的掌握也并非难事,只要持之以恒地学习,努力掌握规律,达到熟悉的境地,就能融会贯通,运用自如了. —— 高士其
                 </p>
 
@@ -104,14 +107,14 @@
 
             <div class="col-sm-4 wow fadeInDown text-center">
                 <img  class="rotate" src="img/icon/picture.svg" alt="Generic placeholder image">
-                <h3>灌水区</h3>
+                <h3><a href="/plat/Freezone">灌水区</a></h3>
                 <p class="lead">在快乐时，朋友会认识我们;在患难时，我们会认识朋友。——柯林斯 </p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
             </div><!-- /.col-lg-4 -->
 
             <div class="col-sm-4 wow fadeInDown text-center">
                 <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
-                <h3>资料库</h3>
+                <h3><a href="/plat/Database">资料库</a></h3>
                 <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
             </div><!-- /.col-lg-4 -->
@@ -122,7 +125,7 @@
 
             <div class="col-sm-4  wow fadeInDown text-center">
                 <img class="rotate" src="img/icon/laptop.svg" alt="Generic placeholder image">
-                <h3>其他</h3>
+                <h3><a href="/plat/Other">其他</a></h3>
                 <p class="lead">人生的磨难是很多的，所以我们不可对于每一件轻微的伤害都过于敏感。在生活磨难面前，精神上的坚强和无动于衷是我们抵抗罪恶和人生意外的最好武器。 —— 洛克
                 </p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
@@ -130,14 +133,14 @@
 
             <div class="col-sm-4 wow fadeInDown text-center">
                 <img  class="rotate" src="img/icon/map.svg" alt="Generic placeholder image">
-                <h3>开发团队</h3>
+                <h3><a href="/plat/team">开发团队</a></h3>
                 <p class="lead">开发团队介绍，点击查看开发人员</p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
             </div><!-- /.col-lg-4 -->
 
             <div class="col-sm-4 wow fadeInDown text-center">
                 <img  class="rotate" src="img/icon/browser.svg" alt="Generic placeholder image">
-                <h3>问题交流</h3>
+                <h3><a href="/plat/questions" 问题交流</h3>
                 <p class="lead"> 网站BUG，问题反馈区，有好的意见也请及时提出，攻城狮们会努力完善的</p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
             </div><!-- /.col-lg-4 -->
@@ -169,7 +172,7 @@
                 </p>
 
                 <p><a class="btn btn-embossed btn-primary" href=="http://www.fzu.edu.cn/html/xxgk/1.html" role="button">更多介绍</a>
-                    <a class="btn btn-embossed btn-info" href="www.fzu.edu.cn" role="button">福州大学</a></p>
+                    <a class="btn btn-embossed btn-info" href="http://www.fzu.edu.cn" role="button">福州大学</a></p>
             </div>
         </div>
     </div>
@@ -216,173 +219,6 @@
         </div>
     </div>
 </div>
-
-<div class="content-section-a">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-sm-6 pull-right wow fadeInRightBig">
-                <img class="img-responsive " src="img/doge.png" alt="">
-            </div>
-
-            <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">
-                <h3 class="section-heading">Font Awesome & Glyphicon</h3>
-                <p class="lead">A special thanks to Death to the Stock Photo for
-                    providing the photographs that you see in this template.
-                </p>
-
-                <ul class="descp lead2">
-                    <li><i class="glyphicon glyphicon-signal"></i> Reliable and Secure Platform</li>
-                    <li><i class="glyphicon glyphicon-refresh"></i> Everything is perfectly orgainized for future</li>
-                    <li><i class="glyphicon glyphicon-headphones"></i> Attach large file easily</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-<!-- Credits -->
-<div id="credits" class="content-section-a">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-                <h2>Credits</h2>
-                <p class="lead" style="margin-top:0">A special thanks to Death.</p>
-            </div>
-
-            <div class="col-sm-6  block wow bounceIn">
-                <div class="row">
-                    <div class="col-md-4 box-icon rotate">
-                        <i class="fa fa-desktop fa-4x "> </i>
-                    </div>
-                    <div class="col-md-8 box-ct">
-                        <h3> Bootstrap </h3>
-                        <p> Lorem ipsum dolor sit ametconsectetur adipiscing elit. Suspendisse orci quam. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 block wow bounceIn">
-                <div class="row">
-                    <div class="col-md-4 box-icon rotate">
-                        <i class="fa fa-picture-o fa-4x "> </i>
-                    </div>
-                    <div class="col-md-8 box-ct">
-                        <h3> Owl-Carousel </h3>
-                        <p> Nullam mo  arcu ac molestie scelerisqu vulputate, molestie ligula gravida, tempus ipsum.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row tworow">
-            <div class="col-sm-6  block wow bounceIn">
-                <div class="row">
-                    <div class="col-md-4 box-icon rotate">
-                        <i class="fa fa-magic fa-4x "> </i>
-                    </div>
-                    <div class="col-md-8 box-ct">
-                        <h3> Codrops </h3>
-                        <p> Lorem ipsum dolor sit ametconsectetur adipiscing elit. Suspendisse orci quam. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 block wow bounceIn">
-                <div class="row">
-                    <div class="col-md-4 box-icon rotate">
-                        <i class="fa fa-heart fa-4x "> </i>
-                    </div>
-                    <div class="col-md-8 box-ct">
-                        <h3> Lorem Ipsum</h3>
-                        <p> Nullam mo  arcu ac molestie scelerisqu vulputate, molestie ligula gravida, tempus ipsum.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Banner Download -->
-<div id="downloadlink" class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-                <h2>Download Free</h2>
-                <p class="lead" style="margin-top:0">Pay with a Tweet</p>
-                <p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Contact -->
-<div id="contact" class="content-section-a">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-                <h2>Contact Us</h2>
-                <p class="lead" style="margin-top:0">A special thanks to Death.</p>
-            </div>
-
-            <form role="form" action="" method="post" >
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="InputName">Your Name</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="InputEmail">Your Email</label>
-                        <div class="input-group">
-                            <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="InputMessage">Message</label>
-                        <div class="input-group">
-                            <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-                        </div>
-                    </div>
-
-                    <input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
-                </div>
-            </form>
-
-            <hr class="featurette-divider hidden-lg">
-            <div class="col-md-5 col-md-push-1 address">
-                <address>
-                    <h3>Office Location</h3>
-                    <p class="lead"><a href="#">The Pentagon<br>
-                        Washington, DC 20301</a><br>
-                        Phone: XXX-XXX-XXXX<br>
-                        Fax: XXX-XXX-YYYY</p>
-                </address>
-
-                <h3>Social</h3>
-                <li class="social">
-                    <a href="#"><i class="fa fa-facebook-square fa-size"> </i></a>
-                    <a href="#"><i class="fa  fa-twitter-square fa-size"> </i> </a>
-                    <a href="#"><i class="fa fa-google-plus-square fa-size"> </i></a>
-                    <a href="#"><i class="fa fa-flickr fa-size"> </i> </a>
-                </li>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <footer>
     <div class="container">
         <div class="row">
@@ -423,12 +259,12 @@
 </footer>
 
 <!-- JavaScript -->
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/script.js"></script>
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/owl.carousel.js"></script>
+<script src="/js/script.js"></script>
 <!-- StikyMenu -->
-<script src="js/stickUp.min.js"></script>
+<script src="/js/stickUp.min.js"></script>
 <script type="text/javascript">
     jQuery(function($) {
         $(document).ready( function() {
@@ -439,8 +275,8 @@
 
 </script>
 <!-- Smoothscroll -->
-<script type="text/javascript" src="js/jquery.corner.js"></script>
-<script src="js/wow.min.js"></script>
+<script type="text/javascript" src="/js/jquery.corner.js"></script>
+<script src="/js/wow.min.js"></script>
 <script>
     new WOW().init();
 </script>

@@ -1,13 +1,12 @@
 package com.SE3Forum.fzu.Bean.users;
-import com.SE3Forum.fzu.Bean.Data.downloadRecord;
 import com.SE3Forum.fzu.Bean.Data.uploadFile;
-import com.SE3Forum.fzu.Bean.Data.uploadRecord;
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
+import org.hibernate.annotations.ForeignKey;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Feng on 3/30/16.
@@ -22,13 +21,12 @@ public class User {
     // 下载记录
     // 上传记录
     protected int id;                 //账号
-    protected List<Post> posts;   //评论
-    protected List<Topic> topics;   // 发布的帖子
-    protected List<downloadRecord> downloadRecords; // 下载记录
-    protected List<uploadRecord> uploadRecords; // 上传记录
-    protected List<User> friends; // 好友
-    protected List<uploadFile> files;
+    protected Set<Post> posts;   //评论
+    protected Set<Topic> topics;   // 发布的帖子
+    protected Set<UserCount> friends; // 好友
+    protected Set<uploadFile> files;
     //权限管理
+    protected UserCount userCount;
 
     @Id
     public int getId() {
@@ -37,55 +35,48 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-    @OneToMany(mappedBy = "user")
-    public List<Post> getPosts() {
+
+    @OneToOne
+    @JoinColumn
+    public UserCount getUserCount() {
+        return userCount;
+    }
+
+    public void setUserCount(UserCount userCount) {
+        this.userCount = userCount;
+    }
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    public Set<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(Set<Post> posts) {
         this.posts = posts;
     }
-    @OneToMany(mappedBy = "user")
-    public List<Topic> getTopics() {
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    public Set<Topic> getTopics() {
         return topics;
     }
 
-    public void setTopics(List<Topic> topics) {
+    public void setTopics(Set<Topic> topics) {
         this.topics = topics;
     }
-    @OneToMany(mappedBy = "user")
-    public List<downloadRecord> getDownloadRecords() {
-        return downloadRecords;
-    }
-
-    public void setDownloadRecords(List<downloadRecord> downloadRecords) {
-        this.downloadRecords = downloadRecords;
-    }
-
-    @OneToMany(mappedBy = "user")
-    public List<uploadRecord> getUploadRecords() {
-        return uploadRecords;
-    }
-
-    public void setUploadRecords(List<uploadRecord> uploadRecords) {
-        this.uploadRecords = uploadRecords;
-    }
-
-    @ManyToMany
-    public List<User> getFriends() {
+    @ManyToMany(fetch = FetchType.EAGER)
+    public Set<UserCount> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(Set<UserCount> friends) {
         this.friends = friends;
     }
 
-    @OneToMany(mappedBy = "user")
-    public List<uploadFile> getFiles() {
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    public Set<uploadFile> getFiles() {
         return files;
     }
 
-    public void setFiles(List<uploadFile> files) {
+    public void setFiles(Set<uploadFile> files) {
         this.files = files;
     }
 

@@ -46,7 +46,6 @@ public class postService implements IpostService {
         try {
             Post p= (Post) postDao.find(Post.class,post.getId());
             p.setContent(post.getContent());
-            p.setImages(post.getImages());
             p.setTag(post.getTag());
             p.setTopic(post.getTopic());
             p.setUser(post.getUser());

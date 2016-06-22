@@ -47,7 +47,6 @@ public class TopicService  implements ITopicService{
       try {
           Topic t= (Topic) topicDao.find(Topic.class,topic.getId());
           t.setContent(topic.getContent());
-          t.setImages(topic.getImages());
           t.setUser(topic.getUser());
           t.setPosts(topic.getPosts());
           t.setTheme(topic.getTheme());
@@ -59,8 +58,8 @@ public class TopicService  implements ITopicService{
     }
 
     @Override
-    public Post findService(Class clazz, Serializable id) {
-       return (Post) topicDao.find(Topic.class, id);
+    public Topic findService( Serializable id) {
+       return (Topic) topicDao.find(Topic.class, id);
 
     }
 

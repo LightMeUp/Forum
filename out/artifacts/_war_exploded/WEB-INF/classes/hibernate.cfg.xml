@@ -22,9 +22,7 @@
         <mapping class="com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment"/>
         <mapping class="com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation"/>
         <mapping class="com.SE3Forum.fzu.Bean.Data.uploadFile"/>
-        <mapping class="com.SE3Forum.fzu.Bean.Data.downloadRecord" />
-        <mapping class="com.SE3Forum.fzu.Bean.Data.uploadRecord"/>
-        <mapping class="com.SE3Forum.fzu.Bean.Post_Comments.image"/>
       <mapping class="com.SE3Forum.fzu.Bean.users.UserCount"/>
+     <mapping class="com.SE3Forum.fzu.Bean.users.User"/>
     </session-factory>
 </hibernate-configuration>

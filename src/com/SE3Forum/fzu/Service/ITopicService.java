@@ -21,7 +21,7 @@ public interface ITopicService {
     Boolean updateServcie(Topic topic);
 
     // 查询单个数据
-    Post findService(Class clazz, Serializable id);
+    Topic findService( Serializable id);
 
     // 查看全部数据
     List<Topic> listAllService(String tableName);

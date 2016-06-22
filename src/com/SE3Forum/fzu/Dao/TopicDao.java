@@ -20,16 +20,19 @@ public class TopicDao  extends BaseDao implements ITopicDao{
        {
            case StudyPlat:
 
-               hql = "From Topic as topic where topic.type = '"+ "Study'";
+               hql = "From Topic as topic where topic.type = '"+ "Study'order by topic.createDate desc ";
            break;
            case FreeZonePlat:
-               hql = "From Topic as topic where topic.type = '"+ "FreeZone'";
+               hql = "From Topic as topic where topic.type = '"+ "FreeZone'order by topic.createDate desc ";
                break;
            case SubjectDiscussPlat:
-               hql = "From Topic as topic where topic.type = '"+ "SubjectDiscuss'";
+               hql = "From Topic as topic where topic.type = '"+ "SubjectDiscuss' order by topic.createDate desc ";
                break;
            case OthersPlat:
-               hql = "From Topic as topic where topic.type = '"+ "Others'";
+               hql = "From Topic as topic where topic.type = '"+ "Others' order by topic.createDate desc ";
+               break;
+           case Notification:
+               hql = "From Topic as topic where topic.type = '"+ "Notification' order by topic.createDate desc ";
        }
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery(hql);

@@ -1,10 +1,12 @@
 package com.SE3Forum.fzu.Controller.uploadImage;
 
 import com.SE3Forum.fzu.Util.Utils;
+import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 /**
@@ -22,10 +24,11 @@ public class uploadImage  extends ActionSupport{
             System.out.println("imageFileType"+imageContentType);
             uploadImage(image);
             HttpServletRequest request = ServletActionContext.getRequest();
-
+            HttpServletResponse response = ServletActionContext.getResponse();
             // 将图片的名字返回到页面
-            request.setAttribute("images",imageFileName);
-
+            JSONObject obj = new JSONObject();
+            obj.put("fileName",imageFileName );
+            response.getWriter().print(obj.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,6 +78,7 @@ public class uploadImage  extends ActionSupport{
             while((len = ins.read(b))!=-1){
                 ops.write(b,0,len);
             }
+            System.out.println("wen jian shangchuan chenggong");
 
         }catch (Exception e){
             e.printStackTrace();

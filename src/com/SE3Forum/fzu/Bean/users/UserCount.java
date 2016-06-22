@@ -2,11 +2,8 @@ package com.SE3Forum.fzu.Bean.users;
 
 import com.SE3Forum.fzu.Util.Utils;
 
-import javax.ejb.EJB;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Date;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Feng on 5/23/16.
@@ -26,8 +23,10 @@ public class UserCount {
     protected String email;             //邮箱
     protected String  origin;           //籍贯
     protected String address;      // 地址
-    protected String lastLoginDate;  // 最近一次登陆信息
+    protected Date lastLoginDate;  // 最近一次登陆信息
     protected String securityToken; // 安全信息码
+    protected User user;
+
 
     @Id
     public int getId() {
@@ -36,6 +35,15 @@ public class UserCount {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getUserType() {
@@ -129,11 +137,11 @@ public class UserCount {
         this.address = address;
     }
 
-    public String getLastLoginDate() {
+    public Date getLastLoginDate() {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(String lastLoginDate) {
+    public void setLastLoginDate(Date lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 

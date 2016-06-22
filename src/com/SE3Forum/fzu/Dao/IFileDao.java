@@ -21,5 +21,7 @@ public interface IFileDao  extends IBaseDao{
      List<uploadFile> getFileByUploadDate(Date date);
      List<uploadFile> getFileByEvalidateDate(Date date);
 
+     List<uploadFile> getFiles();
+
 
 }

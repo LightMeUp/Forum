@@ -24,7 +24,7 @@
     <title>Flatfy – Free Flat and Responsive HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Google Web Font -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -32,24 +32,18 @@
     <link href='http://fonts.useso.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
     <!-- Custom CSS-->
-    <link href="css/general.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
 
     <!-- Owl-Carousel -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.theme.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="css/magnific-popup.css">
 
-    <script src="js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
-    <script src="js/PIE_IE9.js"></script>
-    <script src="js/PIE_IE678.js"></script>
-
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
     <![endif]-->
     <style type="text/css">
         #user_image {
@@ -58,6 +52,15 @@
         }
     </style>
 
+    <script>
+        function checkLogin(){
+            var id = '<%=request.getSession().getAttribute("user") %>';
+            if(id==null){
+                alert("还未登录,请先登录");
+                window.location="/login.jsp";
+            }
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar-default" role="navigation">
@@ -74,19 +77,23 @@
 
         <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><img  id ="user_image"src="images/header_back.jpg" width="60px" height="60px"></li>
+                <li><img  id ="user_image"src="/images/header_back.jpg" width="60px" height="60px"></li>
                 <%if(user==null){%>
                 <li class="menuItem"><a href="/login.jsp">登陆</a></li>
                 <%}else {%>
-                <li class="menuItem"><a href="/personalCenter.jsp"><%=user.getName()%></a></li>
-                <%}%>
-                <li class="menuItem"><a href="#useit">我的消息</a></li>
-                <li class="menuItem"><a href="#screen">我的课程</a></li>
+                <li class="menuItem"><a href="/personal/show?id=<%=user.getId()%>"><%=user.getName()%></a></li>
+                <li class="menuItem"><a href="/personal/Messages?id=<%=user.getId()%>" onclick=" return checkLogin()">我的消息</a></li>
                 <li class="menuItem"><a href="#credits">我的脚步</a></li>
+                <li class="menuItem"><a href="#screen">我的课程</a></li>
+                <%}%>
+
                 <li class="menuItem"><a href="#contact">论坛设置</a></li>
                 <li class="menuItem"><a href="http://www.fzu.edu.cn">福州大学</a></li>
                 <li class="menuItem"><a href="http://jwch.fzu.edu.cn">教务处</a></li>
                 <li class="menuItem"><a href="http://bbs.fzu.edu.cn">新亭芳苑</a></li>
+                <%if (user!=null){%>
+                <li class="menuItem"><a href="/logout.action">退出</a></li>
+                <%}%>
             </ul>
         </div>
 

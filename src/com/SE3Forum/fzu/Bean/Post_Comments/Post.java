@@ -1,8 +1,11 @@
 package com.SE3Forum.fzu.Bean.Post_Comments;
 
+import com.SE3Forum.fzu.Bean.Data.uploadFile;
 import com.SE3Forum.fzu.Bean.users.User;
+import com.SE3Forum.fzu.Bean.users.UserCount;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -21,19 +24,14 @@ public class Post {
     private String content;
 
     //发帖用户
-    private User user;
+    private UserCount user;
 
     // 发帖所属于的主题
     private Topic topic;
 
-    // 发帖中包含的图片(可空)
-    private Set<image>images;
-
-    private String  createDate;
-    private List<Post> posts;
+    private Date createDate;
 
     private int Ontop;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
@@ -62,8 +60,8 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
-    public User getUser() {return user;}
-    public void setUser(User user) {
+    public UserCount getUser() {return user;}
+    public void setUser(UserCount user) {
         this.user = user;
     }
 
@@ -76,30 +74,15 @@ public class Post {
         this.topic = post;
     }
 
-    @OneToMany()
-    public Set<image> getImages() {
-        return images;
-    }
 
-    public void setImages(Set<image> images) {
-        this.images = images;
-    }
-
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-    @OneToMany
-    public List<Post> getPosts() {
-        return posts;
-    }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
 
     public int getOntop() {
         return Ontop;
@@ -108,4 +91,5 @@ public class Post {
     public void setOntop(int ontop) {
         Ontop = ontop;
     }
+
 }

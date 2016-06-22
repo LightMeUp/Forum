@@ -47,12 +47,9 @@ public class FilesService implements IFilesService {
     public Boolean updateServcie(uploadFile file) {
         try {
             uploadFile f= (uploadFile) filesDao.find(uploadFile.class,file.getId());
-            f.setDescription(file.getDescription());
-            f.setName(file.getName());
+            f.setFilepath(file.getFilepath());
             f.setUploadDate(file.getUploadDate());
             f.setUser(file.getUser());
-            f.setUuid(file.getUuid());
-            f.setValidateDate(file.getValidateDate());
             filesDao.update(f);
             return true;
         }catch (Exception e){
@@ -67,8 +64,8 @@ public class FilesService implements IFilesService {
     }
 
     @Override
-    public List<Teacher> listAllService(String tableName) {
-        return filesDao.listAll(tableName);
+    public List<uploadFile> listAllService() {
+        return filesDao.getFiles();
     }
 
     @Override

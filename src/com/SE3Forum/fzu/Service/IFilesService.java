@@ -16,14 +16,14 @@ public interface IFilesService {
     //删除
     Boolean deleteService(Serializable id);
 
-    // 修改教师
+    //
     Boolean updateServcie(uploadFile file);
 
     // 查询单个数据
     uploadFile findService(Serializable id);
 
     // 查看全部数据
-    List<Teacher> listAllService(String tableName);
+    List<uploadFile> listAllService();
 
     // 获取行数
     int  getRowsService(String tableName);

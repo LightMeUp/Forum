@@ -16,26 +16,9 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
-    <!-- 判断用户是否登录 -->
-    <filter>
-        <filter-name>isLogin</filter-name>
-        <filter-class>com.SE3Forum.fzu.Controller.Filter.isLogin</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>isLogin</filter-name>
-        <url-pattern>/index.jsp</url-pattern>
-    </filter-mapping>
+
 
     <!--显示用户的帐号信息 -->
-    <servlet>
-        <servlet-name>showInforServlet</servlet-name>
-        <servlet-class>com.SE3Forum.fzu.Controller.showInforServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>showInforServlet</servlet-name>
-        <url-pattern>/showInfor</url-pattern>
-    </servlet-mapping>
 
     <!-- 进入学习版块 -->
     <servlet>
@@ -56,6 +39,81 @@
         <servlet-name>showMessage</servlet-name>
         <url-pattern>/personal/Messages?id=*</url-pattern>
     </servlet-mapping>
+
+    <!-- 上传图片-->
+    <servlet>
+        <servlet-name>uploadImage</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.uploadImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadImage</servlet-name>
+        <url-pattern>/uploadImage</url-pattern>
+    </servlet-mapping>
+
+    <!--查看主题贴 -->
+    <servlet>
+        <servlet-name>showTopic</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.showStudyTopic</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showTopic</servlet-name>
+        <url-pattern>/topics</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showFreezoneTopic</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.showFreeZone.FreezoneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showFreezoneTopic</servlet-name>
+        <url-pattern>/plat/Freezone</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>showSubjectDiscuss</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.showDiscuss.SubjectDiscussServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showSubjectDiscuss</servlet-name>
+        <url-pattern>/plat/SubjectDiscuss</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>showallfiles</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.showFilesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showallfiles</servlet-name>
+        <url-pattern>/plat/Database</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>showPersonal</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.showInforServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showPersonal</servlet-name>
+        <url-pattern>/personal/show</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>watch</servlet-name>
+        <servlet-class>com.SE3Forum.fzu.Controller.WatchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>watch</servlet-name>
+        <url-pattern>/watch</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>isLogin</filter-name>
+        <filter-class>com.SE3Forum.fzu.Controller.Filter.isLogin</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>isLogin</filter-name>
+        <url-pattern>/watch*</url-pattern>
+        <url-pattern>/createTopic.action</url-pattern>
+        <url-pattern>/createPost.action</url-pattern>
+    </filter-mapping>
     
     
     <!-- spring setting-->

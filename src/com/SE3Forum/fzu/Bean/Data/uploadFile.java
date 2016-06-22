@@ -1,14 +1,10 @@
 package com.SE3Forum.fzu.Bean.Data;
 
 import com.SE3Forum.fzu.Bean.Post_Comments.Post;
-import com.SE3Forum.fzu.Bean.Post_Comments.image;
 import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.Date;
 
 /**
  * Created by Feng on 4/25/16.
@@ -26,23 +22,13 @@ public class uploadFile {
     private int id;
 
     // 文件名
-    private String name;
+    private String filepath;
 
     //文件唯一辨别码
-    private String uuid;
-
     //发帖用户
-    private UserCount user;
-
-    private String description;
-
-
+    private User user;
     // 创建日期
-    private String uploadDate;
-
-    private String validateDate;
-
-
+    private Date uploadDate;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
@@ -53,51 +39,29 @@ public class uploadFile {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFilepath() {
+        return filepath;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    @Column(unique =  true)
-    public String getUuid() {
-        return uuid;
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(String uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 
-    public String getValidateDate() {
-        return validateDate;
-    }
-
-    public void setValidateDate(String validateDate) {
-        this.validateDate = validateDate;
-    }
     @ManyToOne
-    public UserCount getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserCount user) {
+    public void setUser(User user) {
         this.user = user;
     }
+
 }

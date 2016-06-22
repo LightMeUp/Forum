@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<!-- stylesheet css -->
+	<link rel="stylesheet" href="/post/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/post/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/post/css/templatemo-blue.css">
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse">
+
+<!-- preloader section -->
+<div class="preloader">
+	<div class="sk-spinner sk-spinner-wordpress">
+       <span class="sk-inner-circle"></span>
+     </div>
+</div>
+
+<!-- header section -->
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<img src="/post/images/tm-easy-profile.jpg" class="img-responsive img-circle tm-border" alt="templatemo easy profile">
+				<hr>
+				<button class="btn-success">关注我</button>
+				<h1 class="white bold shadow">Hi, I am Julia,Creative Director</h1>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- about and skills section -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-12 col-sm-12">
+			<div class="skills">
+				<strong>个人资料</strong>
+				<table class="table">
+					<tr >
+						<td>头像:</td>
+						<td><img  id ="header_image_countInfor" src="/uploadedImages/header_back.jpg"  width="80px" height="80px" /></td>
+					</tr>
+					<tr >
+						<td>帐号:</td>
+						<td><%=userCount.getId()%></td>
+					</tr>
+					<tr >
+						<td>帐号类型:</td>
+						<td><%=userCount.getUserType().equals("Student")?"学生":"教师"%></td>
+					</tr>
+					<tr >
+						<td>姓名:</td>
+						<td><%=userCount.getName()!=null?userCount.getName():"未设置"%></td>
+					</tr >
+					<tr >
+						<td>性别:</td>
+						<td><%=userCount.getSex()%></td>
+					</tr>
+					<tr >
+						<td>籍贯:</td>
+						<td><%=userCount.getOrigin()!=null?userCount.getOrigin():"未设置"%></td>
+					</tr>
+					<tr >
+						<td>出生日期:</td>
+						<td><%=userCount.getBirthDate()!=null?userCount.getBirthDate():"未设置"%></td>
+					</tr>
+					<tr>
+						<td>手机:</td>
+						<td><%=userCount.getCellPhone()!=null?userCount.getCellPhone():"未设置"%></td>
+					</tr>
+					<tr >
+						<td>邮箱:</td>
+						<td><%=userCount.getEmail()!=null?userCount.getEmail():"未设置"%></td>
+					</tr>
+					<tr >
+						<td>QQ:</td>
+						<td><%=userCount.getEmail()!=null?userCount.getQqnumber():"未设置"%></td>
+					</tr>
+					<tr><td>地址:</td><td><%=userCount.getAddress()!=null?userCount.getAddress():"未设置"%></td></tr>
+					<tr>
+						<td>最近一次登录:</td>
+						<td><%=userCount.getLastLoginDate()%></td>
+					</tr>
+					<tr >
+						<td>
+							<button name="update" value="update" onclick="jump()">修改信息</button>
+						</td>
+					</tr>
+				</table>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+<!-- education and languages -->
+<!-- contact and experience -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-4 col-sm-12">
+			<div class="contact">
+				<h2>关注的好友</h2>
+					<p><i class="fa fa-map-marker"></i> 123 Rama IX Road, Bangkok</p>
+					<p><i class="fa fa-phone"></i> 010-020-0890</p>
+					<p><i class="fa fa-envelope"></i> easy@company.com</p>
+					<p><i class="fa fa-globe"></i> www.company.com</p>
+			</div>
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<div class="experience">
+				<h2 class="white">最新动态</h2>
+					<div class="experience-content">
+						<h4 class="experience-title accent">Website Development</h4>
+						<h5>New Media Company</h5><span></span>
+						<h5>2035 January - 2036 April</h5>
+						<p class="education-description">Cras porta tincidunt sem, in sollicitudin lorem efficitur ut. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- footer section -->
+
+<!-- javascript js -->	
+<script src="/post/js/jquery.js"></script>
+<script src="/post/js/bootstrap.min.js"></script>
+<script src="/post/js/jquery.backstretch.min.js"></script>
+<script src="/post/js/custom.js"></script>
+
+</body>
+</html>

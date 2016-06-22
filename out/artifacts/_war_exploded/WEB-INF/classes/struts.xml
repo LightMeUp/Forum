@@ -8,6 +8,7 @@
         <global-results>
             <result name="login">/login.jsp</result>
             <result name="index">/index.jsp</result>
+            <result name="error">/errorMessage.jsp</result>
         </global-results>
 
 
@@ -27,18 +28,14 @@
         <action name="loginAction" class="com.SE3Forum.fzu.Controller.login.LoginAction">
             <result name="success">/index.jsp</result>
             <result name="error">/login.jsp</result>
-            <result name="input">/index.jsp</result>
+            <result name="input">/login.jsp</result>
 
         </action>
-        <!--文件上传,用户发贴时回上传文件和图片,上传作业,教师发布作业-->
-        <action name="uploadFiles" class="com.SE3Forum.fzu.Controller.uploadFile.uploadFileAction">
-            <result name="success">/index.jsp</result>
-            <result name="error">/errorMessage.jsp</result>
-    </action>
+
 
         <!-- 修改用户个人信息-->
         <action name="updateUserCount" class="com.SE3Forum.fzu.Controller.updateUserinfor.UpdateUserCount">
-            <result name ="input">/updateCountInfor.jsp</result>
+            <result name ="input">/updateUserCount.jsp</result>
             <result name = "success"> /showCountInfor.jsp</result>
             <result name="error">/errorMessage.jsp</result>
         </action>
@@ -47,6 +44,14 @@
             <result name="success">/index.jsp</result>
             <result name="error">/errorMessage.jsp</result>
         </action>
+        <action name="createTopic" class="com.SE3Forum.fzu.Controller.createTopic">
+            <result name="error">/errorMessage.jsp</result>
+            <result name="study">/study/all.jsp</result>
+            <result name="freezone">/freezone/all.jsp</result>
+            <result name="other">/other/all.jsp</result>
+            <result name="question">/question/all.jsp</result>
+            <result name="login">/login.jsp</result>
+                </action>
         
     </package>
     <constant name="struts.multipart.saveDir" value="/tmp"/>

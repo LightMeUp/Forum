@@ -5,8 +5,7 @@
   Time: 7:17 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -261,9 +260,6 @@
 
     });
 </script>
-<div style="text-align:center;">
-    <p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
-</div>
 </div>
 </body>
 </html>

@@ -62,8 +62,6 @@
                 <value>com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment</value>
                 <value> com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation</value>
                 <value> com.SE3Forum.fzu.Bean.Data.uploadFile</value>
-                <value> com.SE3Forum.fzu.Bean.Data.downloadRecord</value>
-                <value> com.SE3Forum.fzu.Bean.Data.uploadRecord</value>
                 <value> com.SE3Forum.fzu.Bean.Post_Comments.image</value>
                 <value> com.SE3Forum.fzu.Bean.users.UserCount</value>
             </list>

@@ -1,18 +1,15 @@
 package com.SE3Forum.fzu.Util;
 import java.text.SimpleDateFormat;
-import java.time.Year;
+import java.util.Date;
 import java.util.UUID;
 
+import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
-import com.SE3Forum.fzu.Service.UserCountService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.SystemUtils;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 /**
  * Created by Feng on 3/30/16.
  */
@@ -33,15 +30,17 @@ public class Utils {
 
     public static String getImageUploadFolder() {
         if (SystemUtils.IS_OS_MAC)
-            return "uploadedImages";
+            return "/Users/Feng/Documents/SE3Form/Images/upload";
         return "C:/Users/Jerry/Documents/SE3/uploadedImages";
     }
-    public static String getCurrentDate(){
+    public static Date getCurrentDate(){
+       return new Date();
+    }
+
+    public static String parseDate(Date date){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        java.util.Date date =new java.util.Date();
-        String  currentDate = dateFormat.format(date);
-        System.out.println(new java.util.Date());
-        return  currentDate;
+        return  dateFormat.format(date);
+
     }
     public static UserType getUsertype(String id){
 
@@ -76,9 +75,18 @@ public class Utils {
         return false;
     }
     public static boolean isLoginBySession(HttpSession session){
-        String  state =(String) session.getAttribute("loginState");
-        System.out.println(state);
-        return state==null || state.equals("NO")?false:true;
+        UserCount user =(UserCount) session.getAttribute("user");
+        System.out.println("islogin"+user==null?false:true);
+        return user==null?false:true;
+    }
+    public static String isWatched(User watchuser, User user){
+        return user.getFriends()!=null&&user.getFriends().contains(watchuser)?"true":"false";
+    }
+
+    public static String getFileString(String str){
+        if (!str.contains("<a"))return null;
+
+        return str.substring(str.indexOf("<a"),str.indexOf("</a>")+4);
     }
 }
 

@@ -1,19 +1,26 @@
 package com.SE3Forum.fzu.Controller.post;
 
 import com.SE3Forum.fzu.Bean.Data.uploadFile;
+import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
+import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
+import com.SE3Forum.fzu.Dao.UserDao;
 import com.SE3Forum.fzu.Service.FilesService;
 import com.SE3Forum.fzu.Service.TopicService;
 import com.SE3Forum.fzu.Service.UserCountService;
+import com.SE3Forum.fzu.Service.postService;
 import com.SE3Forum.fzu.Util.Utils;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Feng on 5/25/16.
@@ -24,9 +31,8 @@ public class post extends ActionSupport {
      *  */
 
     // 帖子内容
-    private String theme;
+    private String  topicId;
     private String content;
-    private File file;
 
 
 
@@ -39,36 +45,39 @@ public class post extends ActionSupport {
 
         HttpServletRequest request = ServletActionContext.getRequest();
         Cookie[] cookies= request.getCookies();
-        if (Utils.isLogin(request.getCookies())){
-            for (Cookie cookie:cookies){
-                if (cookie.getName().equals("count")){
-                    // 获取用户帐号
-                    userId= cookie.getValue();
-                    System.out.println(userId);
-                    break;
-                }
-            }
-        }
-
-
-        UserCount userCount = new UserCountService().findService(Integer.parseInt(userId));
-
-        if (userCount==null){
-            System.out.println("用户不存在");
+        HttpSession session = request.getSession();
+        UserCount userCount= (UserCount) session.getAttribute("user");
+        if(userCount == null){
+            System.out.println("not login yet");
             return ERROR;
         }
-        else {
-            TopicService topicService = new TopicService();
 
-            //  创建一个新的主题帖子
-            Topic  topic = new Topic();
-            // 设置主题
-            topic.setTheme(theme);
-            topic.setContent(content);
-            topic.setCreateDate(Utils.getCurrentDate());
-            topic.setUser(userCount);
+        // 帖子是属于哪个主题贴
+        // 帖子发出时间
+        // 发帖人
+        Topic topic = new TopicService().findService(Integer.parseInt(topicId));
+        Post post = new Post();
+        post.setTopic(topic);
+        // 发帖用户
+        post.setUser(userCount);
+        // 发帖日期
+        post.setCreateDate(Utils.getCurrentDate());
+        // 发帖内容
+        post.setContent(content);
+        postService service = new postService();
+        service.addService(post);
 
-        }
+        // 发帖用户添加发帖
+        User user = (User)new UserDao().find(User.class,userCount.getId());
+        // 用户是否发过贴
+        Set<Post> posts = user.getPosts()==null?new HashSet<>():user.getPosts();
+        posts.add(post);
+        user.setPosts(posts);
+
+        //主题贴中加入新的帖子
+        posts= topic.getPosts()==null?new HashSet<>():topic.getPosts();
+        posts.add(post);
+        topic.setPosts(posts);
         return SUCCESS;
 
     }
@@ -81,12 +90,11 @@ public class post extends ActionSupport {
         this.content = content;
     }
 
-    public String getTheme() {
-        return theme;
+    public String getTopicId() {
+        return topicId;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
-
 }
