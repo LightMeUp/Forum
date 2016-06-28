@@ -70,6 +70,7 @@ public class UpdateUserCount  extends ActionSupport{
             userCount.setOrigin(origin);
             new UserCountService().updateServcie(userCount);
             request.getSession().setAttribute("user",userCount);
+        request.setAttribute("user",userCount);
             return SUCCESS;
 }
 

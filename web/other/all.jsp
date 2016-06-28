@@ -14,7 +14,7 @@
 <head>
     <jsp:useBean id="topic" class="com.SE3Forum.fzu.Bean.Post_Comments.Topic"/>
     <jsp:useBean id="user" class="com.SE3Forum.fzu.Bean.users.UserCount" />
-    <title>灌水区主题列表</title>
+    <title>学习版块主题列表</title>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
     <%
@@ -36,7 +36,7 @@
     <div class="span6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">其他板块</h3>
+                <h3 class="panel-title">学习天地</h3>
             </div>
             <div class="panel-body">
                 <table class="table table-condensed ">
@@ -62,8 +62,8 @@
                     %>
 
                     <tr>
-                        <td><img src="<%=Utils.getImageUploadFolder()+"/"+ user.getHeadimage()%>"  height="40px" /> <%=user.getName()%></td>
-                        <td><a href="/study/topics?topicid=<%=topic.getId()%>"><%= topic.getTheme()%></a></td>
+                        <td><%=user.getName()%></td>
+                        <td><a href="/topics?topicid=<%=topic.getId()%>"><%= topic.getTheme()%></a></td>
                         <td><%= topic.getCreateDate()%></td>
                     </tr>
 
@@ -104,13 +104,17 @@
         <div class="panel panel-default">
             <div class="col-md-12 col-sm-12">
                 <div class="about">
-                    <form action="/createTopic.action" method="post">
+                    <form action="/createTopic.action" method="post" id="form">
                         <!-- 加载编辑器的容器 -->
                         主题:<input name="theme" type="text" width="200px"/>
                         <input name="type" value="Other" hidden="hidden"/>
-                        <script id="container" name="content" type="text/plain">
+                        <script id="container" name="content">
                         </script>
-                        <input type="submit" value="submit" />
+                        <%if(session.getAttribute("user")==null){%>
+                        <a href="/login.jsp"><button class="btn-success">登录/注册</button></a>
+                        <%} else{%>
+                        <input type="submit" class="btn-success" value="发布" />
+                        <%}%>
                     </form>
                     <!-- 配置文件 -->
                     <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
@@ -132,12 +136,12 @@
                     <a class="list-group-item active" href="#">通知</a>
                     <%for (Topic notification:notifications){%>
                     <div class="list-group-item">
-                        <a href="/study/topics?topicid=<%=notification.getId()%>"><%=notification.getTheme()%> &nbsp;&nbsp;<%=notification.getCreateDate()%>  </a>
+                        <a href="/topics?topicid=<%=notification.getId()%>"><%=notification.getTheme()%> &nbsp;&nbsp;<%=notification.getCreateDate()%>  </a>
                     </div>
                     <%}%>
 
                 </div>
-                <button class="btn btn-large btn-success btn-block" type="button">我要发帖</button>
+                <a href="#form" ><button class="btn btn-large btn-success btn-block" type="button">我要发帖</button></a>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
@@ -148,9 +152,8 @@
                         <table>
                             <%for (UserCount popularuser:users){%>
                             <tr>
-                                <td><img src="/img/cross.png" width="30" height="30"></td>
-                                <td><h6 class="panel-title"><%=popularuser.getId()%></h6></td>
-                                <td><h6 class="panel-title"><%=popularuser.getName()%></h6></td>
+                                <td><a href="/personal/show?id=<%=popularuser.getId()%>"><h6 class="panel-title"><%=popularuser.getId()%>&nbsp;<%=popularuser.getName()%></h6></a></td>
+                                <td></td>
                             </tr>
                             <%}%>
                         </table>
@@ -166,4 +169,3 @@
 <jsp:include page="${base}/tail.html"/>
 </body>
 </html>
-

@@ -1,9 +1,7 @@
 package com.SE3Forum.fzu.Bean.SchoolAssignment;
-
 import com.SE3Forum.fzu.Bean.users.Teacher;
-
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -91,7 +89,7 @@ public class SchoolAssignment {
         this.assignmentNumbers = assignmentNumbers;
     }
 
-    @OneToMany(mappedBy = "schoolAssignment")
+    @OneToMany(mappedBy = "schoolAssignment",fetch = FetchType.EAGER)
     public List<Evaluation> getEvaluations() {
         return evaluations;
     }

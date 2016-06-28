@@ -41,7 +41,7 @@ public class OtherServlet extends HttpServlet {
         request.setAttribute("topics",topicList);
         request.setAttribute("notification",notifications);
         request.setAttribute("users",userCounts);
-            request.getRequestDispatcher(request.getContextPath()+"/Other/all.jsp").forward(request,response);
+            request.getRequestDispatcher(request.getContextPath()+"/other/all.jsp").forward(request,response);
 
     }
 }

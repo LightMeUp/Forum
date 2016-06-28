@@ -15,12 +15,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by Feng on 5/25/16.
@@ -36,20 +35,16 @@ public class post extends ActionSupport {
 
 
 
-    public String  execute(){
-        System.out.println("processing .......");
-
+    public String  execute() throws IOException {
         // 首先从Cookie中获取用户的登录信息
         String userId="";
-        List<uploadFile> uploadFiles=new ArrayList<>();
-
         HttpServletRequest request = ServletActionContext.getRequest();
         Cookie[] cookies= request.getCookies();
         HttpSession session = request.getSession();
         UserCount userCount= (UserCount) session.getAttribute("user");
         if(userCount == null){
             System.out.println("not login yet");
-            return ERROR;
+            return LOGIN;
         }
 
         // 帖子是属于哪个主题贴
@@ -78,7 +73,29 @@ public class post extends ActionSupport {
         posts= topic.getPosts()==null?new HashSet<>():topic.getPosts();
         posts.add(post);
         topic.setPosts(posts);
-        return SUCCESS;
+        topic.setLastUpdateDate(new Date());
+        new TopicService().updateServcie(topic);
+
+        if (content.contains("<a") && content.contains("</a>")){
+            //用户上传了文件
+            uploadFile file = new uploadFile();
+            file.setUser(user);
+            file.setFilepath(Utils.getFileString(content));
+            file.setUploadDate(Utils.getCurrentDate());
+            new  FilesService().addService(file);
+            Set<uploadFile> uploadFiles = user.getFiles()==null?new HashSet<>():user.getFiles();
+            uploadFiles.add(file);
+            user.setFiles(uploadFiles);
+            new UserDao().update(user);
+        }
+
+
+
+        String refer ="/topics?topicid="+topicId;
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.sendRedirect(refer);
+        System.out.println(refer);
+        return null;
 
     }
 

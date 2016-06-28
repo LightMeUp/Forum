@@ -1,9 +1,6 @@
 package com.SE3Forum.fzu.Controller;
-
-import com.SE3Forum.fzu.Bean.Post_Comments.Post;
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
 import com.SE3Forum.fzu.Service.TopicService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +29,7 @@ public class showStudyTopic extends HttpServlet {
             request.getRequestDispatcher(request.getContextPath()+"/study/error.jsp").forward(request,response);
         }
         request.setAttribute("topic",topic);
+        System.out.println(topic.getPosts());
         request.getRequestDispatcher(request.getContextPath()+"/topic.jsp").forward(request,response);
     }
 }

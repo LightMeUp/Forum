@@ -4,33 +4,43 @@ import com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Feng on 3/29/16.
  */
 @Entity
 @Table(name = "teacher",schema = "ForumDataBase")
-public class Teacher extends User {
+public class Teacher  {
 
-    private List<Student>students;
-    private List<SchoolAssignment> schoolAssignments;
+    private int id;
+    private Set<Student> students;
+    private Set<SchoolAssignment> schoolAssignments;
 
+    @Id
+    public int getId() {
+        return id;
+    }
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "teacher")
-    public List<Student> getStudents() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "teacher")
+    public Set<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(Set<Student> students) {
         this.students = students;
     }
 
-    @OneToMany(mappedBy = "teacher")
-    public List<SchoolAssignment> getSchoolAssignments() {
+    @OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER)
+    public Set<SchoolAssignment> getSchoolAssignments() {
         return schoolAssignments;
     }
 
-    public void setSchoolAssignments(List<SchoolAssignment> schoolAssignments) {
+    public void setSchoolAssignments(Set<SchoolAssignment> schoolAssignments) {
         this.schoolAssignments = schoolAssignments;
     }
 }

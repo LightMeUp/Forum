@@ -1,5 +1,4 @@
 package com.SE3Forum.fzu.Controller.uploadImage;
-
 import com.SE3Forum.fzu.Util.Utils;
 import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ActionSupport;
@@ -8,7 +7,6 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-
 /**
  * Created by Feng on 5/30/16.
  */

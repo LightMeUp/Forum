@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Feng on 4/27/16.
@@ -16,10 +17,10 @@ import java.util.List;
 public class TeacherDao  extends BaseDao{
 
     // 查找教师下的全部学生
-    public List<Student> getStudentsByTeacherId(Serializable id){
+    public Set<Student> getStudentsByTeacherId(Serializable id){
 
         Teacher teacher = (Teacher) find(Teacher.class,id);
-        List<Student> students = teacher.getStudents();
+        Set<Student> students = teacher.getStudents();
         System.out.println(students);
         if (students == null){
             return null;
@@ -27,7 +28,7 @@ public class TeacherDao  extends BaseDao{
         else {return students;}
     }
     // 查看教师发布的全部作业
-     public List<SchoolAssignment> getSchoolAssignments(Serializable id){
+     public Set<SchoolAssignment> getSchoolAssignments(Serializable id){
 
          Teacher teacher = (Teacher) find(Teacher.class,id);
          if (teacher ==null)return null;

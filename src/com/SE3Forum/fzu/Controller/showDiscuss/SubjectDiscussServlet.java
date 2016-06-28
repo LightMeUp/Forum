@@ -5,7 +5,6 @@ import com.SE3Forum.fzu.Bean.users.UserCount;
 import com.SE3Forum.fzu.Service.TopicService;
 import com.SE3Forum.fzu.Service.UserCountService;
 import com.SE3Forum.fzu.Util.platForumType;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

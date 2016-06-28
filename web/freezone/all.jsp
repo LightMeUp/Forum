@@ -110,7 +110,12 @@
                         <input name="type" value="Freezone" hidden="hidden"/>
                         <script id="container" name="content" type="text/plain">
                         </script>
-                        <input type="submit" value="submit" />
+                        <%if (Utils.isLoginBySession(session)){%>
+                        <Button type="submit" class="btn-success">发布</Button>
+                        <%}else{
+                        %>
+                        <a href="/login.jsp"><Button class="btn-success" type="button">登录/注册</Button></a>
+                        <%}%>
                     </form>
                     <!-- 配置文件 -->
                     <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>

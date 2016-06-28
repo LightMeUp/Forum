@@ -43,7 +43,7 @@ public class Topic {
     private Date createDate;
 
     // 最后一次修改时间
-    private String lastUpdateDate;
+    private Date lastUpdateDate;
 
 
 
@@ -83,7 +83,7 @@ public class Topic {
         this.user = userEntity;
     }
 
-    @OneToMany(mappedBy = "topic")
+    @OneToMany(mappedBy = "topic",fetch = FetchType.EAGER)
     public Set<Post> getPosts() {
         return posts;
     }
@@ -109,11 +109,11 @@ public class Topic {
         this.createDate = createDate;
     }
 
-    public String getLastUpdateDate() {
+    public Date getLastUpdateDate() {
         return lastUpdateDate;
     }
 
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(Date lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 

@@ -58,7 +58,7 @@ public class Post {
         this.content = content;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     public UserCount getUser() {return user;}
     public void setUser(UserCount user) {

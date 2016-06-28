@@ -1,8 +1,13 @@
 package com.SE3Forum.fzu.Util;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
+import com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation;
+import com.SE3Forum.fzu.Bean.SchoolAssignment.SchoolAssignment;
+import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -87,6 +92,22 @@ public class Utils {
         if (!str.contains("<a"))return null;
 
         return str.substring(str.indexOf("<a"),str.indexOf("</a>")+4);
+    }
+    public static Date parseStringToDate(String date) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.parse(date);
+    }
+    public static  boolean isAssignmentSubmitted(int id,Student student){
+        Set<Evaluation> evaluations =student.getEvaluations();
+        if (evaluations==null || evaluations.size()<1)return false;
+        else {
+            for (Evaluation evaluation:evaluations){
+               if( evaluation.getSchoolAssignment().getId()== id)
+                return true;
+            }
+            return false;
+        }
+
     }
 }
 

@@ -11,16 +11,16 @@ import java.util.List;
 /**
  * Created by Feng on 5/11/16.
  */
-public interface ITeacherService {
+public interface ITeacherService  {
 
     //添加教师
     Boolean addService(Teacher teacher);
 
     //删除教师
-    Boolean deleteService(Serializable id);
+    void deleteService(Teacher teacher);
 
     // 修改教师
-    Boolean updateServcie(Teacher teacher);
+    void updateServcie(Teacher teacher);
 
     // 查询单个教师数据
     Teacher findService(Class clazz, Serializable id);
@@ -38,7 +38,6 @@ public interface ITeacherService {
     Evaluation listEvaluation(Serializable id);
 
     // 重置密码
-    boolean resetPassword(String password, Serializable id);
 
     //获取全部学生信息, 有别与学生表下的查询全部学生信息,获取单个学生信息,通过学号直接搜索学生信息表
     List<Student> listAllStudent(Serializable id);

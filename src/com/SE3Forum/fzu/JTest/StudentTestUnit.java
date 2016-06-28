@@ -16,5 +16,9 @@ import java.util.Date;
  * Created by Feng on 4/27/16.
  */
 public class StudentTestUnit {
+    @Test
+    public void test(){
+        new StudentDao().getRows("student");
+    }
 
 }

@@ -29,15 +29,8 @@ public class StudentDao extends BaseDao {
         }
     }
 
-    // 查看好友列表
-    public Set<UserCount> getFriends(Serializable id) {
-        Student student = (Student) find(Student.class, id);
-        if (student == null)
-            return null;
-        else return student.getFriends();
-    }
     // 查看学生的作业评分信息
-    public List<Evaluation>  getEvaluations(Serializable id){
+    public Set<Evaluation>  getEvaluations(Serializable id){
         Student student = (Student) find(Student.class, id);
         if (student == null)
             return null;

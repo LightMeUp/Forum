@@ -2,6 +2,9 @@ package com.SE3Forum.fzu.Service;
 
 import com.SE3Forum.fzu.Bean.SchoolAssignment.Evaluation;
 import com.SE3Forum.fzu.Dao.EvaluationDao;
+import com.SE3Forum.fzu.Util.HibernateUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -71,13 +74,20 @@ public class EvaluationService implements IEvaluationService {
 
     @Override
     public List<Evaluation> listAllService() {
-        return evaluationDao.listAll("evaluation");
+        return evaluationDao.listAll();
     }
 
     @Override
     public int getRowsService() {
         evaluationDao.getRows("evaluation");
         return 0;
+    }
+
+    public Evaluation getEvaluationByStudentAndAssignment(int studentId, int AssignmentId){
+        Session session = HibernateUtil.getSession();
+        String Hql = "from Evaluation  as e where e.schoolAssignment.id=:saId AND e.student.id=:sId";
+        Query query =session.createQuery(Hql).setInteger("saId",AssignmentId).setInteger("sId",studentId);
+        return query.list()!=null &&query.list().size()>0?(Evaluation) query.list().get(0):null;
     }
 
     @Override

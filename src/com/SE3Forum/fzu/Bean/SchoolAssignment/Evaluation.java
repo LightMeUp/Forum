@@ -3,7 +3,7 @@ package com.SE3Forum.fzu.Bean.SchoolAssignment;
 import com.SE3Forum.fzu.Bean.users.Student;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by Feng on 4/14/16.
@@ -27,13 +27,14 @@ public class Evaluation {
     private Student student;
 
     //学生作业提交时间
-    private String  submitDate;
+    private Date submitDate;
 
     // 作业得分
     private float score;
 
     // 教师评语
     private String Evaluate;
+    private String content;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,11 +65,11 @@ public class Evaluation {
         this.student= student;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return submitDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.submitDate = createdDate;
     }
 
@@ -86,5 +87,21 @@ public class Evaluation {
 
     public void setEvaluate(String evaluate) {
         Evaluate = evaluate;
+    }
+
+    public Date getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

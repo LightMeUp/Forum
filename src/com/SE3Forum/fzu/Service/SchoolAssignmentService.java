@@ -70,7 +70,8 @@ public class SchoolAssignmentService implements ISchoolAsignment {
 
     @Override
     public List<SchoolAssignment> listAllService(String tableName) {
-        return schoolAssignmentDao.listAll(tableName) ;
+
+        return schoolAssignmentDao.listAll() ;
     }
 
     @Override
@@ -96,5 +97,9 @@ public class SchoolAssignmentService implements ISchoolAsignment {
     @Override
     public List<SchoolAssignment> findAssignmentWithOption(String Option, SearchOption searchOption) {
         return null;
+    }
+    public List<SchoolAssignment> findAssignmentWithTeacherId(Serializable id){
+        return schoolAssignmentDao.findSchoolAssignmentByTeacherId(id);
+
     }
 }

@@ -24,5 +24,7 @@
         <mapping class="com.SE3Forum.fzu.Bean.Data.uploadFile"/>
       <mapping class="com.SE3Forum.fzu.Bean.users.UserCount"/>
      <mapping class="com.SE3Forum.fzu.Bean.users.User"/>
+        <mapping class="com.SE3Forum.fzu.Bean.users.Teacher"/>
+        <mapping class="com.SE3Forum.fzu.Bean.users.Student"/>
     </session-factory>
 </hibernate-configuration>

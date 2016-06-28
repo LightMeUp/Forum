@@ -62,7 +62,7 @@
                     %>
 
                         <tr>
-                            <td><img src="<%=Utils.getImageUploadFolder()+"/"+ user.getHeadimage()%>"  height="40px" /> <%=user.getName()%></td>
+                            <td><%=user.getName()%></td>
                             <td><a href="/topics?topicid=<%=topic.getId()%>"><%= topic.getTheme()%></a></td>
                             <td><%= topic.getCreateDate()%></td>
                         </tr>
@@ -110,7 +110,11 @@
                                 <input name="type" value="Study" hidden="hidden"/>
                                 <script id="container" name="content" type="text/plain">
         </script>
-                                <input type="submit" value="submit" />
+                                <%if(session.getAttribute("user")==null){%>
+                                <a href="/login.jsp"><button class="btn-success">登录/注册</button></a>
+                                <%} else{%>
+                                <input type="submit" class="btn-success" value="发布" />
+                                <%}%>
                             </form>
                             <!-- 配置文件 -->
                             <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
@@ -132,7 +136,7 @@
                             <a class="list-group-item active" href="#">通知</a>
                             <%for (Topic notification:notifications){%>
                             <div class="list-group-item">
-                                <a href="/study/topics?topicid=<%=notification.getId()%>"><%=notification.getTheme()%> &nbsp;&nbsp;<%=notification.getCreateDate()%>  </a>
+                                <a href="/topics?topicid=<%=notification.getId()%>"><%=notification.getTheme()%> &nbsp;&nbsp;<%=notification.getCreateDate()%>  </a>
                             </div>
                             <%}%>
 
@@ -148,9 +152,8 @@
                                     <table>
                                             <%for (UserCount popularuser:users){%>
                                         <tr>
-                                            <td><img src="/img/cross.png" width="30" height="30"></td>
-                                            <td><h6 class="panel-title"><%=popularuser.getId()%></h6></td>
-                                            <td><h6 class="panel-title"><%=popularuser.getName()%></h6></td>
+                                            <td><a href="/personal/show?id=<%=popularuser.getId()%>"><h6 class="panel-title"><%=popularuser.getId()%>&nbsp;<%=popularuser.getName()%></h6></a></td>
+                                            <td></td>
                                         </tr>
                                         <%}%>
                                     </table>

@@ -52,7 +52,6 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">Ace</span>
                             <span class="white" id="id-text2">登录软件工程论坛</span>
                         </h1>
                         <h4 class="blue" id="id-company-text">&copy; 软件工程第三组</h4>
@@ -68,10 +67,8 @@
                                         <i class="ace-icon fa fa-coffee green"></i>
                                         请输入您的信息
                                     </h4>
-
                                     <div class="space-6"></div>
-
-                                    <form action="loginAction.action" method="post" id="loginform">
+                                    <form action="/login" method="post" id="loginform">
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -101,26 +98,7 @@
                                             <div class="space-4"></div>
                                         </fieldset>
                                     </form>
-
-                                    <div class="social-or-login center">
-                                        <span class="bigger-110">第三方登录</span>
-                                    </div>
-
                                     <div class="space-6"></div>
-
-                                    <div class="social-login center">
-                                        <a class="btn btn-primary">
-                                            <i class="ace-icon fa fa-facebook"></i>
-                                        </a>
-
-                                        <a class="btn btn-info">
-                                            <i class="ace-icon fa fa-twitter"></i>
-                                        </a>
-
-                                        <a class="btn btn-danger">
-                                            <i class="ace-icon fa fa-google-plus"></i>
-                                        </a>
-                                    </div>
                                 </div><!-- /.widget-main -->
 
                                 <div class="toolbar clearfix">
@@ -128,6 +106,10 @@
                                         <a href="#" data-target="#forgot-box" class="forgot-password-link">
                                             <i class="ace-icon fa fa-arrow-left"></i>
                                             忘记密码
+                                        </a>
+                                        <a href="#" data-target="#regist-box" class="forgot-password-link">
+                                            <i class="ace-icon  fa-arrow-right"></i>
+                                            新用户
                                         </a>
                                     </div>
                                 </div>
@@ -139,27 +121,36 @@
                                 <div class="widget-main">
                                     <h4 class="header red lighter bigger">
                                         <i class="ace-icon fa fa-key"></i>
-                                        找回密码
+                                        修改密码
                                     </h4>
 
                                     <div class="space-6"></div>
-                                    <p>
-                                        输入您的电子邮件和接收指令
-                                    </p>
 
-                                    <form>
+                                    <form action="/resetPassword" method="post" id="resetpassword">
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input name="count" type="text" class="form-control" placeholder="请输入你的注册邮箱或者手机" />
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                                            </label>
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input  name="verifycode" type="text" class="form-control" placeholder="请输入验证码" maxlength="6"/>
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                                            </label>
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="resetpassword"type="text" class="form-control" placeholder="确认新密码" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
                                             </label>
 
                                             <div class="clearfix">
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-danger" form="resetpassword">
                                                     <i class="ace-icon fa fa-lightbulb-o"></i>
-                                                    <span class="bigger-110">发送邮件</span>
+                                                    <span class="bigger-110">确认修改</span>
                                                 </button>
                                             </div>
                                         </fieldset>
@@ -174,6 +165,55 @@
                                 </div>
                             </div><!-- /.widget-body -->
                         </div><!-- /.forgot-box -->
+                        <div id="regist-box" class="forgot-box widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header red lighter bigger">
+                                        <i class="ace-icon fa fa-key"></i>
+                                        用户注册
+                                    </h4>
+
+                                    <div class="space-6"></div>
+
+                                    <form action="/regist" method="post" id="registform">
+                                        <fieldset>
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="count"type="text" class="form-control" placeholder="请输入你的学号/教师号"maxlength="9" />
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                                            </label>
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input  name="contact" type="text" class="form-control" placeholder="联系方式,手机/邮箱"/>
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                                            </label>
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="verifycode" type="text" class="form-control" placeholder="验证码" maxlength="6"/>
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                                            </label>
+
+                                            <div class="clearfix">
+                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-danger" form="registform">
+                                                    <i class="ace-icon fa fa-lightbulb-o"></i>
+                                                    <span class="bigger-110">确认注册</span>
+                                                </button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div><!-- /.widget-main -->
+
+                                <div class="toolbar center">
+                                    <a href="#" data-target="#login-box" class="back-to-login-link">
+                                        返回登录
+                                        <i class="ace-icon fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div><!-- /.widget-body -->
+                        </div>
                     <div class="navbar-fixed-top align-right">
                         <br />
                         &nbsp;

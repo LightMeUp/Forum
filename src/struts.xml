@@ -8,57 +8,77 @@
         <global-results>
             <result name="login">/login.jsp</result>
             <result name="index">/index.jsp</result>
-            <result name="error">/errorMessage.jsp</result>
         </global-results>
 
 
         <!--退出登录,用户点击退出,直接回到主页-->
         <action name="logout" class="com.SE3Forum.fzu.Controller.logout.logout">
             <result name="success">/index.jsp</result>
-            <result name="error">/errorMessage.jsp</result>
             <result name="input">/login.jsp</result>
         </action>
         <action name="post" class="com.SE3Forum.fzu.Controller.post.post">
-            <result name="success">/index.jsp</result>
-            <result name="error">/errorMessage.jsp</result>
+            <result name="success">/topic.jsp</result>
             <result name="input">/post.jsp</result>
+            <result name="login">/login.jsp</result>
         </action>
 
         <!-- 登录 登录错误时跳回到登录页面 这块可以自己决定要一个页面还是两个页面,登录成功后回到主页-->
-        <action name="loginAction" class="com.SE3Forum.fzu.Controller.login.LoginAction">
-            <result name="success">/index.jsp</result>
-            <result name="error">/login.jsp</result>
-            <result name="input">/login.jsp</result>
-
-        </action>
-
-
         <!-- 修改用户个人信息-->
         <action name="updateUserCount" class="com.SE3Forum.fzu.Controller.updateUserinfor.UpdateUserCount">
             <result name ="input">/updateUserCount.jsp</result>
             <result name = "success"> /showCountInfor.jsp</result>
-            <result name="error">/errorMessage.jsp</result>
         </action>
         
         <action name="uploadImage" class="com.SE3Forum.fzu.Controller.uploadImage.uploadImage">
             <result name="success">/index.jsp</result>
-            <result name="error">/errorMessage.jsp</result>
         </action>
         <action name="createTopic" class="com.SE3Forum.fzu.Controller.createTopic">
-            <result name="error">/errorMessage.jsp</result>
             <result name="study">/study/all.jsp</result>
             <result name="freezone">/freezone/all.jsp</result>
             <result name="other">/other/all.jsp</result>
             <result name="question">/question/all.jsp</result>
             <result name="login">/login.jsp</result>
                 </action>
-        
-    </package>
+        <action name="Download" class="com.SE3Forum.fzu.Controller.GSQ.downloadFile">
+            <result type="stream">
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+
+        <action name="UserType" class="com.SE3Forum.fzu.Controller.GSQ.UserType">
+            <result name="student">/GSQindex.jsp</result>
+            <result name="teacher">/TeacherIndex.jsp</result>
+            <result name="success">/index.jsp</result>
+        </action>
+
+        <action name="ZYCreate" class="com.SE3Forum.fzu.Controller.GSQ.ZYCreate">
+            <result name="success">/GSQHWCheck.jsp</result>
+        </action>
+
+        <action name="ZYShow" class="com.SE3Forum.fzu.Controller.GSQ.ZYShow">
+            <result name="success">/GSQZY.jsp</result>
+        </action>
+        <action name="ZY" class="com.SE3Forum.fzu.Controller.GSQ.ZY">
+            <result name="success">/GSQZYShow.jsp</result>
+        </action>
+        <action name="ZYUpload" class="com.SE3Forum.fzu.Controller.GSQ.ZYUpload">
+            <result name="success">/GSQZYShow.jsp</result>
+        </action>
+        <action name="HWCheck" class="com.SE3Forum.fzu.Controller.GSQ.HWCheck">
+            <result name="success">/GSQHWCheck.jsp</result>
+        </action>
+        <action name="HWCheck2" class="com.SE3Forum.fzu.Controller.GSQ.HWCheck2">
+            <result name="success">/GSQHWCheck2.jsp</result>
+        </action>
+        <action name="updatevaluation" class="com.SE3Forum.fzu.Controller.GSQ.EvaluationAction">
+            <result name="success">/GSQHWCheck.jsp</result>
+        </action>
+        <action name="NotificationAction" class="com.SE3Forum.fzu.Controller.GSQ.NotificationAction">
+            <result name="success">/TeacherIndex.jsp</result>
+        </action>
+        <action name="dataUpload" class="com.SE3Forum.fzu.Controller.GSQ.dataUpload">
+            <result name="success">/dataDownload.jsp</result>
+        </action>
+        </package>
     <constant name="struts.multipart.saveDir" value="/tmp"/>
-
-
-    
-
-
-
 </struts>

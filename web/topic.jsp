@@ -1,6 +1,9 @@
 <%@ page import="com.SE3Forum.fzu.Bean.Post_Comments.Topic" %>
+<%@ page import="com.SE3Forum.fzu.Bean.Post_Comments.Post" %>
+<%@ page import="com.SE3Forum.fzu.Util.Utils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Topic topic = (Topic) request.getAttribute("topic");%>
+<% Topic topic = (Topic) request.getAttribute("topic");
+    int cnt=0;%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -42,6 +45,10 @@
         #flip{
             margin-left: 30%;
         }
+        .div-topic{
+            border-bottom: groove;
+            min-height: 35%;
+        }
     </style>
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
@@ -57,13 +64,19 @@
                     <div class="post_up">
                         <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
                         <button  class="watch_button" >关注</button>
-                        <h5><%=topic.getUser().getName()%></h5>
+                        <h5><a href="/personal/show?id=<%=topic.getUser().getId()%>"> <%=topic.getUser().getName()%></a></h5>
                         <h5 class="detail_label">回复999:关注999</h5>
                         <h5 class="level_label">Lv:999</h5>
                     </div>
                     <div >
+                        <div class="div-topic">
                         <h3><%=topic.getTheme()%></h3>
                         <p><%=topic.getContent()%></p>
+                        </div>
+                        <div>
+                           <button>点赞999</button>&nbsp;<button>踩1000</button>&nbsp;&nbsp; <a href="#"  >删除</a> &nbsp;&nbsp;<a href="#">回复</a>&nbsp;&nbsp;<a href="#">举报</a>
+                            <i>楼主</i>&nbsp;<i>回复数:<%=topic.getPosts()==null?0:topic.getPosts().size()%></i>&nbsp;<i>最后回复时间<%=Utils.parseDate(topic.getLastUpdateDate())%></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,121 +85,35 @@
 </header>
 
 <!-- about and skills section -->
+ <%for (Post post:topic.getPosts()){%>
 <section class="container">
     <div class="row">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-12 col-sm-16">
             <div class="about">
                 <div class="post_up">
                     <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
-                    <button  class="watch_button" >关注</button>
+                    <a href="/watch?id=<%=post.getUser().getId()%>"><button  class="watch_button" >关注</button></a>
+                    <h5><a href="/personal/show?id=<%=post.getUser().getId()%>"><%=post.getUser().getName()%></a></h5>
                     <h5 class="detail_label">回复999:关注999</h5>
                     <h5 class="level_label">Lv:999</h5>
                 </div>
                 <div >
-                    <p>  adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br></p>
+                    <div class="div-topic">
+                    <%=post.getContent()%>
+                    </div>
+                    <div>
+                        <button>点赞999</button>&nbsp;<button>踩1000</button>&nbsp;&nbsp; <a href="#"  >删除</a> &nbsp;&nbsp;<a href="#">回复</a>&nbsp;&nbsp;<a href="#">举报</a>
+                        <i>第<%=++cnt%>楼</i>&nbsp;<i>回复时间<%=Utils.parseDate(post.getCreateDate())%></i>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
-            <div class="skills">
-                <div class="post_up">
-                    <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
-                    <button  class="watch_button" >关注</button>
-                    <h5 class="detail_label">回复999:关注999</h5>
-                    <h5 class="level_label">Lv:999</h5>
-                </div>
-                <div >
-                    <p>  adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br></p>
-                </div>
-            </div>
         </div>
-    </div>
 </section>
+ <br/>
+ <%}%>
 <!-- education and languages -->
-<section class="container">
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="languages">
-                <div class="post_up">
-                    <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
-                    <button  class="watch_button" >关注</button>
-                    <h5 class="detail_label">回复999:关注999</h5>
-                    <h5 class="level_label">Lv:999</h5>
-                </div>
-                <div >
-                    <p>  adsfshfkjshdfljkhsdlkhfkjsdlhfdss<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <div class="languages">
-                <div class="post_up">
-                    <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
-                    <button  class="watch_button" >关注</button>
-                    <h5 class="detail_label">回复999:关注999</h5>
-                    <h5 class="level_label">Lv:999</h5>
-                </div>
-                <div >
-                    <p>  adsfshfkjshdfljkhsdlkhfkjsdlhfdss<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                        adsfshfkjshdfljkhsdlkhfkjsdlhfds<br></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
- <section class="container">
-     <div class="row">
-         <div class="col-md-6 col-sm-12">
-             <div class="languages">
-                 <div class="post_up">
-                     <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
-                     <button  class="watch_button" >关注</button>
-                     <h5 class="detail_label">回复999:关注999</h5>
-                     <h5 class="level_label">Lv:999</h5>
-                 </div>
-                 <div >
-                     <p>  adsfshfkjshdfljkhsdlkhfkjsdlhfdss<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br></p>
-                 </div>
-             </div>
-         </div>
-         <div class="col-md-6 col-sm-12">
-             <div class="languages">
-                 <div class="post_up">
-                     <img src="/images/img1.jpg" width="120px" height="120px" class="header_image"/><br>
-                     <button  class="watch_button" >关注</button>
-                     <h5 class="detail_label">回复999:关注999</h5>
-                     <h5 class="level_label">Lv:999</h5>
-                 </div>
-                 <div >
-                     <p>  adsfshfkjshdfljkhsdlkhfkjsdlhfdss<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br>
-                         adsfshfkjshdfljkhsdlkhfkjsdlhfds<br></p>
-                 </div>
-             </div>
-         </div>
-     </div>
- </section>
 <!-- contact and experience -->
  <div class="container-fluid" >
      <div class="row-fluid">
@@ -234,24 +161,33 @@
          </div>
      </div>
  </div>
- <div class="row">
-     <div class="col-md-12 col-sm-12">
-         <div class="about">
- <form action="/post.action" method="post">
-     <!-- 加载编辑器的容器 -->
-     <input name="topicId" value="<%=topic.getId()%>" hidden="hidden" />
-     <script id="container" name="content" type="text/plain">
-            这里写你的初始化内容
-        </script>
-     <input type="submit" value="submit" />
- </form>
- <!-- 实例化编辑器 -->
- <script type="text/javascript">
-     var editor = UE.getEditor('container');
- </script>
-        </div>
+ <section class="container">
+     <div class="row">
+         <div >
+             <div class="languages">
+                     <form action="/post.action" method="post">
+                         <!-- 加载编辑器的容器 -->
+                         <input name="topicId" value="<%=topic.getId()%>" hidden="hidden" />
+
+                         <script id="container" name="content" type="text/plain">
+
+                         </script>
+                         <%if(session.getAttribute("user")==null){%>
+                         <a href="/login.jsp"><button class="btn-success">登录/注册</button></a>
+                         <%} else{%>
+                         <input type="submit" class="btn-success" value="发布" />
+                         <%}%>
+                     </form>
+                     <script type="text/javascript">
+                         var editor = UE.getEditor('container');
+                     </script>
+             </div>
+         </div>
      </div>
- </div>
+ </section>
+
+
+ <!-- 实例化编辑器 -->
     <jsp:include page="/tail.html"/>
 
 <!-- javascript js -->

@@ -2,7 +2,6 @@ package com.SE3Forum.fzu.Controller.showStudy;
 
 import com.SE3Forum.fzu.Bean.Post_Comments.Topic;
 import com.SE3Forum.fzu.Bean.users.UserCount;
-import com.SE3Forum.fzu.Service.SearchOption;
 import com.SE3Forum.fzu.Service.TopicService;
 import com.SE3Forum.fzu.Service.UserCountService;
 import com.SE3Forum.fzu.Util.platForumType;

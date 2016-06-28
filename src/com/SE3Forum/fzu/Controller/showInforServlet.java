@@ -1,13 +1,9 @@
 package com.SE3Forum.fzu.Controller;
-
-import com.SE3Forum.fzu.Bean.users.Student;
 import com.SE3Forum.fzu.Bean.users.User;
 import com.SE3Forum.fzu.Bean.users.UserCount;
 import com.SE3Forum.fzu.Dao.UserDao;
 import com.SE3Forum.fzu.Service.UserCountService;
-import com.SE3Forum.fzu.Util.UserType;
 import com.SE3Forum.fzu.Util.Utils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

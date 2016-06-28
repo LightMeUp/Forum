@@ -83,8 +83,8 @@
                 <%}else {%>
                 <li class="menuItem"><a href="/personal/show?id=<%=user.getId()%>"><%=user.getName()%></a></li>
                 <li class="menuItem"><a href="/personal/Messages?id=<%=user.getId()%>" onclick=" return checkLogin()">我的消息</a></li>
-                <li class="menuItem"><a href="#credits">我的脚步</a></li>
-                <li class="menuItem"><a href="#screen">我的课程</a></li>
+                <li class="menuItem"><a href="">我的脚步</a></li>
+                <li class="menuItem"><a href="/UserType.action">我的课程</a></li>
                 <%}%>
 
                 <li class="menuItem"><a href="#contact">论坛设置</a></li>

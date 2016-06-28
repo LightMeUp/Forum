@@ -102,7 +102,7 @@
                     </tr>
                     <tr >
                         <td>出生日期:</td>
-                        <td><%=userCount.getBirthDate()!=null?userCount.getBirthDate():"未设置"%></td>
+                        <td><%=userCount.getBirthDate()!=null?Utils.parseDate(userCount.getBirthDate()):"未设置"%></td>
                     </tr>
                     <tr>
                         <td>手机:</td>

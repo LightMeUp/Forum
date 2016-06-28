@@ -29,7 +29,7 @@ public class TopicDao  extends BaseDao implements ITopicDao{
                hql = "From Topic as topic where topic.type = '"+ "SubjectDiscuss' order by topic.createDate desc ";
                break;
            case OthersPlat:
-               hql = "From Topic as topic where topic.type = '"+ "Others' order by topic.createDate desc ";
+               hql = "From Topic as topic where topic.type = '"+ "Other' order by topic.createDate desc ";
                break;
            case Notification:
                hql = "From Topic as topic where topic.type = '"+ "Notification' order by topic.createDate desc ";

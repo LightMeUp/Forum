@@ -11,9 +11,7 @@ import com.SE3Forum.fzu.Service.UserCountService;
 import com.SE3Forum.fzu.Util.Utils;
 import com.SE3Forum.fzu.Util.platForumType;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.deploy.services.PlatformType;
 import org.apache.struts2.ServletActionContext;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,18 +29,21 @@ public class createTopic extends ActionSupport {
 
 
     public String  execute(){
-        System.out.println(theme);
-        System.out.println(content);
+        System.out.println("theme "+theme+"type "+type+"content "+content);
         TopicService topicService= new TopicService();
         HttpServletRequest request = ServletActionContext.getRequest();
        if (!Utils.isLoginBySession(request.getSession())){
            return LOGIN;
        }
+        if (content==null){
+            return INPUT;
+        }
 
 
         UserCount usercount = (UserCount)request.getSession().getAttribute("user");
         Topic topic = new Topic();
         topic.setCreateDate(Utils.getCurrentDate());
+        topic.setLastUpdateDate(Utils.getCurrentDate());
         topic.setContent(content);
         topic.setTheme(theme);
         topic.setType(getType(type));
@@ -82,10 +83,10 @@ public class createTopic extends ActionSupport {
         request.setAttribute("users",userCounts);
 
         if (type.equals("Study")) return "study";
-        else   if (type.equals("Database")) return "other";
+        else   if (type.equals("Database")) return "Database";
         else   if (type.equals("Freezone")) return "freezone";
         else   if (type.equals("Question")) return "question";
-        else return "Other";
+        else return "other";
     }
     public String getTheme() {
         return theme;
